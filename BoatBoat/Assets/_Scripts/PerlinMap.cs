@@ -103,8 +103,8 @@ public class PerlinMap : MonoBehaviour {
 		Vector3 vertPosition;
 		for (int y = 0; y < baseTex.height; y++) {
 			for (int x = 0; x < baseTex.width; x++) {
-				value = GetValue(x, y);
-				newColor =  lowColor * (1-Mathf.Pow(value,colorExponent)) + highColor * (Mathf.Pow(value,colorExponent));
+				value = this.GetValue(x, y);
+				newColor =  lowColor * (1-Mathf.Pow(value+0.5f,colorExponent)) + highColor * (Mathf.Pow(value+0.5f,colorExponent));
 				colors[y * baseTex.width + x] = newColor;
 
 				newHeight =  this.transform.position.y + value * heightScale;
@@ -130,7 +130,7 @@ public class PerlinMap : MonoBehaviour {
 
 	public float GetValue(int x, int y) {
 		// input in terms of Ocean array index
-		float value = Mathf.PerlinNoise(timeScale * Time.time + x * pixelScale + xOffset, timeScale * Time.time + y * pixelScale + yOffset);
+		float value = -0.5f + Mathf.PerlinNoise(timeScale * Time.time + x * pixelScale + xOffset, timeScale * Time.time + y * pixelScale + yOffset);
 
 		return value;
 	}
@@ -139,7 +139,7 @@ public class PerlinMap : MonoBehaviour {
 		// input in terms of world position
 		float newY = (y + this.transform.lossyScale.z/2) / blockSize;
 		float newX = (x + this.transform.lossyScale.x/2) / blockSize;
-		float value = Mathf.PerlinNoise(timeScale * Time.time + newX * pixelScale + xOffset, timeScale * Time.time + newY * pixelScale + yOffset);
+		float value = -0.5f + Mathf.PerlinNoise(timeScale * Time.time + newX * pixelScale + xOffset, timeScale * Time.time + newY * pixelScale + yOffset);
 
 		return value;
 	}
