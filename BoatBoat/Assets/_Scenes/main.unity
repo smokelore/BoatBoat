@@ -748,7 +748,6 @@ GameObject:
   m_Component:
   - 4: {fileID: 1829927930}
   - 114: {fileID: 1829927931}
-  - 114: {fileID: 1829927932}
   - 114: {fileID: 1829927935}
   - 33: {fileID: 1829927929}
   - 23: {fileID: 1829927928}
@@ -819,21 +818,6 @@ MonoBehaviour:
   waveMesh: {fileID: 1630417249}
   perlinMap: {fileID: 0}
   lerpFactor: 50
---- !u!114 &1829927932
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1829927927}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bb12c16c8d7df5f4b816710aa1b18c9e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  axisNum: 0
-  factor: .0500000007
-  rotFactor: .400000006
-  maxSpeed: 1
 --- !u!54 &1829927933
 Rigidbody:
   m_ObjectHideFlags: 0
