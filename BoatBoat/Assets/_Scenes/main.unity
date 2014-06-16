@@ -328,8 +328,8 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1515096507}
   m_LocalRotation: {x: .260620445, y: 0, z: 0, w: .965441406}
-  m_LocalPosition: {x: 0, y: 14.5462875, z: -21.5688782}
-  m_LocalScale: {x: 2, y: 2, z: 2}
+  m_LocalPosition: {x: 0, y: 9.53999996, z: -7.53000021}
+  m_LocalScale: {x: .613496959, y: .767402232, z: .402399987}
   m_Children: []
   m_Father: {fileID: 1829927930}
 --- !u!114 &1515096513
@@ -434,7 +434,6 @@ MonoBehaviour:
   xOffset: 0
   yOffset: 0
   texSize: 150
-  baseTex: {fileID: 0}
   verticesMaterial: {fileID: 2100000, guid: fb3f30fad1e53aa41a83fd4c272753cf, type: 2}
   terrainMesh: {fileID: 1630417255}
 --- !u!33 &1630417255
@@ -511,8 +510,8 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1829927927}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0, y: .738244057, z: 0}
+  m_LocalScale: {x: .819999993, y: .560000002, z: 1.14999998}
   m_Children:
   - {fileID: 1515096512}
   m_Father: {fileID: 0}
