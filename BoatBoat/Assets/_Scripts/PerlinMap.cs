@@ -98,17 +98,19 @@ public class PerlinMap : MonoBehaviour {
 	}
 
 	public void CalculateNoise() {
+		float value, newHeight;
+		Color newColor;
+		Vector3 vertPosition;
 		for (int y = 0; y < baseTex.height; y++) {
 			for (int x = 0; x < baseTex.width; x++) {
-				float value = GetValue(this.transform.position.x - this.transform.lossyScale.x/2 + x*blockSize + blockSize/2, this.transform.position.z - this.transform.lossyScale.z/2 + y*blockSize + blockSize/2);
-				Color newColor =  lowColor * (1-Mathf.Pow(value,colorExponent)) + highColor * (Mathf.Pow(value,colorExponent));
+				value = GetValue(x, y);
+				newColor =  lowColor * (1-Mathf.Pow(value,colorExponent)) + highColor * (Mathf.Pow(value,colorExponent));
 				colors[y * baseTex.width + x] = newColor;
-				//baseTex.SetPixel(x, y*baseTex.width, newColor);
 
-				float newHeight =  this.transform.position.y + value * heightScale;
+				newHeight =  this.transform.position.y + value * heightScale;
 				heights[y * baseTex.width + x] = newHeight;
 
-				Vector3 vertPosition = verts[y * baseTex.width + x];
+				vertPosition = verts[y * baseTex.width + x];
 				verts[y * baseTex.width + x] = new Vector3(vertPosition.x, newHeight, vertPosition.z);
 			}
 		}
@@ -126,7 +128,15 @@ public class PerlinMap : MonoBehaviour {
         terrainMesh.mesh = ret;
 	}
 
+	public float GetValue(int x, int y) {
+		// input in terms of Ocean array index
+		float value = Mathf.PerlinNoise(timeScale * Time.time + x * pixelScale + xOffset, timeScale * Time.time + y * pixelScale + yOffset);
+
+		return value;
+	}
+
 	public float GetValue(float x, float y) {
+		// input in terms of world position
 		float newY = (y + this.transform.lossyScale.z/2) / blockSize;
 		float newX = (x + this.transform.lossyScale.x/2) / blockSize;
 		float value = Mathf.PerlinNoise(timeScale * Time.time + newX * pixelScale + xOffset, timeScale * Time.time + newY * pixelScale + yOffset);
