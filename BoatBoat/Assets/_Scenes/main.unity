@@ -147,7 +147,7 @@ GameObject:
   - 114: {fileID: 1099291651}
   - 154: {fileID: 1099291650}
   m_Layer: 0
-  m_Name: Terrain
+  m_Name: Sample Terrain
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -365,8 +365,8 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 1630417256}
-  - 33: {fileID: 1630417255}
   - 114: {fileID: 1630417254}
+  - 33: {fileID: 1630417255}
   - 23: {fileID: 1630417253}
   - 64: {fileID: 1630417251}
   m_Layer: 4
@@ -443,7 +443,7 @@ MeshFilter:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1630417249}
-  m_Mesh: {fileID: 0}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!4 &1630417256
 Transform:
   m_ObjectHideFlags: 0
