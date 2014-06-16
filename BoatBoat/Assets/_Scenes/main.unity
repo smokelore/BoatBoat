@@ -428,9 +428,9 @@ MonoBehaviour:
   lowColor: {r: 0, g: .00395534327, b: .573529422, a: 1}
   highColor: {r: .838235259, g: .899594307, b: 1, a: 1}
   colorExponent: 1.79999995
-  pixelScale: .100000001
-  timeScale: .300000012
-  heightScale: 4
+  pixelScale: .0700000003
+  timeScale: .25
+  heightScale: 2.5
   xOffset: 0
   yOffset: 0
   texSize: 150
