@@ -17,7 +17,7 @@ public class Ship : MonoBehaviour {
 		float z = this.transform.position.z;
 
 		//float currentHeight = this.transform.position.y;
-		float targetHeight = perlinMap.GetHeight(x, z) + this.transform.lossyScale.y/2;
+		float targetHeight = perlinMap.GetHeight(x, z);
 		//float newHeight = Mathf.Lerp(currentHeight, targetHeight, Time.deltaTime * lerpFactor);
 		this.transform.position = new Vector3(x, targetHeight, z);
 	}
