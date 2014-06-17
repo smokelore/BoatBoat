@@ -1426,8 +1426,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9eecb4403fd23af499465476b53422a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  personName: '{Student Name}'
-  levelTheme: '{Level Theme}'
+  personName: Sebastian Monroy
+  levelTheme: Whirlpool Slingshot
   hudGUI: {fileID: 1291983017}
 --- !u!114 &1515096514
 MonoBehaviour:
