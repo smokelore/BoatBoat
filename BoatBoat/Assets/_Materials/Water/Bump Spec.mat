@@ -7,7 +7,7 @@ Material:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_Name: Bump Spec
-  m_Shader: {fileID: 4, guid: 0000000000000000f000000000000000, type: 0}
+  m_Shader: {fileID: 33, guid: 0000000000000000f000000000000000, type: 0}
   m_ShaderKeywords: []
   m_CustomRenderQueue: -1
   m_SavedProperties:
@@ -36,8 +36,8 @@ Material:
       data:
         first:
           name: _Color
-        second: {r: .109429047, g: .230658576, b: .676470578, a: 1}
+        second: {r: .109429047, g: .230658576, b: .676470578, a: .31764707}
       data:
         first:
           name: _SpecColor
-        second: {r: .867647052, g: .967139959, b: 1, a: 1}
+        second: {r: .867647052, g: .967139959, b: 1, a: .31764707}

@@ -18,10 +18,10 @@ public class forceController : MonoBehaviour {
 	// Update is called once per frame
 	void FixedUpdate () {
 		Vector3 localVelocity = this.transform.InverseTransformDirection(this.rigidbody.velocity);
-		curSpeed = rigidbody.velocity.magnitude;
+		curSpeed = new Vector3(rigidbody.velocity.x, 0, rigidbody.velocity.z).magnitude;
 
 		// turning speed limited when going to slow or going too fast (max is at 3/5 of top speed)
-		curMaxTurn = maxTurn * Mathf.Sin(rigidbody.velocity.magnitude/maxSpeed * (Mathf.PI/2) * 5/3);
+		curMaxTurn = maxTurn * Mathf.Sin(curSpeed/maxSpeed * (Mathf.PI/2) * 5/3);
 		curRotFactor = curMaxTurn/maxTurn * rotFactor;
 		
 		if (Input.GetAxis("Vertical") > 0) {
@@ -58,6 +58,21 @@ public class forceController : MonoBehaviour {
 		} else if (localVelocity.z < 0) {
 			// if moving backward, redirect all velocity backward after turning
 			this.rigidbody.velocity = this.transform.forward * -this.rigidbody.velocity.magnitude;
+		}
+	}
+
+	void OnCollisionEnter(Collision collision) {
+		Debug.Log("Boat Collision: " + collision.gameObject.name);
+	}
+
+	void OnTriggerStay(Collider collision) {
+		if (collision.gameObject.tag == "Whirlpool") {
+			Vector3 boatToWhirl = collision.gameObject.transform.position - this.transform.position;//(new Vector3(collision.gameObject.transform.position.x, this.transform.position.y, collision.gameObject.transform.position.z) - this.transform.position);
+			boatToWhirl = new Vector3(boatToWhirl.x, 0, boatToWhirl.z);
+			float whirlRadius = collision.gameObject.transform.lossyScale.x;
+			this.rigidbody.AddForce(boatToWhirl.normalized * (whirlRadius - boatToWhirl.magnitude)/whirlRadius * forceFactor/20);
+			this.rigidbody.AddTorque(this.transform.up * rotFactor/(whirlRadius - boatToWhirl.magnitude) * 3);
+			Debug.DrawLine(this.transform.position, this.transform.position + boatToWhirl.normalized * 5);
 		}
 	}
 }
