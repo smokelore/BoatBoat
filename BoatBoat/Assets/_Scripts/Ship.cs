@@ -40,16 +40,15 @@ public class Ship : MonoBehaviour {
 			spoutUpDirection = spoutMove.ChangeSpoutDirection();
 			if (spoutUpDirection)
 			{
+				audio.Play();
 				pushBoat = true;
 				pushBoatUp = true;
 			}
 			else
 			{
-
 				hitFlag = false;
 			}
 			// spin 360
-			// add whoo whoo whoo sounds
 		}
 	}
 
@@ -71,7 +70,7 @@ public class Ship : MonoBehaviour {
 			pushBoatDown = false;
 			pushBoat = false;
 			hitFlag = false;
-			Debug.Log ("using map after fall");
+			audio.Stop();
 		}
 	}
 	
