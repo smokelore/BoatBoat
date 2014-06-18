@@ -1605,12 +1605,12 @@ MonoBehaviour:
   lowColor: {r: 0, g: .00395534327, b: .573529422, a: 1}
   highColor: {r: .838235259, g: .899594307, b: 1, a: 1}
   colorExponent: 1.79999995
-  pixelScale: .0700000003
-  timeScale: .150000006
-  heightScale: 2.5
+  pixelScale: .200000003
+  timeScale: .25
+  heightScale: 3.5
   xOffset: 0
   yOffset: 0
-  texSize: 150
+  texSize: 100
   verticesMaterial: {fileID: 2100000, guid: fb3f30fad1e53aa41a83fd4c272753cf, type: 2}
   terrainMesh: {fileID: 1630417255}
   whirlColliderPrefab: {fileID: 100000, guid: 9ca27b3f268432b4d892a0658c5098d5, type: 2}
