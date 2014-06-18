@@ -10,10 +10,10 @@ public class SpoutMove : MonoBehaviour
 	private bool goingUp = true;
 	private int deathByCount = 0;
 	public int deathByCountNumber;
+
 	// Use this for initialization
 	void Start ()
 	{	
-	//	waitSpawn = waitSpawn;
 	}
 	
 	// Update is called once per frame
@@ -48,7 +48,5 @@ public class SpoutMove : MonoBehaviour
 		{
 			waitSpawn -= Time.deltaTime;
 		}
-
-	
 	}
 }
