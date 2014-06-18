@@ -11,7 +11,7 @@ public class SpoutMove : MonoBehaviour
 	// Use this for initialization
 	void Start ()
 	{	
-		waitSpawn = 5;
+		waitSpawn = waitSpawn;
 	}
 	
 	// Update is called once per frame
