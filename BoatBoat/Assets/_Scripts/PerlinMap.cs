@@ -23,6 +23,7 @@ public class PerlinMap : MonoBehaviour {
 	private Color[] colors;
 	private float[] heights;
 
+	public bool whirlpoolEnable;
 	private bool[] whirl;
 	public GameObject whirlColliderPrefab;
 	private List<GameObject> whirlColliderInstances = new List<GameObject>();
@@ -83,8 +84,9 @@ public class PerlinMap : MonoBehaviour {
 
 		// xOffset = -this.transform.position.x;
 		// yOffset = -this.transform.position.y;
-
-		this.CreateWhirlpool(-15, 5, 20);
+		if (whirlpoolEnable) {
+			this.CreateWhirlpool(-15, 5, whirlRadius);
+		}
 	}
 	
 	// Update is called once per frame
