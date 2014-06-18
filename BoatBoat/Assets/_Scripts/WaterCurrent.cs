@@ -22,7 +22,9 @@ public class WaterCurrent : MonoBehaviour {
 		audio.Play();
 	}
 	void OnTriggerStay(Collider other) {
-		if (other.attachedRigidbody != null && other.gameObject.name != "River Current" && other.gameObject.name != "Cube") {
+		if (other.attachedRigidbody != null && other.gameObject.name == "Death Egg") {
+			other.gameObject.rigidbody.AddForce(current);
+		} else if (other.attachedRigidbody != null && other.gameObject.name != "River Current" && other.gameObject.name != "Cube") {
 			other.gameObject.rigidbody.AddForce(current);
 			Vector3 oldRot = other.gameObject.transform.forward;
 			Vector3 targetRot = this.gameObject.transform.forward;
