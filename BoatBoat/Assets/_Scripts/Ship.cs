@@ -5,8 +5,15 @@ public class Ship : MonoBehaviour {
 	public GameObject waveMesh;
 	public PerlinMap perlinMap;
 	public float lerpFactor;
+	public float pushUpSpeed;
+	public Vector3 pushHeight;
+	private float targetHeight;
+	private bool hitFlag = false;
+	private bool pushBoat = false;
+	private bool pushBoatUp = true;
+	private bool pushBoatDown = false;
 	private SpoutMove spoutMove;
-	public bool spoutUpDirection;
+	private bool spoutUpDirection;
 
 	// Use this for initialization
 	void Start () {
@@ -29,20 +36,63 @@ public class Ship : MonoBehaviour {
 	{
 		if (col.gameObject.tag == "Spout")
 		{
+			hitFlag = true;
 			spoutUpDirection = spoutMove.ChangeSpoutDirection();
-			// Change height or spin 360
+			if (spoutUpDirection)
+			{
+				pushBoat = true;
+				pushBoatUp = true;
+			}
+			else
+			{
+
+				hitFlag = false;
+			}
+			// spin 360
 			// add whoo whoo whoo sounds
 		}
 	}
 
+	void PushBoatUpDown()
+	{
+		if ((this.transform.position.y < pushHeight.y) && pushBoatUp)
+		{
+			this.transform.position += Vector3.up * pushUpSpeed * Time.deltaTime;
+			pushBoatDown = true;
+		}
+		else if ((this.transform.position.y > targetHeight) && pushBoatDown)
+		{
+			this.transform.position -= Vector3.up * pushUpSpeed * Time.deltaTime;
+			pushBoatUp = false;
+		}
+		else
+		{
+			this.transform.position = new Vector3(this.transform.position.x, targetHeight, this.transform.position.z);
+			pushBoatDown = false;
+			pushBoat = false;
+			hitFlag = false;
+			Debug.Log ("using map after fall");
+		}
+	}
+	
 	// Update is called once per frame
 	void Update () {
 		float x = this.transform.position.x;
 		float z = this.transform.position.z;
 
 		//float currentHeight = this.transform.position.y;
-		float targetHeight = perlinMap.GetHeight(x, z);
+		targetHeight = perlinMap.GetHeight(x, z);
 		//float newHeight = Mathf.Lerp(currentHeight, targetHeight, Time.deltaTime * lerpFactor);
-		this.transform.position = new Vector3(x, targetHeight, z);
+		if (hitFlag)
+		{
+			if (pushBoat)
+			{
+				PushBoatUpDown();
+			}
+		}
+		else
+		{
+			this.transform.position = new Vector3(x, targetHeight, z);
+		}
 	}
 }

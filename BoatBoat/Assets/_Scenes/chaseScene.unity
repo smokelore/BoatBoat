@@ -7209,10 +7209,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ebae5865fd1f5b24fa7ccf6830a197b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  forceFactor: 1
+  forceFactor: 3
   rotFactor: 1
   curRotFactor: 0
-  maxSpeed: 5
+  maxSpeed: 7
   curSpeed: 0
   maxTurn: 1
   curMaxTurn: 0
@@ -7232,7 +7232,8 @@ MonoBehaviour:
   waveMesh: {fileID: 1630417249}
   perlinMap: {fileID: 0}
   lerpFactor: 50
-  spoutUpDirection: 0
+  pushUpSpeed: 10
+  pushHeight: {x: 0, y: 10, z: 0}
 --- !u!1 &652968505
 GameObject:
   m_ObjectHideFlags: 0
@@ -22067,7 +22068,8 @@ MonoBehaviour:
   waveMesh: {fileID: 1630417249}
   perlinMap: {fileID: 0}
   lerpFactor: 50
-  spoutUpDirection: 0
+  pushUpSpeed: 0
+  pushHeight: {x: 0, y: 0, z: 0}
 --- !u!54 &1829927933
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -24495,11 +24497,23 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 11400002, guid: dfd0bbef2a2c2ac4b88fbf8408800159, type: 2}
       propertyPath: maxSpeed
-      value: 5
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 100236, guid: dfd0bbef2a2c2ac4b88fbf8408800159, type: 2}
       propertyPath: m_TagString
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: dfd0bbef2a2c2ac4b88fbf8408800159, type: 2}
+      propertyPath: pushUpSpeed
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: dfd0bbef2a2c2ac4b88fbf8408800159, type: 2}
+      propertyPath: pushHeight.y
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400002, guid: dfd0bbef2a2c2ac4b88fbf8408800159, type: 2}
+      propertyPath: forceFactor
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: dfd0bbef2a2c2ac4b88fbf8408800159, type: 2}
