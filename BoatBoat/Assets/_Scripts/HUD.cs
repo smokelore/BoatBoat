@@ -5,6 +5,7 @@ public class HUD : MonoBehaviour {
 	public string personName;
 	public string levelTheme;
 	public GameObject hudGUI;
+	public 
 
 	// Use this for initialization
 	void Start () {
@@ -13,6 +14,14 @@ public class HUD : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-	
+		if (Input.GetKeyUp(KeyCode.Alpha1)) {
+			Application.LoadLevel("coleScene");
+		} else if (Input.GetKeyUp(KeyCode.Alpha2)) {
+			Application.LoadLevel("joryScene");
+		} else if (Input.GetKeyUp(KeyCode.Alpha3)) {
+			Application.LoadLevel("chaseScene");
+		} else if (Input.GetKeyUp(KeyCode.Alpha4)) {
+			Application.LoadLevel("sebScene");
+		} 
 	}
 }
