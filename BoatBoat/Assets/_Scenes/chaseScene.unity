@@ -7232,6 +7232,7 @@ MonoBehaviour:
   waveMesh: {fileID: 1630417249}
   perlinMap: {fileID: 0}
   lerpFactor: 50
+  spoutUpDirection: 0
 --- !u!1 &652968505
 GameObject:
   m_ObjectHideFlags: 0
@@ -22066,6 +22067,7 @@ MonoBehaviour:
   waveMesh: {fileID: 1630417249}
   perlinMap: {fileID: 0}
   lerpFactor: 50
+  spoutUpDirection: 0
 --- !u!54 &1829927933
 Rigidbody:
   m_ObjectHideFlags: 0

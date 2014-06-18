@@ -15,7 +15,21 @@ public class SpoutMove : MonoBehaviour
 	void Start ()
 	{	
 	}
-	
+
+	public bool ChangeSpoutDirection()
+	{
+		if (goingUp)
+		{
+			goingUp = false;
+			return goingUp;
+		}
+		else
+		{
+			goingUp = true;
+			return goingUp;
+		}
+	}
+
 	// Update is called once per frame
 	void Update () 
 	{	
@@ -26,7 +40,8 @@ public class SpoutMove : MonoBehaviour
 				rigidbody.position += Vector3.up * speed * Time.deltaTime;
 				if (rigidbody.position.y > spoutHeight.y)
 				{
-					goingUp = false;	
+					//goingUp = false;
+					goingUp = ChangeSpoutDirection();
 				}
 			}
 			else
@@ -35,7 +50,8 @@ public class SpoutMove : MonoBehaviour
 				if (rigidbody.position.y < minSpoutHeight.y)
 				{
 					deathByCount += 1;
-					goingUp = true;	
+					//goingUp = true;
+					goingUp = ChangeSpoutDirection();
 				}
 			}
 
