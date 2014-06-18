@@ -9,6 +9,7 @@ public class forceController : MonoBehaviour {
 	public float maxSpeed, curSpeed;
 	public float maxTurn, curMaxTurn;
 	public float idleDrag;
+	private bool movingForward, movingBackward;
 
 	// Use this for initialization
 	void Start () {
@@ -24,6 +25,9 @@ public class forceController : MonoBehaviour {
 		curMaxTurn = maxTurn * Mathf.Sin(curSpeed/maxSpeed * (Mathf.PI/2) * 5/3);
 		curRotFactor = curMaxTurn/maxTurn * rotFactor;
 		
+		movingForward = (localVelocity.z >= 0);
+		movingBackward = !movingForward;
+
 		if (Input.GetAxis("Vertical") > 0) {
 			// ACCELERATE
 			this.rigidbody.drag = 0;
@@ -42,20 +46,24 @@ public class forceController : MonoBehaviour {
 
 		if (Input.GetAxis("Horizontal") > 0) {
 			// RIGHT TURN
-			if (rigidbody.angularVelocity.y < curMaxTurn) {
+			if (movingForward && rigidbody.angularVelocity.y < curMaxTurn) {
 				this.rigidbody.AddTorque(this.transform.up * curRotFactor);
+			} else if (movingBackward && rigidbody.angularVelocity.y > -curMaxTurn) {
+				this.rigidbody.AddTorque(this.transform.up * -curRotFactor);
 			}
 		} else if (Input.GetAxis("Horizontal") < 0) {
 			// LEFT TURN
-			if (rigidbody.angularVelocity.y > -curMaxTurn) {
+			if (movingForward && rigidbody.angularVelocity.y > -curMaxTurn) {
 				this.rigidbody.AddTorque(this.transform.up * -curRotFactor);
+			} else if (movingBackward && rigidbody.angularVelocity.y < curMaxTurn) {
+				this.rigidbody.AddTorque(this.transform.up * curRotFactor);
 			}
 		}
 
-		if (localVelocity.z > 0) {
+		if (movingForward) {
 			// if moving forward, redirect all velocity forward after turning
 			this.rigidbody.velocity = this.transform.forward * this.rigidbody.velocity.magnitude;
-		} else if (localVelocity.z < 0) {
+		} else if (movingBackward) {
 			// if moving backward, redirect all velocity backward after turning
 			this.rigidbody.velocity = this.transform.forward * -this.rigidbody.velocity.magnitude;
 		}
