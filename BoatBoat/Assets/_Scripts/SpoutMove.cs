@@ -7,13 +7,29 @@ public class SpoutMove : MonoBehaviour
 	public float waitSpawn;
 	public Vector3 spoutHeight;
 	public Vector3 minSpoutHeight;
-	public bool goingUp = true;
+	private bool goingUp = true;
+	private int deathByCount = 0;
+	public int deathByCountNumber;
+
 	// Use this for initialization
 	void Start ()
 	{	
-		waitSpawn = 5;
 	}
-	
+
+	public bool ChangeSpoutDirection()
+	{
+		if (goingUp)
+		{
+			goingUp = false;
+			return goingUp;
+		}
+		else
+		{
+			goingUp = true;
+			return goingUp;
+		}
+	}
+
 	// Update is called once per frame
 	void Update () 
 	{	
@@ -24,7 +40,8 @@ public class SpoutMove : MonoBehaviour
 				rigidbody.position += Vector3.up * speed * Time.deltaTime;
 				if (rigidbody.position.y > spoutHeight.y)
 				{
-					goingUp = false;	
+					//goingUp = false;
+					goingUp = ChangeSpoutDirection();
 				}
 			}
 			else
@@ -32,15 +49,20 @@ public class SpoutMove : MonoBehaviour
 				rigidbody.position += Vector3.down * speed * Time.deltaTime;
 				if (rigidbody.position.y < minSpoutHeight.y)
 				{
-					goingUp = true;	
+					deathByCount += 1;
+					//goingUp = true;
+					goingUp = ChangeSpoutDirection();
 				}
+			}
+
+			if (deathByCount > deathByCountNumber)
+			{
+				Destroy (gameObject);
 			}
 		}
 		else
 		{
 			waitSpawn -= Time.deltaTime;
 		}
-
-	
 	}
 }
