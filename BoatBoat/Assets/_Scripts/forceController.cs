@@ -22,7 +22,11 @@ public class forceController : MonoBehaviour {
 		curSpeed = new Vector3(rigidbody.velocity.x, 0, rigidbody.velocity.z).magnitude;
 
 		// turning speed limited when going to slow or going too fast (max is at 3/5 of top speed)
-		curMaxTurn = maxTurn * Mathf.Sin(curSpeed/maxSpeed * (Mathf.PI/2) * 5/3);
+		if (curSpeed > maxSpeed) {
+			curMaxTurn = maxTurn * Mathf.Sin(maxSpeed/maxSpeed * (Mathf.PI/2) * 5/3);
+		} else {
+			curMaxTurn = maxTurn * Mathf.Sin(curSpeed/maxSpeed * (Mathf.PI/2) * 5/3);
+		}
 		curRotFactor = curMaxTurn/maxTurn * rotFactor;
 		
 		movingForward = (localVelocity.z >= 0);

@@ -75,11 +75,15 @@ public class Ship : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+		if (perlinMap == null) {
+			perlinMap = waveMesh.GetComponent<PerlinMap>();
+		}
+		
 		float x = this.transform.position.x;
 		float z = this.transform.position.z;
 
 		//float currentHeight = this.transform.position.y;
-		targetHeight = perlinMap.GetHeight(x, z) + 1f;
+		targetHeight = perlinMap.GetHeight(x, z) + 0.25f;
 		//float newHeight = Mathf.Lerp(currentHeight, targetHeight, Time.deltaTime * lerpFactor);
 		if (hitFlag)
 		{
