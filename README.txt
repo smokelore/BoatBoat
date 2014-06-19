@@ -13,7 +13,7 @@ COMPLETED REQUIREMENTS:
 		1. Boat moves with the waves.
 		2. Boat cannot turn while stationary.
 		3. Boat turns most efficiently at 3/5 maximum speed.
-		4. Maximum speed is not fast.
+		4. Can't turn well at maximum speed.
 		5. Ocean sounds play constantly.
 4.	EMOTIONAL STATE - Player should feel impatient while sailing BoatBoat.
 			Old-time sailboats were not very fast and turning was not efficient, this is replicated in-game. This drives the player to sail efficiently to get to the goal as quickly as possible.
@@ -70,6 +70,6 @@ OUTSIDE ASSETS:
 
 NO SPECIAL INSTALL INSTRUCTIONS.
 
-MAIN SCENE TO BE OPENED FIRST - main.unity
+MAIN SCENE TO BE OPENED FIRST - coleScene.unity
 
-URL TO POSTED ASSIGNMENT - 
+URL TO POSTED ASSIGNMENT - https://dl.dropboxusercontent.com/u/115071152/CS%206457%20Milestone%202/Web%20Build.html
