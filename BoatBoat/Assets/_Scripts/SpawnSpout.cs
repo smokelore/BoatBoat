@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class SpwanSpout : MonoBehaviour
+public class SpawnSpout : MonoBehaviour
 {
 	public GameObject spouts;
 	private bool playerEnter = false;
@@ -40,7 +40,7 @@ public class SpwanSpout : MonoBehaviour
 	void MakeSpout()
 	{
 		Vector3 spawnPosition = new Vector3 (Random.Range (transform.position.x - collider.bounds.extents.x, transform.position.x + collider.bounds.extents.x),
-		                                     -2, Random.Range (transform.position.z - collider.bounds.extents.z, transform.position.z + collider.bounds.extents.z));
+		                                     -3, Random.Range (transform.position.z - collider.bounds.extents.z, transform.position.z + collider.bounds.extents.z));
 		Quaternion spawnRotation = Quaternion.identity;
 		Instantiate (spouts, spawnPosition, spawnRotation);
 	}

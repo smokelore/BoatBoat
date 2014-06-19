@@ -78,8 +78,8 @@ public class forceController : MonoBehaviour {
 			Vector3 boatToWhirl = collision.gameObject.transform.position - this.transform.position;//(new Vector3(collision.gameObject.transform.position.x, this.transform.position.y, collision.gameObject.transform.position.z) - this.transform.position);
 			boatToWhirl = new Vector3(boatToWhirl.x, 0, boatToWhirl.z);
 			float whirlRadius = collision.gameObject.transform.lossyScale.x;
-			this.rigidbody.AddForce(boatToWhirl.normalized * Mathf.Sin((whirlRadius - boatToWhirl.magnitude)/whirlRadius * Mathf.PI/2) * forceFactor);
-			this.rigidbody.AddTorque(this.transform.up * rotFactor/(whirlRadius - boatToWhirl.magnitude) * 3);
+			this.rigidbody.AddForce(boatToWhirl.normalized * Mathf.Sin((whirlRadius - boatToWhirl.magnitude)/whirlRadius * Mathf.PI/2) * forceFactor * 2);
+			this.rigidbody.AddTorque(this.transform.up * rotFactor/(whirlRadius - boatToWhirl.magnitude) * 20);
 			Debug.DrawLine(this.transform.position, this.transform.position + boatToWhirl.normalized * 5);
 		}
 	}
