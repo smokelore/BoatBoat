@@ -83,7 +83,9 @@ public class Ship : MonoBehaviour {
 		float z = this.transform.position.z;
 
 		//float currentHeight = this.transform.position.y;
-		targetHeight = perlinMap.GetHeight(x, z) + 0.25f;
+		targetHeight = perlinMap.GetHeight(0, 0) + 0.25f;
+		waveMesh.transform.position = new Vector3(x, waveMesh.transform.position.y, z);
+
 		//float newHeight = Mathf.Lerp(currentHeight, targetHeight, Time.deltaTime * lerpFactor);
 		if (hitFlag)
 		{
