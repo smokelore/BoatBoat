@@ -27,6 +27,7 @@ public class PerlinMap : MonoBehaviour {
 	public GameObject[] allWhirlpools;
 
 	private float blockSize;
+	private bool[] render;
 
 	// Use this for initialization
 	void Start () {
@@ -37,6 +38,7 @@ public class PerlinMap : MonoBehaviour {
 		uvs = new Vector2[baseTex.height*baseTex.width];
 		colors = new Color[baseTex.height*baseTex.width];
 		heights = new float[baseTex.height*baseTex.width];
+		render = new bool[baseTex.height*baseTex.width];
 
 		this.renderer.enabled = true;
 		renderer.material = verticesMaterial;
@@ -49,21 +51,23 @@ public class PerlinMap : MonoBehaviour {
 			for (int i = 0; i < baseTex.width; i++) {
 				float xCoord = this.transform.position.x - this.transform.localScale.x/2 + i*blockSize + blockSize/2;
 
-				verts[j * baseTex.width + i] = new Vector3(xCoord/this.transform.localScale.x, this.transform.position.y, zCoord/this.transform.localScale.z);
-				uvs[j * baseTex.width + i] = new Vector2(xCoord, zCoord);
-				colors[j * baseTex.width + i] = lowColor;
+				if (isWithinRadius(xCoord, zCoord)) {
+					render[j * baseTex.width + i] = true;
+					verts[j * baseTex.width + i] = new Vector3(xCoord/this.transform.localScale.x, this.transform.position.y, zCoord/this.transform.localScale.z);
+					uvs[j * baseTex.width + i] = new Vector2(xCoord, zCoord);
+					colors[j * baseTex.width + i] = lowColor;
 
-				if (i+1 >= baseTex.width || j+1 >= baseTex.width) {
-					continue;
+					if (i+1 >= baseTex.width || j+1 >= baseTex.width || !isWithinRadius(i+1,j) || !isWithinRadius(i,j+1)) {
+						continue;
+					}
+					tris.Add(i + j*baseTex.width);
+					tris.Add(i + (j+1)*baseTex.width);
+					tris.Add((i+1) + j*baseTex.width);
+
+					tris.Add(i + (j+1)*baseTex.width);
+					tris.Add((i+1) + (j+1)*baseTex.width);
+					tris.Add((i+1) + j*baseTex.width);
 				}
-				tris.Add(i + j*baseTex.width);
-				tris.Add(i + (j+1)*baseTex.width);
-				tris.Add((i+1) + j*baseTex.width);
-
-				tris.Add(i + (j+1)*baseTex.width);
-				tris.Add((i+1) + (j+1)*baseTex.width);
-				tris.Add((i+1) + j*baseTex.width);
-				
 			}
 		}
 
@@ -98,11 +102,13 @@ public class PerlinMap : MonoBehaviour {
 			for (int x = 0; x < baseTex.width; x++) {
 				float xCoord = this.transform.position.x - this.transform.localScale.x/2 + x*blockSize + blockSize/2;
 				
-				colors[y * baseTex.width + x] = GetColor(xCoord, zCoord);
-				heights[y * baseTex.width + x] = GetHeight(xCoord, zCoord);//this.transform.position.y + perlin * heightScale;
+				if (render[y * baseTex.width + x]) {
+					colors[y * baseTex.width + x] = GetColor(xCoord, zCoord);
+					heights[y * baseTex.width + x] = GetHeight(xCoord, zCoord);//this.transform.position.y + perlin * heightScale;
 
-				vertPosition = verts[y * baseTex.width + x];
-				verts[y * baseTex.width + x] = new Vector3(vertPosition.x, heights[y * baseTex.width + x], vertPosition.z);
+					vertPosition = verts[y * baseTex.width + x];
+					verts[y * baseTex.width + x] = new Vector3(vertPosition.x, heights[y * baseTex.width + x], vertPosition.z);
+				}
 			}
 		}
 
@@ -117,6 +123,20 @@ public class PerlinMap : MonoBehaviour {
         ret.RecalculateBounds();
         ret.RecalculateNormals();
         terrainMesh.mesh = ret;
+	}
+
+	public bool isWithinRadius(float x, float z) {
+		Vector2 center = new Vector2(this.transform.position.x, this.transform.position.z);
+		Vector2 point = new Vector2(x, z);
+
+		return (Vector2.Distance(center, point) <= this.transform.lossyScale.x/2);
+	}
+
+	public bool isWithinRadius(int i, int j) {
+		float xCoord = this.transform.position.x - this.transform.localScale.x/2 + i*blockSize + blockSize/2;
+		float zCoord = this.transform.position.z - this.transform.localScale.z/2 + j*blockSize + blockSize/2;
+
+		return isWithinRadius(xCoord, zCoord);
 	}
 
 	public float GetVertexValue(float x, float z) {
