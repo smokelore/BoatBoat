@@ -6,7 +6,7 @@ public class WaterCurrent : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		current = this.transform.forward * 2f;
+		current = this.transform.forward * 1.5f;
 	}
 	
 	// Update is called once per frame
