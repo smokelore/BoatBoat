@@ -23,12 +23,8 @@ public class PerlinMap : MonoBehaviour {
 	private Color[] colors;
 	private float[] heights;
 
-	public bool whirlpoolEnable;
-	private bool[] whirl;
-	public GameObject whirlColliderPrefab;
-	private List<GameObject> whirlColliderInstances = new List<GameObject>();
-	public float whirlRadius;
-	private Vector2 whirlCenter;
+	public bool whirlpoolsEnabled;
+	public GameObject[] allWhirlpools;
 
 	private float blockSize;
 
@@ -41,7 +37,6 @@ public class PerlinMap : MonoBehaviour {
 		uvs = new Vector2[baseTex.height*baseTex.width];
 		colors = new Color[baseTex.height*baseTex.width];
 		heights = new float[baseTex.height*baseTex.width];
-		whirl = new bool[baseTex.height*baseTex.width];
 
 		this.renderer.enabled = true;
 		renderer.material = verticesMaterial;
@@ -84,8 +79,10 @@ public class PerlinMap : MonoBehaviour {
 
 		// xOffset = -this.transform.position.x;
 		// yOffset = -this.transform.position.y;
-		if (whirlpoolEnable) {
-			this.CreateWhirlpool(-15, 5, whirlRadius);
+		allWhirlpools = GameObject.FindGameObjectsWithTag("Whirlpool");
+		Debug.Log(allWhirlpools);
+		if (!whirlpoolsEnabled) {
+			DestroyAllWhirlpools();
 		}
 	}
 	
@@ -95,22 +92,17 @@ public class PerlinMap : MonoBehaviour {
 	}
 
 	public void CalculateNoise() {
-		float value, newHeight;
-		Color newColor;
 		Vector3 vertPosition;
 		for (int y = 0; y < baseTex.height; y++) {
+			float zCoord = this.transform.position.z - this.transform.localScale.z/2 + y*blockSize + blockSize/2;
 			for (int x = 0; x < baseTex.width; x++) {
-				if (!whirl[y * baseTex.width + x]) {
-					value = this.GetValue(x, y);
-					newColor =  lowColor * (1-Mathf.Pow(value+0.5f,colorExponent)) + highColor * (Mathf.Pow(value+0.5f,colorExponent));
-					colors[y * baseTex.width + x] = newColor;
+				float xCoord = this.transform.position.x - this.transform.localScale.x/2 + x*blockSize + blockSize/2;
+				
+				colors[y * baseTex.width + x] = GetColor(xCoord, zCoord);
+				heights[y * baseTex.width + x] = GetHeight(xCoord, zCoord);//this.transform.position.y + perlin * heightScale;
 
-					newHeight =  this.transform.position.y + value * heightScale;
-					heights[y * baseTex.width + x] = newHeight;
-
-					vertPosition = verts[y * baseTex.width + x];
-					verts[y * baseTex.width + x] = new Vector3(vertPosition.x, newHeight, vertPosition.z);
-				}
+				vertPosition = verts[y * baseTex.width + x];
+				verts[y * baseTex.width + x] = new Vector3(vertPosition.x, heights[y * baseTex.width + x], vertPosition.z);
 			}
 		}
 
@@ -127,38 +119,73 @@ public class PerlinMap : MonoBehaviour {
         terrainMesh.mesh = ret;
 	}
 
-	public float GetValue(int x, int y) {
-		// input in terms of Ocean array index
-		float value = -0.5f + Mathf.PerlinNoise(timeScale * Time.time + x * pixelScale + xOffset, timeScale * Time.time + y * pixelScale + yOffset);
-
-		return value;
-	}
-
-	public float GetValue(float x, float y) {
+	public float GetPerlinValue(float x, float z) {
 		// input in terms of world position
-		float newY = (y + this.transform.lossyScale.z/2) / blockSize;
-		float newX = (x + this.transform.lossyScale.x/2) / blockSize;
-		float value = -0.5f + Mathf.PerlinNoise(timeScale * Time.time + newX * pixelScale + xOffset, timeScale * Time.time + newY * pixelScale + yOffset);
+		float perlin1 = -0.5f + Mathf.PerlinNoise(timeScale * Time.time + x * pixelScale + xOffset, timeScale * Time.time + z * pixelScale + yOffset);
+		float perlin2 = -0.5f + Mathf.PerlinNoise(-timeScale * Time.time + x * pixelScale + xOffset, -timeScale * Time.time + z * pixelScale + yOffset);
+		float value = (perlin1 + perlin2)/2;
 
 		return value;
 	}
 
-	public float GetHeight(float x, float y) {
-		float newHeight;
-		float dist = Vector2.Distance(whirlCenter, new Vector2(x, y));
-		//Debug.Log(dist);
-		if (dist < whirlRadius) {
-			float value = Mathf.Cos((whirlRadius - dist)/whirlRadius * Mathf.PI);
-			newHeight = this.transform.position.y + (value-1)/2 * heightScale;
+	public Color GetColor(float x, float z) {
+		// input in terms of world position
+		float perlin = GetPerlinValue(x, z);
+		Color newColor = lowColor * (1-Mathf.Pow(perlin+0.5f,colorExponent)) + highColor * (Mathf.Pow(perlin+0.5f,colorExponent));
+	
+		return newColor;
+	}
+
+	public float GetHeight(float x, float z) {
+		// input in terms of world position
+		float height;
+
+		if (HasWhirlpool(x, z)) {
+			height = this.transform.position.y + GetWhirlpoolValue(x, z) * heightScale;
 			//Debug.Log("whirl");
 		} else {
-			newHeight = this.transform.position.y + this.GetValue(x,y) * heightScale;
+			height = this.transform.position.y + GetPerlinValue(x, z) * heightScale;
 		}
 
-		return newHeight;
+		return height;
 	}
 
-	public void CreateWhirlpool(float xWhirl, float zWhirl, float radius) {
+	public float GetWhirlpoolValue(float x, float z) {
+		// input in terms of world position
+		if (whirlpoolsEnabled) {
+			foreach (GameObject whirlpool in allWhirlpools) {
+				Vector2 whirlpoolCenter = new Vector2(whirlpool.transform.position.x, whirlpool.transform.position.z);
+				float whirlRadius = whirlpool.transform.lossyScale.x; 
+
+				float dist = Vector2.Distance(whirlpoolCenter, new Vector2(x, z));
+				if (dist <= whirlRadius) {
+					float value = Mathf.Cos((whirlRadius - dist)/whirlRadius * Mathf.PI);
+					return (value-1)/2;
+				}
+			}
+		}
+
+		return -999f;
+	}
+
+	public bool HasWhirlpool(float x, float z) {
+		// input in terms of world position
+		if (whirlpoolsEnabled) {
+			foreach (GameObject whirlpool in allWhirlpools) {
+				Vector2 whirlpoolCenter = new Vector2(whirlpool.transform.position.x, whirlpool.transform.position.z);
+				float whirlRadius = whirlpool.transform.lossyScale.x; 
+
+				float dist = Vector2.Distance(whirlpoolCenter, new Vector2(x, z));
+				if (dist <= whirlRadius) {
+					return true;
+				}
+			}
+		}
+
+		return false;
+	}
+
+	/*public void CreateWhirlpool(float xWhirl, float zWhirl, float radius) {
 		float value, newHeight;
 		Color newColor;
 		Vector3 vertPosition;
@@ -167,10 +194,7 @@ public class PerlinMap : MonoBehaviour {
 		whirlCenter = new Vector2(xWhirl, zWhirl);
 		whirlRadius = radius;
 		for (int j = 0; j < baseTex.height; j++) {
-			float zCoord = this.transform.position.z - this.transform.localScale.z/2 + j*blockSize + blockSize/2;
 			for (int i = 0; i < baseTex.width; i++) {
-				float xCoord = this.transform.position.x - this.transform.localScale.x/2 + i*blockSize + blockSize/2;
-				float dist = Vector2.Distance(whirlCenter, new Vector2(xCoord, zCoord));
 				if (dist < radius) {
 					whirl[j * baseTex.width + i] = true;
 
@@ -198,21 +222,11 @@ public class PerlinMap : MonoBehaviour {
         ret.RecalculateBounds();
         ret.RecalculateNormals();
         terrainMesh.mesh = ret;
-
-        GameObject whirlpool = Instantiate(whirlColliderPrefab, new Vector3(xWhirl, 0, zWhirl), Quaternion.identity) as GameObject;
-        whirlpool.transform.localScale = new Vector3(radius*1.75f, radius*1.75f, radius*1.75f);
-        whirlColliderInstances.Add(whirlpool);
-	}
+	}*/
 
 	public void DestroyAllWhirlpools() {
-		foreach (GameObject whirl in whirlColliderInstances) {
-			Destroy(whirl);
-		}
-		
-		for (int j = 0; j < baseTex.height; j++) {
-			for (int i = 0; i < baseTex.width; i++) {
-				whirl[j * baseTex.width + i] = false;
-			}
+		foreach (GameObject whirlpool in allWhirlpools) {
+			Destroy(whirlpool);
 		}
 	}
 
