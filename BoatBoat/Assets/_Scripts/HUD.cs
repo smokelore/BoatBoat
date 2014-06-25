@@ -15,13 +15,13 @@ public class HUD : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		if (Input.GetKeyUp(KeyCode.Alpha1)) {
-			Application.LoadLevel("coleScene");
+			Application.LoadLevel("playtestScene");
 		} else if (Input.GetKeyUp(KeyCode.Alpha2)) {
-			Application.LoadLevel("joryScene");
+			Application.LoadLevel("playtestScene");
 		} else if (Input.GetKeyUp(KeyCode.Alpha3)) {
-			Application.LoadLevel("chaseScene");
+			Application.LoadLevel("playtestScene");
 		} else if (Input.GetKeyUp(KeyCode.Alpha4)) {
-			Application.LoadLevel("sebScene");
+			Application.LoadLevel("playtestScene");
 		} 
 	}
 }
