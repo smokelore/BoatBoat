@@ -16,7 +16,7 @@ public class SpawnSpout : MonoBehaviour
 	{
 		//countDown = waitRespawn;
 		//StartCoroutine (SpawnWaves ());
-		
+		this.gameObject.renderer.enabled = false;
 	}
 	void OnTriggerEnter(Collider other)
 	{

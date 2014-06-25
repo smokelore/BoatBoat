@@ -64,12 +64,13 @@ public class forceController : MonoBehaviour {
 			}
 		}
 
+		Vector2 planeVelocity = new Vector2(this.rigidbody.velocity.x, this.rigidbody.velocity.z);
 		if (movingForward) {
 			// if moving forward, redirect all velocity forward after turning
-			this.rigidbody.velocity = this.transform.forward * this.rigidbody.velocity.magnitude;
+			this.rigidbody.velocity = this.transform.forward * planeVelocity.magnitude;
 		} else if (movingBackward) {
 			// if moving backward, redirect all velocity backward after turning
-			this.rigidbody.velocity = this.transform.forward * -this.rigidbody.velocity.magnitude;
+			this.rigidbody.velocity = this.transform.forward * -planeVelocity.magnitude;
 		}
 	}
 

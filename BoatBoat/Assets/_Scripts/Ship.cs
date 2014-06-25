@@ -6,14 +6,14 @@ public class Ship : MonoBehaviour {
 	public PerlinMap perlinMap;
 	public float lerpFactor;
 	public float pushUpSpeed;
-	public Vector3 pushHeight;
+	public float pushHeight;
 	private float targetHeight;
 	private bool hitFlag = false;
-	private bool pushBoat = false;
+	//private bool pushBoat = false;
 	private bool pushBoatUp = true;
 	private bool pushBoatDown = false;
-	private SpoutMove spoutMove;
-	private bool spoutUpDirection;
+	//private SpoutMove spoutMove;
+	//private bool spoutUpDirection;
 
 	private Vector3 pointN, pointE, pointS, pointW;
 	private float width, length, zAngle, xAngle;
@@ -21,15 +21,15 @@ public class Ship : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		// Chase adding find SpoutMove script
-		GameObject spoutMoveObject = GameObject.FindWithTag ("Spout");
-		if (spoutMoveObject != null)
-		{
-			spoutMove = spoutMoveObject.GetComponent <SpoutMove>();
-		}
-		if (spoutMove == null)
-		{
-			Debug.Log ("Cannot find 'SpoutMove' script");
-		}
+		// GameObject spoutMoveObject = GameObject.FindWithTag ("Spout");
+		// if (spoutMoveObject != null)
+		// {
+		// 	spoutMove = spoutMoveObject.GetComponent <SpoutMove>();
+		// }
+		// if (spoutMove == null)
+		// {
+		// 	Debug.Log ("Cannot find 'SpoutMove' script");
+		// }
 
 		perlinMap = waveMesh.GetComponent<PerlinMap>();
 
@@ -38,7 +38,7 @@ public class Ship : MonoBehaviour {
 	}
 
 	//Chase adding coliding into spouts below
-	void OnCollisionEnter (Collision col)
+	/*void OnCollisionEnter (Collision col)
 	{
 		if (col.gameObject.tag == "Spout")
 		{
@@ -56,9 +56,9 @@ public class Ship : MonoBehaviour {
 			}
 			// spin 360
 		}
-	}
+	}*/
 
-	void PushBoatUpDown()
+	/*void PushBoatUpDown()
 	{
 		if ((this.transform.position.y < pushHeight.y) && pushBoatUp)
 		{
@@ -77,15 +77,13 @@ public class Ship : MonoBehaviour {
 			pushBoat = false;
 			hitFlag = false;
 		}
-	}
+	}*/
 	
 	// Update is called once per frame
 	void Update () {
 		if (perlinMap == null) {
 			perlinMap = waveMesh.GetComponent<PerlinMap>();
 		}
-
-
 		
 		float x = this.transform.position.x;
 		float z = this.transform.position.z;
@@ -99,58 +97,100 @@ public class Ship : MonoBehaviour {
 
 		waveMesh.transform.position = new Vector3(x, waveMesh.transform.position.y, z);
 		//float newHeight = Mathf.Lerp(currentHeight, targetHeight, Time.deltaTime * lerpFactor);
-		if (hitFlag)
-		{
-			if (pushBoat)
-			{
-				PushBoatUpDown();
-			}
-		}
-		else
-		{
-			this.transform.position = new Vector3(x, targetHeight, z);
+		
+		this.transform.position = new Vector3(x, targetHeight, z);
 
-			//Vector3 xVector = new Vector3(x+pointE, EHeight, z) - new Vector3(x+pointW, WHeight, z);
-			//Vector3 zVector = new Vector3(x, NHeight, z+pointN)- new Vector3(x, SHeight, z+pointS);
-			pointN = this.transform.position + this.transform.forward*length/2;
-			pointN = new Vector3(pointN.x, NHeight, pointN.z);
-			pointS = this.transform.position - this.transform.forward*length/2;
-			pointS = new Vector3(pointS.x, SHeight, pointS.z);
-			pointE = this.transform.position + this.transform.right*width/2;
-			pointE = new Vector3(pointE.x, EHeight, pointE.z);
-			pointW = this.transform.position - this.transform.right*width/2;
-			pointW = new Vector3(pointW.x, WHeight, pointW.z);
+		pointN = this.transform.position + this.transform.forward*length/2;
+		pointN = new Vector3(pointN.x, NHeight, pointN.z);
+		pointS = this.transform.position - this.transform.forward*length/2;
+		pointS = new Vector3(pointS.x, SHeight, pointS.z);
+		pointE = this.transform.position + this.transform.right*width/2;
+		pointE = new Vector3(pointE.x, EHeight, pointE.z);
+		pointW = this.transform.position - this.transform.right*width/2;
+		pointW = new Vector3(pointW.x, WHeight, pointW.z);
 
-			Vector3 NSVector = (pointN - pointS).normalized;
-			Vector3 EWVector = (pointE - pointW).normalized;
+		Vector3 NSVector = (pointN - pointS).normalized;
+		Vector3 EWVector = (pointE - pointW).normalized;
 
-			zAngle = AngleSigned(this.transform.forward, NSVector, this.transform.right);
-			xAngle = AngleSigned(this.transform.right, EWVector, this.transform.forward);
+		zAngle = AngleSigned(this.transform.forward, NSVector, this.transform.right);
+		xAngle = AngleSigned(this.transform.right, EWVector, this.transform.forward);
 
+		//float xAngle = AngleSigned(this.transform.right, xVector.normalized, this.transform.forward);
+		//float zAngle = AngleSigned(this.transform.forward, zVector.normalized, this.transform.right);
+		
+		Debug.DrawLine(pointW, pointE, Color.red);
+		Debug.DrawLine(pointS, pointN, Color.blue);
 
-			//float xAngle = AngleSigned(this.transform.right, xVector.normalized, this.transform.forward);
-			//float zAngle = AngleSigned(this.transform.forward, zVector.normalized, this.transform.right);
-			
-			Debug.DrawLine(pointW, pointE, Color.red);
-			Debug.DrawLine(pointS, pointN, Color.blue);
+		//Vector3 targetRotation = new Vector3(zAngle, this.transform.rotation.y, xAngle);
+		
+		//Quaternion qX = Quaternion.AngleAxis(xAngle, this.transform.forward);
+		//Quaternion qZ = Quaternion.AngleAxis(zAngle, this.transform.right);
+		//this.transform.localRotation = qX * qZ;
 
-			//Vector3 targetRotation = new Vector3(zAngle, this.transform.rotation.y, xAngle);
-			
-			//Quaternion qX = Quaternion.AngleAxis(xAngle, this.transform.forward);
-			//Quaternion qZ = Quaternion.AngleAxis(zAngle, this.transform.right);
-			//this.transform.localRotation = qX * qZ;
-
-			//this.transform.Rotate(this.transform.forward, xAngle - this.transform.eulerAngles.x);
-			//this.transform.Rotate(this.transform.right, zAngle - this.transform.eulerAngles.z);
-			//Debug.Log(zAngle);
-
-			
-		}
+		//this.transform.Rotate(this.transform.forward, xAngle - this.transform.eulerAngles.x);
+		//this.transform.Rotate(this.transform.right, zAngle - this.transform.eulerAngles.z);
+		//Debug.Log(zAngle);
 	}
 
 	void FixedUpdate() {
-		this.rigidbody.AddTorque(this.transform.right * zAngle/5);
-		this.rigidbody.AddTorque(this.transform.forward * xAngle/5);
+		float x = this.transform.position.x;
+		float z = this.transform.position.z;
+
+		
+
+		if (hitFlag)
+		{
+			rigidbody.AddForce(Vector3.up * pushUpSpeed);
+			pushBoatUp = true;
+		}
+		else
+		{
+			if ((this.transform.position.y < pushHeight) && pushBoatUp)
+			{
+				Debug.Log("pushing up");
+				rigidbody.AddForce(Vector3.up * pushUpSpeed);
+				pushBoatDown = true;
+			}
+			else if ((this.transform.position.y > targetHeight + 1.0f) && pushBoatDown)
+			{
+				Debug.Log("pushing down");
+				rigidbody.AddForce(-Vector3.up * pushUpSpeed);
+				pushBoatUp = false;
+			}
+			else
+			{
+				Debug.Log("not pushing");
+				//rigidbody.constraints = originalConstraints; // To move up and down by locking position on x,z
+				this.transform.position = new Vector3(x, targetHeight, z);
+				this.rigidbody.AddTorque(this.transform.right * zAngle/5);
+				this.rigidbody.AddTorque(this.transform.forward * xAngle/5);
+				pushBoatDown = false;
+			}
+		}
+	}
+
+	void OnTriggerStay(Collider other)
+	{
+		if (other.tag == "Spout")
+		{
+			Debug.Log("inside spout");
+			// Get velocity of y right as we enter, only once, to set it the same as we leave
+			hitFlag = true;
+
+			//Lock x,z postion to push up and down with force
+			//rigidbody.constraints = RigidbodyConstraints.FreezePositionX | RigidbodyConstraints.FreezePositionZ;
+		}
+		else
+		{
+			hitFlag = false;
+		}
+	}
+	
+	void OnTriggerExit(Collider other) {
+		if (other.tag == "Spout")
+		{
+			hitFlag = false;
+		}
 	}
 
 	public static float AngleSigned(Vector3 v1, Vector3 v2, Vector3 n) {
