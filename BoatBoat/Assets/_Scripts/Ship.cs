@@ -21,64 +21,12 @@ public class Ship : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		// Chase adding find SpoutMove script
-		// GameObject spoutMoveObject = GameObject.FindWithTag ("Spout");
-		// if (spoutMoveObject != null)
-		// {
-		// 	spoutMove = spoutMoveObject.GetComponent <SpoutMove>();
-		// }
-		// if (spoutMove == null)
-		// {
-		// 	Debug.Log ("Cannot find 'SpoutMove' script");
-		// }
 
 		perlinMap = waveMesh.GetComponent<PerlinMap>();
 
 		length = this.gameObject.GetComponent<CapsuleCollider>().height * this.transform.lossyScale.z;
 		width = this.gameObject.GetComponent<CapsuleCollider>().radius * this.transform.lossyScale.x * 2;
 	}
-
-	//Chase adding coliding into spouts below
-	/*void OnCollisionEnter (Collision col)
-	{
-		if (col.gameObject.tag == "Spout")
-		{
-			hitFlag = true;
-			spoutUpDirection = spoutMove.ChangeSpoutDirection();
-			if (spoutUpDirection)
-			{
-				audio.Play();
-				pushBoat = true;
-				pushBoatUp = true;
-			}
-			else
-			{
-				hitFlag = false;
-			}
-			// spin 360
-		}
-	}*/
-
-	/*void PushBoatUpDown()
-	{
-		if ((this.transform.position.y < pushHeight.y) && pushBoatUp)
-		{
-			this.transform.position += Vector3.up * pushUpSpeed * Time.deltaTime;
-			pushBoatDown = true;
-		}
-		else if ((this.transform.position.y > targetHeight) && pushBoatDown)
-		{
-			this.transform.position -= Vector3.up * pushUpSpeed * Time.deltaTime;
-			pushBoatUp = false;
-		}
-		else
-		{
-			this.transform.position = new Vector3(this.transform.position.x, targetHeight, this.transform.position.z);
-			pushBoatDown = false;
-			pushBoat = false;
-			hitFlag = false;
-		}
-	}*/
 	
 	// Update is called once per frame
 	void Update () {
@@ -141,16 +89,6 @@ public class Ship : MonoBehaviour {
 			hitFlag = false;
 		}
 
-		// if (this.transform.position.y < targetHeight + 1f && !hitFlag) {
-		// 		this.transform.position = new Vector3(x, targetHeight, z);
-		// 		this.rigidbody.AddTorque(this.transform.right * zAngle/5);
-		// 		this.rigidbody.AddTorque(this.transform.forward * xAngle/5);
-		// } else if (this.transform.position.y < targetHeight + pushHeight && hitFlag) {
-		// 		rigidbody.AddForce(Vector3.up * pushUpSpeed);
-		// } else {
-		// 	rigidbody.AddForce(-Vector3.up * pushUpSpeed/2);
-		// }
-
 		if (hitFlag && !prevHitFlag) {
 			audio.PlayOneShot(spoutSound, 0.7f);
 		}
@@ -166,28 +104,6 @@ public class Ship : MonoBehaviour {
 		}
 
 		prevHitFlag = hitFlag;
-		
-
-		/*if (hitFlag)
-		{
-			if (this.transform.position.y < targetHeight + pushHeight) {
-				rigidbody.AddForce(Vector3.up * pushUpSpeed);
-			}
-		}
-		else
-		{
-			if (this.transform.position.y >= targetHeight + 1f)
-			{
-				rigidbody.AddForce(-Vector3.up * pushUpSpeed/2);
-			}
-			else
-			{
-				//rigidbody.constraints = originalConstraints; // To move up and down by locking position on x,z
-				this.transform.position = new Vector3(x, targetHeight, z);
-				this.rigidbody.AddTorque(this.transform.right * zAngle/5);
-				this.rigidbody.AddTorque(this.transform.forward * xAngle/5);
-			}
-		}*/
 	}
 
 	void OnTriggerStay(Collider other)
@@ -197,8 +113,6 @@ public class Ship : MonoBehaviour {
 			Debug.Log("inside spout");
 			// Get velocity of y right as we enter, only once, to set it the same as we leave
 			hitFlag = true;
-			//Lock x,z postion to push up and down with force
-			//rigidbody.constraints = RigidbodyConstraints.FreezePositionX | RigidbodyConstraints.FreezePositionZ;
 		}
 	}
 	
