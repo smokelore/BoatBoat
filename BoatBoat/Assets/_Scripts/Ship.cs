@@ -8,12 +8,13 @@ public class Ship : MonoBehaviour {
 	public float pushUpSpeed;
 	public float pushHeight;
 	private float targetHeight;
-	private bool hitFlag = false;
+	private bool hitFlag, prevHitFlag;
 	//private bool pushBoat = false;
-	private bool pushBoatUp = true;
-	private bool pushBoatDown = false;
+	private bool pushBoatUp;
+	private bool pushBoatDown;
 	//private SpoutMove spoutMove;
 	//private bool spoutUpDirection;
+	public AudioClip spoutSound;
 
 	private Vector3 pointN, pointE, pointS, pointW;
 	private float width, length, zAngle, xAngle;
@@ -98,7 +99,7 @@ public class Ship : MonoBehaviour {
 		waveMesh.transform.position = new Vector3(x, waveMesh.transform.position.y, z);
 		//float newHeight = Mathf.Lerp(currentHeight, targetHeight, Time.deltaTime * lerpFactor);
 		
-		this.transform.position = new Vector3(x, targetHeight, z);
+		//this.transform.position = new Vector3(x, targetHeight, z);
 
 		pointN = this.transform.position + this.transform.forward*length/2;
 		pointN = new Vector3(pointN.x, NHeight, pointN.z);
@@ -136,37 +137,57 @@ public class Ship : MonoBehaviour {
 		float x = this.transform.position.x;
 		float z = this.transform.position.z;
 
+		if (this.transform.position.y > targetHeight + pushHeight) {
+			hitFlag = false;
+		}
+
+		// if (this.transform.position.y < targetHeight + 1f && !hitFlag) {
+		// 		this.transform.position = new Vector3(x, targetHeight, z);
+		// 		this.rigidbody.AddTorque(this.transform.right * zAngle/5);
+		// 		this.rigidbody.AddTorque(this.transform.forward * xAngle/5);
+		// } else if (this.transform.position.y < targetHeight + pushHeight && hitFlag) {
+		// 		rigidbody.AddForce(Vector3.up * pushUpSpeed);
+		// } else {
+		// 	rigidbody.AddForce(-Vector3.up * pushUpSpeed/2);
+		// }
+
+		if (hitFlag && !prevHitFlag) {
+			audio.PlayOneShot(spoutSound, 0.7f);
+		}
+
+		if (hitFlag && this.transform.position.y < targetHeight + pushHeight) {
+			rigidbody.AddForce(Vector3.up * pushUpSpeed);
+		} else if (!hitFlag && this.transform.position.y > targetHeight + 1f) {
+			rigidbody.AddForce(-Vector3.up * pushUpSpeed/2);
+		} else {
+			this.transform.position = new Vector3(x, targetHeight, z);
+			this.rigidbody.AddTorque(this.transform.right * zAngle/5);
+			this.rigidbody.AddTorque(this.transform.forward * xAngle/5);
+		}
+
+		prevHitFlag = hitFlag;
 		
 
-		if (hitFlag)
+		/*if (hitFlag)
 		{
-			rigidbody.AddForce(Vector3.up * pushUpSpeed);
-			pushBoatUp = true;
+			if (this.transform.position.y < targetHeight + pushHeight) {
+				rigidbody.AddForce(Vector3.up * pushUpSpeed);
+			}
 		}
 		else
 		{
-			if ((this.transform.position.y < pushHeight) && pushBoatUp)
+			if (this.transform.position.y >= targetHeight + 1f)
 			{
-				Debug.Log("pushing up");
-				rigidbody.AddForce(Vector3.up * pushUpSpeed);
-				pushBoatDown = true;
-			}
-			else if ((this.transform.position.y > targetHeight + 1.0f) && pushBoatDown)
-			{
-				Debug.Log("pushing down");
-				rigidbody.AddForce(-Vector3.up * pushUpSpeed);
-				pushBoatUp = false;
+				rigidbody.AddForce(-Vector3.up * pushUpSpeed/2);
 			}
 			else
 			{
-				Debug.Log("not pushing");
 				//rigidbody.constraints = originalConstraints; // To move up and down by locking position on x,z
 				this.transform.position = new Vector3(x, targetHeight, z);
 				this.rigidbody.AddTorque(this.transform.right * zAngle/5);
 				this.rigidbody.AddTorque(this.transform.forward * xAngle/5);
-				pushBoatDown = false;
 			}
-		}
+		}*/
 	}
 
 	void OnTriggerStay(Collider other)
@@ -176,20 +197,15 @@ public class Ship : MonoBehaviour {
 			Debug.Log("inside spout");
 			// Get velocity of y right as we enter, only once, to set it the same as we leave
 			hitFlag = true;
-
 			//Lock x,z postion to push up and down with force
 			//rigidbody.constraints = RigidbodyConstraints.FreezePositionX | RigidbodyConstraints.FreezePositionZ;
-		}
-		else
-		{
-			hitFlag = false;
 		}
 	}
 	
 	void OnTriggerExit(Collider other) {
 		if (other.tag == "Spout")
 		{
-			hitFlag = false;
+			//hitFlag = false;
 		}
 	}
 
