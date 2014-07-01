@@ -99,8 +99,8 @@ public class Ship : MonoBehaviour {
 			rigidbody.AddForce(-Vector3.up * pushUpSpeed/2);
 		} else {
 			this.transform.position = new Vector3(x, targetHeight, z);
-			this.rigidbody.AddTorque(this.transform.right * zAngle/4);
-			this.rigidbody.AddTorque(this.transform.forward * xAngle/4);
+			this.rigidbody.AddTorque(this.transform.right * zAngle/3);
+			this.rigidbody.AddTorque(this.transform.forward * xAngle/5);
 		}
 
 		prevHitFlag = hitFlag;
