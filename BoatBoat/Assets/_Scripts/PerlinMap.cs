@@ -149,9 +149,9 @@ public class PerlinMap : MonoBehaviour {
 
 	public float GetPerlinValue(float x, float z) {
 		// input in terms of world position
-		float perlin1 = -0.5f + Mathf.PerlinNoise(timeScale * Time.time + x * pixelScale + xOffset, timeScale * Time.time + z * pixelScale + yOffset);
+		float perlin1 = -0.5f + Mathf.PerlinNoise(timeScale * Time.time + x * pixelScale/2 + xOffset, timeScale * Time.time + z * pixelScale/2 + yOffset);
 		float perlin2 = -0.5f + Mathf.PerlinNoise(-timeScale * Time.time + x * pixelScale + xOffset, -timeScale * Time.time + z * pixelScale + yOffset);
-		float value = (perlin1 + perlin2)/2;
+		float value = (0.5f*perlin1 + 0.5f*perlin2);
 
 		return value;
 	}
