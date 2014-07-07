@@ -20,7 +20,7 @@ public class DefaultController : InputController {
 		if (LeftStick.magnitude > 0) {
 			Vector3 movement = WalkableArea.transform.right * LeftStick.x * speedFactor + WalkableArea.transform.forward * LeftStick.y * speedFactor;
 			Vector3 newLocation = this.transform.position + movement*Time.deltaTime; 
-			Debug.Log("// " + newLocation);
+			//Debug.Log("// " + newLocation);
 			if (WalkableArea.bounds.Contains(newLocation)) {
 				this.transform.position = newLocation;
 			}
