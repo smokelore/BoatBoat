@@ -44,7 +44,9 @@ public class Ship : MonoBehaviour {
 		float SHeight = perlinMap.GetHeight(x, z-length/2) + 0.065f;
 		float WHeight = perlinMap.GetHeight(x-width/2, z) + 0.065f;
 
-		waveMesh.transform.position = new Vector3(x, waveMesh.transform.position.y, z);
+		if (this.gameObject.tag == "Player") {
+			waveMesh.transform.position = new Vector3(x, waveMesh.transform.position.y, z);
+		}
 		//float newHeight = Mathf.Lerp(currentHeight, targetHeight, Time.deltaTime * lerpFactor);
 		
 		//this.transform.position = new Vector3(x, targetHeight, z);
