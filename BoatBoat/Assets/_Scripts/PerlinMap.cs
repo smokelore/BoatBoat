@@ -41,7 +41,7 @@ public class PerlinMap : MonoBehaviour {
 		render = new bool[baseTex.height*baseTex.width];
 
 		this.renderer.enabled = true;
-		renderer.material = verticesMaterial;
+		//renderer.material = verticesMaterial;
 		this.gameObject.renderer.material.SetTextureScale("_MainTex",new Vector2(1/this.transform.localScale.x,1/this.transform.localScale.z))  ;
 		renderer.material.SetTextureOffset("_MainTex", new Vector2(0.5f, 0.5f));
 
