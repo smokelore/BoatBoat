@@ -40,7 +40,7 @@ public class PerlinMap : MonoBehaviour {
 		heights = new float[baseTex.height*baseTex.width];
 		render = new bool[baseTex.height*baseTex.width];
 
-		this.renderer.enabled = true;
+		//this.renderer.enabled = true;
 		//renderer.material = verticesMaterial;
 		this.gameObject.renderer.material.SetTextureScale("_MainTex",new Vector2(1/this.transform.localScale.x,1/this.transform.localScale.z))  ;
 		renderer.material.SetTextureOffset("_MainTex", new Vector2(0.5f, 0.5f));
@@ -57,7 +57,8 @@ public class PerlinMap : MonoBehaviour {
 					uvs[j * baseTex.width + i] = new Vector2(xCoord, zCoord);
 					colors[j * baseTex.width + i] = lowColor;
 
-					if (i+1 >= baseTex.width || j+1 >= baseTex.width || !isWithinRadius(i+1,j) || !isWithinRadius(i,j+1)) {
+					//if (i+1 >= baseTex.width || j+1 >= baseTex.width || !isWithinRadius(i+1,j) || !isWithinRadius(i,j+1)) {
+					if (!isWithinRadius(i+1,j) || !isWithinRadius(i,j+1) || !isWithinRadius(i+1,j+1)) {
 						continue;
 					}
 					tris.Add(i + j*baseTex.width);
