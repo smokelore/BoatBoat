@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class forceController : MonoBehaviour {
 	private Vector3 curPos;
@@ -11,12 +12,18 @@ public class forceController : MonoBehaviour {
 	public float idleDrag;
 	private bool movingForward, movingBackward;
 
-	// Use this for initialization
+	public float fakeVerticalAxis, fakeHorizontalAxis;
+
+	public List<OarController> allOars = new List<OarController>();
+
 	void Start () {
 	
 	}
 	
-	// Update is called once per frame
+	void Update() {
+		GetAllRows();
+	}
+
 	void FixedUpdate () {
 		Vector3 localVelocity = this.transform.InverseTransformDirection(this.rigidbody.velocity);
 		curSpeed = new Vector3(rigidbody.velocity.x, 0, rigidbody.velocity.z).magnitude;
@@ -32,13 +39,13 @@ public class forceController : MonoBehaviour {
 		movingForward = (localVelocity.z >= 0);
 		movingBackward = !movingForward;
 
-		if (Input.GetAxis("Vertical") > 0) {
+		if (fakeVerticalAxis > 0) {
 			// ACCELERATE
 			this.rigidbody.drag = 0;
 			if (localVelocity.z < maxSpeed) {
 				this.rigidbody.AddForce(this.transform.forward * forceFactor);
 			}
-		} else if (Input.GetAxis("Vertical") < 0) {
+		} else if (fakeVerticalAxis < 0) {
 			// DECELERATE
 			this.rigidbody.drag = 0;
 			if (localVelocity.z > -maxSpeed/2) {
@@ -48,14 +55,14 @@ public class forceController : MonoBehaviour {
 			this.rigidbody.drag = idleDrag;
 		}
 
-		if (Input.GetAxis("Horizontal") > 0) {
+		if (fakeHorizontalAxis > 0) {
 			// RIGHT TURN
 			if (movingForward && rigidbody.angularVelocity.y < curMaxTurn) {
 				this.rigidbody.AddTorque(this.transform.up * curRotFactor);
 			} else if (movingBackward && rigidbody.angularVelocity.y > -curMaxTurn) {
 				this.rigidbody.AddTorque(this.transform.up * -curRotFactor);
 			}
-		} else if (Input.GetAxis("Horizontal") < 0) {
+		} else if (fakeHorizontalAxis < 0) {
 			// LEFT TURN
 			if (movingForward && rigidbody.angularVelocity.y > -curMaxTurn) {
 				this.rigidbody.AddTorque(this.transform.up * -curRotFactor);
@@ -72,6 +79,19 @@ public class forceController : MonoBehaviour {
 			// if moving backward, redirect all velocity backward after turning
 			this.rigidbody.velocity = this.transform.forward * -planeVelocity.magnitude;
 		}
+	}
+
+	public void GetAllRows() {
+		float rightTotal = 0f, leftTotal = 0f;
+		foreach (OarController oc in allOars) {
+			if (oc.player != null) {
+				rightTotal += oc.getRightRowAmount();
+				leftTotal += oc.getLeftRowAmount();
+			}
+		}
+
+		fakeVerticalAxis = (rightTotal+leftTotal) / (allOars.Count*2);
+		fakeHorizontalAxis = (leftTotal / allOars.Count) - (rightTotal / allOars.Count);
 	}
 
 	void OnCollisionEnter(Collision collision) {

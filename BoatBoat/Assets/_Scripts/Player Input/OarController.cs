@@ -4,14 +4,16 @@ using System.Collections;
 
 public class OarController : InputController {
 	public GameObject BoatBoat;
-	public float speedFactor;
-	public float rowFactor;
+	private forceController forcer;
+	//public float speedFactor;
+	//public float rowFactor;
+	public float rowAngleRange;
 	public GameObject leftOar;
 	public GameObject rightOar;
 	public Transform rightguideball;
 	public Transform leftguideball;
 
-	public bool leftOarStarted;
+	/*public bool leftOarStarted;
 	public bool leftOarEnded;
 	public float leftOarInitial;
 	public float leftOarFinal;
@@ -23,15 +25,22 @@ public class OarController : InputController {
 	public float rightOarInitial;
 	public float rightOarFinal;
 	public float rightOarPrevious;
-	public float rightOarCurrent;
+	public float rightOarCurrent;*/
 
 	public float maxHeight = 1.5f;
 	public float rowSpeedMax = 8.0f;
-	public float rightTempHeight;
-	public float leftTempHeight;
+	//private float rightTempHeight;
+	//private float leftTempHeight;
+
+	public Vector2 prevLeftStick;
+	public Vector2 currentLeftStick;
+	public Vector2 prevRightStick;
+	public Vector2 currentRightStick;
 
 	// Use this for initialization
 	void Start () {
+		forcer = BoatBoat.GetComponent<forceController>();
+		forcer.allOars.Add(this);
 		InputManager.Setup();
 //		rightguideball.position = new Vector3(rightguideball.position.x, -1, rightguideball.position.z);
 //		rightOar.transform.LookAt(rightguideball);
@@ -42,10 +51,10 @@ public class OarController : InputController {
 	
 	// Move is called once per frame
 	public override void Move () {
-		leftOarPrevious = leftOarCurrent;
+		/*leftOarPrevious = leftOarCurrent;
 		leftOarCurrent = LeftStick.y;
 
-		/*if (leftOarStarted) {
+		if (leftOarStarted) {
 			if (leftOarEnded) {
 				// row finished
 				if (leftOarFinal > leftOarInitial) {
@@ -81,10 +90,10 @@ public class OarController : InputController {
 			}
 		}*/
 
-		rightOarPrevious = rightOarCurrent;
+		/*rightOarPrevious = rightOarCurrent;
 		rightOarCurrent = RightStick.y;
 
-		/*if (rightOarStarted) {
+		if (rightOarStarted) {
 			if (rightOarEnded) {
 				// row finished
 				if (rightOarFinal > rightOarInitial) {
@@ -120,6 +129,15 @@ public class OarController : InputController {
 			}
 		}*/
 
+		prevRightStick = currentRightStick;
+		currentRightStick = RightStick;
+
+		prevLeftStick = currentLeftStick;
+		currentLeftStick = LeftStick;
+
+		//Row(true, getRightRowAmount());
+		//Row(false, getLeftRowAmount());
+
 		//****OAR ANIMATION****//
 
 		//STICK CONTROLS
@@ -148,18 +166,40 @@ public class OarController : InputController {
 	private bool isHittingWater(Vector2 stick, float degreeRange) {
 		// degreeRange determines the number of degrees away from (0,-1) will be considered "hitting water"
 		//Debug.Log(Vector2.Angle(new Vector2(0,-1), stick) + " " + (Vector2.Angle(new Vector2(0,-1), stick) <= degreeRange));	
-		return (Vector2.Angle(new Vector2(0,-1), stick) <= degreeRange);
+		return (Vector2.Angle(new Vector2(0f,-1f), stick) <= degreeRange);
 	}
 
-	/*private float getRowAmount(Vector2 stick) {
+	public float getRightRowAmount() {
+		Vector2 startVector = new Vector2(-1f, 0f);
+		float prevAngle = Vector2.Angle(startVector, prevRightStick);
+		float currentAngle = Vector2.Angle(startVector, currentRightStick);
+		float deltaAngle = Mathf.Clamp(currentAngle-prevAngle, -rowAngleRange, rowAngleRange);
 
-	}*/
+		if (isHittingWater(currentRightStick, rowAngleRange)) {
+			return deltaAngle/rowAngleRange;
+		} else {
+			return 0f;
+		}
+	}
+
+	public float getLeftRowAmount() {
+		Vector2 startVector = new Vector2(1f, 0f);
+		float prevAngle = Vector2.Angle(startVector, prevLeftStick);
+		float currentAngle = Vector2.Angle(startVector, currentLeftStick);
+		float deltaAngle = Mathf.Clamp(currentAngle-prevAngle, -rowAngleRange, rowAngleRange);
+
+		if (isHittingWater(currentLeftStick, rowAngleRange)) {
+			return deltaAngle/rowAngleRange;
+		} else {
+			return 0f;
+		}
+	}
 
 	public void Row(bool right, float amount) {
 		if (right) {
-			//Debug.Log("Player " + player.playerNum + " rowed right oar: " + amount);
+			Debug.Log("Player " + player.playerNum + " rowed right oar: " + amount);
 		} else {
-			//Debug.Log("Player " + player.playerNum + " rowed left oar: " + amount);
+			Debug.Log("Player " + player.playerNum + " rowed left oar: " + amount);
 		}
 	}
 
