@@ -5,6 +5,7 @@ public class cameraController : MonoBehaviour {
 	public GameObject playerBoat;
 	public Vector3 positionDifference;
 	public float lerpSpeed;
+	public Vector3 aimAtPoint;
 
 	// Use this for initialization
 	void Start () {
@@ -13,7 +14,7 @@ public class cameraController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		Vector3 aimAtPoint = playerBoat.transform.position + Vector3.up * positionDifference.y;
+		aimAtPoint = playerBoat.transform.position + Vector3.up * positionDifference.y;
 
 		this.transform.LookAt(aimAtPoint);
 

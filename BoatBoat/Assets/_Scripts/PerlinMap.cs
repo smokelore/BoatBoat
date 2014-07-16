@@ -85,7 +85,6 @@ public class PerlinMap : MonoBehaviour {
 		// xOffset = -this.transform.position.x;
 		// yOffset = -this.transform.position.y;
 		allWhirlpools = GameObject.FindGameObjectsWithTag("Whirlpool");
-		Debug.Log(allWhirlpools);
 		if (!whirlpoolsEnabled) {
 			DestroyAllWhirlpools();
 		}
