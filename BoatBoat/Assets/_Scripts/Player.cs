@@ -46,7 +46,6 @@ public class Player : MonoBehaviour {
 	}
 
 	void OnTriggerEnter(Collider collider) {
-		Debug.Log(collider.gameObject.name);
 		if (collider.gameObject.tag == "Zone") {
 			Debug.Log("Player " + playerNum + " entered zone " + collider.gameObject.name);
 			zone = collider.gameObject;

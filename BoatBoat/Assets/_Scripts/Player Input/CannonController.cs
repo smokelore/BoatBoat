@@ -13,7 +13,7 @@ public class CannonController : InputController {
 	// Use this for initialization
 	void Start () {
 		InputManager.Setup();
-		cannonballSpawn = cannonObject.transform.Find("Spawn");
+		cannonballSpawn = cannonObject.transform.Find("chamber/spawn");
 	}
 	
 	// Move is called once per frame
