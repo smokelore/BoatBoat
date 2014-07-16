@@ -38,11 +38,11 @@ public class Ship : MonoBehaviour {
 		float z = this.transform.position.z;
 
 		//float currentHeight = this.transform.position.y;
-		targetHeight = perlinMap.GetHeight(x, z) + 0.065f;
-		float NHeight = perlinMap.GetHeight(x, z+length/2) + 0.065f;
-		float EHeight = perlinMap.GetHeight(x+width/2, z) + 0.065f;
-		float SHeight = perlinMap.GetHeight(x, z-length/2) + 0.065f;
-		float WHeight = perlinMap.GetHeight(x-width/2, z) + 0.065f;
+		targetHeight = perlinMap.GetHeight(x, z) + 0.08f;
+		float NHeight = perlinMap.GetHeight(x, z+length/2) + 0.08f;
+		float EHeight = perlinMap.GetHeight(x+width/2, z) + 0.08f;
+		float SHeight = perlinMap.GetHeight(x, z-length/2) + 0.08f;
+		float WHeight = perlinMap.GetHeight(x-width/2, z) + 0.08f;
 
 		if (this.gameObject.tag == "Player") {
 			waveMesh.transform.position = new Vector3(x, waveMesh.transform.position.y, z);
