@@ -5,21 +5,30 @@ using System.Collections;
 public class CannonController : InputController {
 	public float speedFactor;
 	public GameObject cannonObject;
-	public bool loaded;
+	public GameObject cannonballPrefab;
+	public Transform cannonballSpawn;
+	public GameObject cannonballTemp;
+	public bool loaded, canShoot;
 
 	// Use this for initialization
 	void Start () {
 		InputManager.Setup();
+		cannonballSpawn = cannonObject.transform.Find("Spawn");
 	}
 	
 	// Move is called once per frame
 	public override void Move() {
-
+		if (cannonballTemp == null) {
+			canShoot = true;
+		} else {
+			canShoot = false;
+		}
 	}
 
 	public override void Shoot() {
-		if (loaded && RightTrigger > 0.9f) {
+		if (canShoot && loaded && RightTrigger > 0.9f) {
 			Debug.Log("Player " + player.playerNum + " shot " + cannonObject.name);
+			cannonballTemp = Instantiate(cannonballPrefab, cannonballSpawn.position, cannonballSpawn.rotation) as GameObject;
 			loaded = false;
 		}
 	}
