@@ -13,9 +13,13 @@ public class DefaultController : InputController {
 		InputManager.Setup();
 		SetPlayer(this.gameObject.GetComponent<Player>());
 	}
-	
-	// Move is called once per frame
-	public override void Move () {
+
+	// Controls is called once per frame
+	public override void Controls() {
+		MovementControls();
+	}
+
+	private void MovementControls() {
 		this.transform.rotation = WalkableArea.transform.rotation;
 		if (LeftStick.magnitude > 0) {
 			Vector3 movement = WalkableArea.transform.right * LeftStick.x * speedFactor + WalkableArea.transform.forward * LeftStick.y * speedFactor;

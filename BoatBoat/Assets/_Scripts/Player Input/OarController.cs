@@ -49,8 +49,8 @@ public class OarController : InputController {
 //		leftOar.transform.LookAt(leftguideball);
 	}
 	
-	// Move is called once per frame
-	public override void Move () {
+	// Controls is called once per frame
+	public override void Controls() {
 		/*leftOarPrevious = leftOarCurrent;
 		leftOarCurrent = LeftStick.y;
 

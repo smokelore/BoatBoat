@@ -36,29 +36,15 @@ public class InputController : MonoBehaviour {
 			LeftBumper = player.device.GetControl(InputControlType.LeftBumper).IsPressed;
 			RightBumper = player.device.GetControl(InputControlType.RightBumper).IsPressed;
 
-			Move();
-
-			Shoot();
-			Reload();
+			Controls();
 
 			Mount();
 			Dismount();
 		}
 	}
 
-	public virtual void Move() {
-		// Override this method with movement code
-
-	}
-
-	public virtual void Shoot() {
-		// Override this method with shooting code (cannons)
-
-	}
-
-	public virtual void Reload() {
-		// Override this method with reloading code (cannons)
-
+	public virtual void Controls() {
+		// Override this method with all player input code
 	}
 
 	public virtual void Mount() {

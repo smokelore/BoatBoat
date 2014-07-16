@@ -11,8 +11,8 @@ public class SpotterController : InputController {
 		InputManager.Setup();
 	}
 	
-	// Move is called once per frame
-	public override void Move () {
+	// Controls is called once per frame
+	public override void Controls() {
 
 	}
 

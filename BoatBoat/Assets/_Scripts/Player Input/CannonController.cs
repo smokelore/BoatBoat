@@ -16,16 +16,19 @@ public class CannonController : InputController {
 		cannonballSpawn = cannonObject.transform.Find("chamber/spawn");
 	}
 	
-	// Move is called once per frame
-	public override void Move() {
+	// Controls is called once per frame
+	public override void Controls() {
 		if (cannonballTemp == null) {
 			canShoot = true;
 		} else {
 			canShoot = false;
 		}
+
+		ShootControls();
+		ReloadControls();
 	}
 
-	public override void Shoot() {
+	private void ShootControls() {
 		if (canShoot && loaded && RightTrigger > 0.9f) {
 			Debug.Log("Player " + player.playerNum + " shot " + cannonObject.name);
 			cannonballTemp = Instantiate(cannonballPrefab, cannonballSpawn.position, cannonballSpawn.rotation) as GameObject;
@@ -33,7 +36,7 @@ public class CannonController : InputController {
 		}
 	}
 
-	public override void Reload() {
+	private void ReloadControls() {
 		if (!loaded && XButton) {
 			Debug.Log("Player " + player.playerNum + " reloaded " + cannonObject.name);
 			loaded = true;
