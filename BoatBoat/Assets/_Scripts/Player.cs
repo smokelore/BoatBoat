@@ -52,6 +52,13 @@ public class Player : MonoBehaviour {
 		}
 	}
 
+	void OnTriggerStay(Collider collider) {
+		if (collider.gameObject.tag == "Zone" && collider.gameObject != zone) {
+			Debug.Log("Player " + playerNum + " entered zone " + collider.gameObject.name);
+			zone = collider.gameObject;
+		}
+	}
+
 	void OnTriggerExit(Collider collider) {
 		if (collider.gameObject.tag == "Zone") {
 			Debug.Log("Player " + playerNum + " left zone " + collider.gameObject.name);

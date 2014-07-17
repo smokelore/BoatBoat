@@ -40,7 +40,13 @@ public class InputController : MonoBehaviour {
 
 			Mount();
 			Dismount();
+		} else {
+			Idle();
 		}
+	}
+
+	public virtual void Idle() {
+		// Override this method with stuff that should be run when the controller is not in use
 	}
 
 	public virtual void Controls() {
