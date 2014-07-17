@@ -24,7 +24,7 @@ public class WaterCurrent : MonoBehaviour {
 	void OnTriggerStay(Collider other) {
 		if (other.attachedRigidbody != null && other.gameObject.name == "Death Egg") {
 			other.gameObject.rigidbody.AddForce(current);
-		} else if (other.attachedRigidbody != null && other.gameObject.name != "River Current" && other.gameObject.name != "Cube") {
+		} else if (other.attachedRigidbody != null && (other.gameObject.name == "Ship" || other.gameObject.name == "Enemy")) {
 			other.gameObject.rigidbody.AddForce(current);
 			Vector3 oldRot = other.gameObject.transform.forward;
 			Vector3 targetRot = this.gameObject.transform.forward;

@@ -13,6 +13,7 @@ public class CannonController : InputController {
 	public float stickDeadzone;
 	public float aimSpeed;
 	public float aimX, aimY;
+	private bool needsResetting;
 
 	// Use this for initialization
 	void Start () {
@@ -32,6 +33,8 @@ public class CannonController : InputController {
 		ShootControls();
 		ReloadControls();
 		HUDText();
+
+		needsResetting = true;
 	}
 
 	private void AimControls() {
@@ -78,6 +81,19 @@ public class CannonController : InputController {
 		if (BButton) {
 			player.ResetController();
 			UnsetPlayer();
+		}
+	}
+
+	public override void Idle() {
+		if (needsResetting) {
+			aimX = 0f;
+			aimY = 0f;
+			if (rightSide) {
+				cannonObject.transform.localEulerAngles = new Vector3(270f, 270f, 0f);
+			} else {
+				cannonObject.transform.localEulerAngles = new Vector3(270f, 90f, 0f);
+			}
+			needsResetting = false;
 		}
 	}
 
