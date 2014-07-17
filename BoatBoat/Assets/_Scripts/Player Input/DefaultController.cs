@@ -17,6 +17,7 @@ public class DefaultController : InputController {
 	// Controls is called once per frame
 	public override void Controls() {
 		MovementControls();
+		HUDText();
 	}
 
 	private void MovementControls() {
@@ -43,5 +44,10 @@ public class DefaultController : InputController {
 			this.player.SetController(player.zone.GetComponent<InputController>());
 			this.player = null;
 		}
+	}
+
+	private void HUDText() {
+		Camera.main.GetComponent<HUD>().personName = "Left Stick to move, A to mount";
+		Camera.main.GetComponent<HUD>().levelTheme = "Red = cannon, Blue = oars, Green = spotter";
 	}
 }

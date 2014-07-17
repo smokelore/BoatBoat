@@ -55,6 +55,7 @@ public class SpotterController : InputController {
 		//}
 
 		LerpCamera();
+		HUDText();
 	}
 
 	public override void Idle() {
@@ -84,5 +85,10 @@ public class SpotterController : InputController {
 			player.ResetController();
 			UnsetPlayer();
 		}
+	}
+
+	private void HUDText() {
+		Camera.main.GetComponent<HUD>().personName = "Left Stick to move camera";
+		Camera.main.GetComponent<HUD>().levelTheme = "B to dismount";
 	}
 }

@@ -4,7 +4,6 @@ using System.Collections;
 
 public class InputController : MonoBehaviour {
 	public Player player;
-
 	public Vector2 LeftStick;
 	public Vector2 RightStick;
 	public bool AButton;

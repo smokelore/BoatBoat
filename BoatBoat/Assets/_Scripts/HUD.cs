@@ -24,9 +24,11 @@ public class HUD : MonoBehaviour {
 			Application.LoadLevel("playtestScene");
 		} 
 
-		if(winState){
-			personName = "You Win! - Press 1 to Restart!";
-			hudGUI.guiText.text = personName;
+		if (winState){
+			personName = "You Win!";
+			levelTheme = "Press 1 to Restart";
 		}
+
+		hudGUI.guiText.text = personName + "\n" + levelTheme;
 	}
 }

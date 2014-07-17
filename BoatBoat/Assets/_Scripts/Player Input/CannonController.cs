@@ -31,6 +31,7 @@ public class CannonController : InputController {
 		AimControls();
 		ShootControls();
 		ReloadControls();
+		HUDText();
 	}
 
 	private void AimControls() {
@@ -78,5 +79,10 @@ public class CannonController : InputController {
 			player.ResetController();
 			UnsetPlayer();
 		}
+	}
+
+	private void HUDText() {
+		Camera.main.GetComponent<HUD>().personName = "Left Stick to aim, X to reload";
+		Camera.main.GetComponent<HUD>().levelTheme = "Right Trigger to shoot, B to Dismount";
 	}
 }
