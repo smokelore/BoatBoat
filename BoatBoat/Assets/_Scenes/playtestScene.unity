@@ -34358,7 +34358,7 @@ MonoBehaviour:
   cam: {fileID: 0}
   stickDeadzone: 0
   sensitivity: 1
-  defaultOffset: {x: 0, y: 4, z: -5}
+  defaultOffset: {x: 0, y: 4, z: -6}
   lerpSpeed: 1
   radius: 10
   targetOffset: {x: 0, y: 0, z: 0}

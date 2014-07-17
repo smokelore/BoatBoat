@@ -44,8 +44,9 @@ public class DefaultController : InputController {
 
 	public override void Mount() {
 		if (player.zone != null && AButton) {
-			this.player.SetController(player.zone.GetComponent<InputController>());
-			this.player = null;
+			if (this.player.SetController(player.zone.GetComponent<InputController>())) {
+				this.player = null;
+			}
 		}
 	}
 
