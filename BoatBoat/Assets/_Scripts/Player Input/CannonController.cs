@@ -3,12 +3,15 @@ using InControl;
 using System.Collections;
 
 public class CannonController : InputController {
-	public float speedFactor;
+	public GameObject boatboatObject;
 	public GameObject cannonObject;
 	public GameObject cannonballPrefab;
 	public Transform cannonballSpawn;
 	public GameObject cannonballTemp;
 	public bool loaded, canShoot;
+	public float stickDeadzone;
+	public float aimSpeed;
+	private float aimX;
 
 	// Use this for initialization
 	void Start () {
@@ -24,8 +27,19 @@ public class CannonController : InputController {
 			canShoot = false;
 		}
 
+		AimControls();
 		ShootControls();
 		ReloadControls();
+	}
+
+	private void AimControls() {
+		if (LeftStick.magnitude > stickDeadzone) {
+			float deltaX = aimSpeed * LeftStick.x * Time.deltaTime;
+			if (Mathf.Abs(aimX + deltaX) < 37.5f) {
+				aimX += deltaX;
+				cannonObject.transform.RotateAround(cannonObject.transform.position, boatboatObject.transform.up, deltaX);	
+			}			
+		}
 	}
 
 	private void ShootControls() {
