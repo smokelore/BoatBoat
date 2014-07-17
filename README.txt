@@ -80,6 +80,7 @@ OUTSIDE ASSETS:
 	10. Spout Push Sound - https://www.freesound.org/people/copyc4t/sounds/214898/
 	11. Spout Ambient Sound - https://www.freesound.org/people/mhtaylor67/sounds/236980/
 	12. Pingas Sound - https://www.youtube.com/watch?v=15CN3QZmssQ
+	13. Space Invaders Pirate Texture - http://s3.gamefreaks.co.nz/wp-content/uploads/2010/11/Space_Invaders_Pirate_Flag_by_deadroach.jpg
 NO SPECIAL INSTALL INSTRUCTIONS.
 
 MAIN SCENE TO BE OPENED FIRST - coleScene.unity

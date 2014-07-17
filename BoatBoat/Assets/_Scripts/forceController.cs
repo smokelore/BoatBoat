@@ -11,9 +11,9 @@ public class forceController : MonoBehaviour {
 	public float maxTurn, curMaxTurn;
 	public float idleDrag;
 	private bool movingForward, movingBackward;
-
+	public Cloth sailCloth;
+	public Vector3 clothAcceleration;
 	public float fakeVerticalAxis, fakeHorizontalAxis;
-
 	public List<OarController> allOars = new List<OarController>();
 
 	void Start () {
@@ -79,6 +79,9 @@ public class forceController : MonoBehaviour {
 			// if moving backward, redirect all velocity backward after turning
 			this.rigidbody.velocity = this.transform.forward * -planeVelocity.magnitude;
 		}
+
+		clothAcceleration = new Vector3(rigidbody.angularVelocity.y / maxTurn * 100f, 0f, 5f - localVelocity.z / maxSpeed * 5f);//curMaxTurn/maxTurn, 0);
+		sailCloth.externalAcceleration = clothAcceleration;
 	}
 
 	public void GetAllRows() {
