@@ -3,7 +3,7 @@ using InControl;
 using System.Collections;
 
 public class DefaultController : InputController {
-	public GameObject BoatBoat;
+	public GameObject boatboatObject;
 	public Collider WalkableArea;
 	public float speedFactor;
 	public GameObject zone;
@@ -32,6 +32,9 @@ public class DefaultController : InputController {
 
 			Vector3 movement = newRight * LeftStick.x * speedFactor + newForward * LeftStick.y * speedFactor;
 			Vector3 newLocation = this.transform.position + movement*Time.deltaTime; 
+			
+			newLocation.y = boatboatObject.transform.position.y + 0.3f; 	// FIX THIS MORE BETTER
+			
 			//Debug.Log("// " + newLocation);
 			if (WalkableArea.bounds.Contains(newLocation)) {
 				this.transform.position = newLocation;

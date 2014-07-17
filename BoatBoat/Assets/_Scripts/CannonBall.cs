@@ -6,9 +6,15 @@ public class CannonBall : MonoBehaviour {
 	public float lifetime;
 	public float speed;
 	
-	void Start () {
+	void Start() {
 		Shoot();
 		Destroy (gameObject, lifetime);
+	}
+
+	void Update() {
+		if (this.transform.position.y < 0) {
+			Destroy(gameObject);
+		}
 	}
 
 	public void Shoot() {
@@ -16,9 +22,12 @@ public class CannonBall : MonoBehaviour {
 	}
 
 	void OnCollisionEnter(Collision other) {
-		if (other.collider.tag != "Spout Sector") {
-			Instantiate(explosion, transform.position, transform.rotation);
+		if (other.collider.name == "Terrain" || other.collider.name == "Enemy" || other.collider.name == "Target") {
 			Destroy(gameObject);
 		}
+	}
+
+	void OnDestroy() {
+		Instantiate(explosion, transform.position, transform.rotation);
 	}
 }
