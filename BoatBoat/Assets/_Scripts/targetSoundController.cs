@@ -18,7 +18,7 @@ public class targetSoundController : MonoBehaviour {
 	void OnCollisionEnter(Collision collision){
 		if(collision.gameObject.name == "Ship"){
 			audio.Play ();
-			gameObject.GetComponent<HUD>().winState = true;
+			Camera.main.GetComponent<HUD>().winState = true;
 		}
 	}
 }
