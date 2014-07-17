@@ -5,7 +5,7 @@ public class HUD : MonoBehaviour {
 	public string personName;
 	public string levelTheme;
 	public GameObject hudGUI;
-	public 
+	public bool winState;
 
 	// Use this for initialization
 	void Start () {
@@ -23,5 +23,10 @@ public class HUD : MonoBehaviour {
 		} else if (Input.GetKeyUp(KeyCode.Alpha4)) {
 			Application.LoadLevel("playtestScene");
 		} 
+
+		if(winState){
+			personName = "You Win! - Press 1 to Restart!";
+			hudGUI.guiText.text = personName;
+		}
 	}
 }

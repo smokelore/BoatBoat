@@ -4,7 +4,6 @@ using System.Collections;
 public class SpawnSpout : MonoBehaviour
 {
 	public GameObject spouts;
-	private bool playerEnter = false;
 //	public float waveWait;
 //	public float spawnWait;
 	//private bool hasSpout = false;
@@ -22,7 +21,6 @@ public class SpawnSpout : MonoBehaviour
 	{
 		if (other.tag == "Player")
 		{
-			playerEnter = true;
 			InvokeRepeating ("MakeSpout", 1, 5);
 		}
 	}
@@ -31,7 +29,6 @@ public class SpawnSpout : MonoBehaviour
 	{
 		if (other.tag == "Player")
 		{
-			playerEnter = false;
 			CancelInvoke("MakeSpout");
 		}
 	}
