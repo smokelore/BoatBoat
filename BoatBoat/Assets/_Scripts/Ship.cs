@@ -81,6 +81,7 @@ public class Ship : MonoBehaviour {
 		//this.transform.Rotate(this.transform.forward, xAngle - this.transform.eulerAngles.x);
 		//this.transform.Rotate(this.transform.right, zAngle - this.transform.eulerAngles.z);
 		//Debug.Log(zAngle);
+
 	}
 
 	void FixedUpdate() {
