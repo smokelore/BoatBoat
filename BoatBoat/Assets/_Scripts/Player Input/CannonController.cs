@@ -3,6 +3,7 @@ using InControl;
 using System.Collections;
 
 public class CannonController : InputController {
+	public bool rightSide;
 	public GameObject boatboatObject;
 	public GameObject cannonObject;
 	public GameObject cannonballPrefab;
@@ -11,7 +12,7 @@ public class CannonController : InputController {
 	public bool loaded, canShoot;
 	public float stickDeadzone;
 	public float aimSpeed;
-	private float aimX;
+	public float aimX, aimY;
 
 	// Use this for initialization
 	void Start () {
@@ -33,12 +34,26 @@ public class CannonController : InputController {
 	}
 
 	private void AimControls() {
-		if (LeftStick.magnitude > stickDeadzone) {
+		// left/right movement
+		if (Mathf.Abs(LeftStick.x) > stickDeadzone) {
 			float deltaX = aimSpeed * LeftStick.x * Time.deltaTime;
-			if (Mathf.Abs(aimX + deltaX) < 37.5f) {
+			if (Mathf.Abs(aimX + deltaX) < 30f) {
 				aimX += deltaX;
 				cannonObject.transform.RotateAround(cannonObject.transform.position, boatboatObject.transform.up, deltaX);	
-			}			
+			}
+		}
+
+		// up/down movement
+		if (Mathf.Abs(LeftStick.y) > stickDeadzone) {
+			float deltaY = aimSpeed * LeftStick.y * Time.deltaTime;
+			if (rightSide) {
+				// if cannon is on the right side of the ship, up/down movement is reversed
+				deltaY = -deltaY;
+			}
+			if (Mathf.Abs(aimY + deltaY) < 15f) {
+				aimY += deltaY;
+				cannonObject.transform.RotateAround(cannonObject.transform.position, boatboatObject.transform.forward, deltaY);	
+			}				
 		}
 	}
 
