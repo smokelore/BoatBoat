@@ -11,7 +11,7 @@ public class SpotterController : InputController {
 	public float lerpSpeed;
 	private Vector3 aimAtPoint;
 	public float radius;
-	public float aimX = -90f, aimY = 0;
+	private float aimX = -1f, aimY = 0;
 	public Vector3 targetOffset;
 	public Vector3 zeroOffset;
 
@@ -25,16 +25,40 @@ public class SpotterController : InputController {
 	
 	// Controls is called once per frame
 	public override void Controls() {
+		float deltaX = 0f, deltaY = 0f;
+
 		// left/right controls
 		if (Mathf.Abs(LeftStick.x) > stickDeadzone) {
-			aimX += LeftStick.x * sensitivity * Time.deltaTime;
-			targetOffset = zeroOffset + Mathf.Sin(aimX * Mathf.PI/2) * Vector3.forward * radius + Mathf.Cos(aimX * Mathf.PI/2) * Vector3.right * radius;
+			deltaX = LeftStick.x * sensitivity * Time.deltaTime;
+			aimX += deltaX;
+			//targetOffset = zeroOffset + Mathf.Sin(aimX * Mathf.PI/2) * Vector3.forward * radius + Mathf.Cos(aimX * Mathf.PI/2) * Vector3.right * radius;
 		}
+
+		// up/down controls
+		if (Mathf.Abs(LeftStick.x) > stickDeadzone) {
+			deltaY = LeftStick.y * sensitivity*1.5f * Time.deltaTime;
+			if (aimY + deltaY > -zeroOffset.y && aimY + deltaY < 10f) {
+				aimY += deltaY;
+			}
+		}
+
+		// zoom controls
+		if (Mathf.Abs(RightStick.y) > stickDeadzone) {
+			float deltaRadius = -RightStick.y * sensitivity * Time.deltaTime;
+			if (radius + deltaRadius > 5f && radius + deltaRadius < 10f) {
+				radius += deltaRadius;
+			}
+		}
+
+		//if (deltaX + deltaY > 0f) {
+			targetOffset = zeroOffset + Mathf.Sin(aimX * Mathf.PI/2) * Vector3.forward * radius + Mathf.Cos(aimX * Mathf.PI/2) * Vector3.right * radius + aimY * Vector3.up;
+		//}
 
 		LerpCamera();
 	}
 
 	public override void Idle() {
+		radius = 5f;
 		LerpCamera();
 	}
 

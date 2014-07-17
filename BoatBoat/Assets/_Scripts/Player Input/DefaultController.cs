@@ -22,7 +22,14 @@ public class DefaultController : InputController {
 	private void MovementControls() {
 		this.transform.rotation = WalkableArea.transform.rotation;
 		if (LeftStick.magnitude > 0) {
-			Vector3 movement = WalkableArea.transform.right * LeftStick.x * speedFactor + WalkableArea.transform.forward * LeftStick.y * speedFactor;
+			Vector3 newForward = Camera.main.transform.forward;
+			newForward = new Vector3(newForward.x, 0, newForward.z).normalized;
+
+			Vector3 newRight = Camera.main.transform.right;
+			newRight = new Vector3(newRight.x, 0, newRight.z).normalized;
+
+
+			Vector3 movement = newRight * LeftStick.x * speedFactor + newForward * LeftStick.y * speedFactor;
 			Vector3 newLocation = this.transform.position + movement*Time.deltaTime; 
 			//Debug.Log("// " + newLocation);
 			if (WalkableArea.bounds.Contains(newLocation)) {
