@@ -14,6 +14,7 @@ public class SpotterController : InputController {
 	private float aimX = -1f, aimY = 0;
 	public Vector3 targetOffset;
 	public Vector3 zeroOffset;
+	public Vector3 aimOffset;
 
 	// Use this for initialization
 	void Start () {
@@ -64,14 +65,14 @@ public class SpotterController : InputController {
 	}
 
 	private void LerpCamera() {
-		aimAtPoint = boatboatObject.transform.position + Vector3.up * 2.5f;
-		cam.transform.LookAt(aimAtPoint);
-
 		Vector3 newForward = boatboatObject.transform.forward;
 		newForward = new Vector3(newForward.x, 0, newForward.z).normalized;
 
 		Vector3 newRight = boatboatObject.transform.right;
 		newRight = new Vector3(newRight.x, 0, newRight.z).normalized;
+
+		aimAtPoint = boatboatObject.transform.position + newRight * aimOffset.x + Vector3.up * aimOffset.y + newForward * aimOffset.z;
+		cam.transform.LookAt(aimAtPoint);
 
 		Vector3 currentPosition = cam.transform.position;
 		Vector3 targetPosition = boatboatObject.transform.position + newRight * targetOffset.x + Vector3.up * targetOffset.y + newForward * targetOffset.z;

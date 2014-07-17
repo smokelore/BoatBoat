@@ -9751,7 +9751,6 @@ GameObject:
   - 92: {fileID: 371161750}
   - 124: {fileID: 371161749}
   - 81: {fileID: 371161748}
-  - 114: {fileID: 371161747}
   - 114: {fileID: 371161746}
   - 45: {fileID: 371161745}
   m_Layer: 0
@@ -9797,22 +9796,6 @@ MonoBehaviour:
   levelTheme: 
   hudGUI: {fileID: 1291983017}
   winState: 0
---- !u!114 &371161747
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 11400006, guid: dfd0bbef2a2c2ac4b88fbf8408800159,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 371161743}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7bc514bb7b9cb9a4ab22b3524759d188, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerBoat: {fileID: 1087372591}
-  positionDifference: {x: 0, y: 2.5, z: -5}
-  lerpSpeed: 1
-  aimAtPoint: {x: 0, y: 0, z: 0}
 --- !u!81 &371161748
 AudioListener:
   m_ObjectHideFlags: 0
@@ -9852,7 +9835,7 @@ Camera:
     height: 1
   near clip plane: .300000012
   far clip plane: 500
-  field of view: 75
+  field of view: 40
   orthographic: 0
   orthographic size: 5
   m_Depth: -1
@@ -34375,11 +34358,12 @@ MonoBehaviour:
   cam: {fileID: 0}
   stickDeadzone: 0
   sensitivity: 1
-  defaultOffset: {x: 0, y: 2.5, z: -5}
+  defaultOffset: {x: 0, y: 4, z: -5}
   lerpSpeed: 1
   radius: 10
   targetOffset: {x: 0, y: 0, z: 0}
-  zeroOffset: {x: 0, y: 5, z: 0}
+  zeroOffset: {x: 0, y: 4, z: 0}
+  aimOffset: {x: 0, y: 1.5, z: 0}
 --- !u!23 &1411228572
 Renderer:
   m_ObjectHideFlags: 0
