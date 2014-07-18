@@ -36,6 +36,7 @@ OUTSIDE RESOURCES:
 	6. Boat accessories - https://3dwarehouse.sketchup.com/model.html?id=6a65cd6bd6897cbb42df9eeba89a416c
 	7. Boat hull - https://3dwarehouse.sketchup.com/model.html?id=24cdab178b28271296a1d1a7ead34b37
 	8. Space Invaders Pirate Texture - http://s3.gamefreaks.co.nz/wp-content/uploads/2010/11/Space_Invaders_Pirate_Flag_by_deadroach.jpg
+	9. InControl - https://github.com/pbhogan/InControl
 
 SPECIAL INSTRUCTIONS:
 	Controller is required! Most gamepad controllers are accepted!
@@ -58,7 +59,7 @@ HOW TO PLAY:
 		To capture the cooperation required and frustration of working with others aboard a sailboat to reach a destination. This is achieved by having more positions than players, and having many reasons to be in many places occuring at once. The sailing itself is also designed to be a mirror of actual paddleboat physics. The rocking with the waves and the force required to pilot BoatBoat are similar to how a paddleboat actually functions.
 
 MAIN SCENE FILE:
-	playtestScene
+	\_Scenes\playtestScene.unity
 
 URL:
 	<insert URL here>
