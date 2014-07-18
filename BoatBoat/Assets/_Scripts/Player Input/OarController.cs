@@ -223,8 +223,7 @@ public class OarController : InputController {
 
 	public void splash(){
 		if(isHittingWater (RightStick, 80)){
-			splasher.transform.position = rightOar.transform.position + rightOar.transform.right;
-			splasher.Emit (25);
+			splasher.Emit (5);
 		}
 	}
 }
