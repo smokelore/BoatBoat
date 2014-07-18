@@ -12,6 +12,7 @@ public class OarController : InputController {
 	public GameObject rightOar;
 	public Transform rightguideball;
 	public Transform leftguideball;
+	public ParticleSystem splasher;
 
 	/*public bool leftOarStarted;
 	public bool leftOarEnded;
@@ -163,6 +164,8 @@ public class OarController : InputController {
 		//**** OAR ANIMATION END****//
 
 		HUDText();
+
+		splash();
 	}
 
 	private bool isHittingWater(Vector2 stick, float degreeRange) {
@@ -216,5 +219,12 @@ public class OarController : InputController {
 	private void HUDText() {
 		Camera.main.GetComponent<HUD>().personName = "Left and Right Sticks to row oars";
 		Camera.main.GetComponent<HUD>().levelTheme = "B to Dismount";
+	}
+
+	public void splash(){
+		if(isHittingWater (RightStick, 80)){
+			splasher.transform.position = rightOar.transform.position + rightOar.transform.right;
+			splasher.Emit (25);
+		}
 	}
 }

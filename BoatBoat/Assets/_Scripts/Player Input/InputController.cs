@@ -36,7 +36,7 @@ public class InputController : MonoBehaviour {
 			LeftBumper = player.device.GetControl(InputControlType.LeftBumper).IsPressed;
 			RightBumper = player.device.GetControl(InputControlType.RightBumper).IsPressed;
 
-			Debug.Log(AButton);
+			//Debug.Log(AButton);
 			Controls();
 
 			Mount();
