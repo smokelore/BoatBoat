@@ -223,6 +223,7 @@ public class OarController : InputController {
 
 	public void splash(){
 		if(isHittingWater (RightStick, 80)){
+			splasher.transform.eulerAngles = new Vector3(270, 0, 0);
 			splasher.Emit (5);
 		}
 	}
