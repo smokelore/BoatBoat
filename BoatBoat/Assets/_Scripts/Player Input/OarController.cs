@@ -12,7 +12,10 @@ public class OarController : InputController {
 	public GameObject rightOar;
 	public Transform rightguideball;
 	public Transform leftguideball;
-	public ParticleSystem splasher;
+	public ParticleSystem rightSplasher;
+	public ParticleSystem leftSplasher;
+	private int rightSplashCount;
+	private int leftSplashCount;
 
 	/*public bool leftOarStarted;
 	public bool leftOarEnded;
@@ -223,8 +226,13 @@ public class OarController : InputController {
 
 	public void splash(){
 		if(isHittingWater (RightStick, 80)){
-			splasher.transform.eulerAngles = new Vector3(270, 0, 0);
-			splasher.Emit (5);
+			rightSplasher.transform.eulerAngles = new Vector3(270, 0, 0);
+			if(rightSplashCount < 15){
+				rightSplasher.Emit (5);
+			}
+			rightSplashCount++;
+		}else{
+			rightSplashCount = 0;
 		}
 	}
 }

@@ -4898,7 +4898,8 @@ MonoBehaviour:
   rightOar: {fileID: 340973333}
   rightguideball: {fileID: 149713937}
   leftguideball: {fileID: 1440320164}
-  splasher: {fileID: 667192860}
+  rightSplasher: {fileID: 667192860}
+  leftSplasher: {fileID: 0}
   maxHeight: 1
   rowSpeedMax: 8
   prevLeftStick: {x: 0, y: 0}
@@ -16230,7 +16231,7 @@ GameObject:
   - 198: {fileID: 667192860}
   - 199: {fileID: 667192859}
   m_Layer: 0
-  m_Name: Splashes
+  m_Name: SplashR1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -16446,7 +16447,7 @@ ParticleSystem:
         rgba: 4294812214
       minMaxState: 0
     startSize:
-      scalar: 1
+      scalar: .100000001
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -16513,7 +16514,7 @@ ParticleSystem:
       minMaxState: 0
     gravityModifier: 1
     inheritVelocity: 1
-    maxNumParticles: 5
+    maxNumParticles: 100
   ShapeModule:
     serializedVersion: 2
     enabled: 1
@@ -25151,6 +25152,10 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 11400010, guid: dfd0bbef2a2c2ac4b88fbf8408800159, type: 2}
       propertyPath: splasher
+      value: 
+      objectReference: {fileID: 667192860}
+    - target: {fileID: 11400010, guid: dfd0bbef2a2c2ac4b88fbf8408800159, type: 2}
+      propertyPath: rightSplasher
       value: 
       objectReference: {fileID: 667192860}
     m_RemovedComponents: []
@@ -43342,7 +43347,8 @@ MonoBehaviour:
   rightOar: {fileID: 698795538}
   rightguideball: {fileID: 378618483}
   leftguideball: {fileID: 164056470}
-  splasher: {fileID: 0}
+  rightSplasher: {fileID: 0}
+  leftSplasher: {fileID: 0}
   maxHeight: 1
   rowSpeedMax: 8
   prevLeftStick: {x: 0, y: 0}
