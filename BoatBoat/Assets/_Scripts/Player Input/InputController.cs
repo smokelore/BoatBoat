@@ -15,7 +15,7 @@ public class InputController : MonoBehaviour {
 	public bool LeftBumper;
 	public bool RightBumper;
 
-	void Start() {
+	public void Start() {
 		InputManager.Setup();
 		//SetPlayer(1);
 	}
@@ -23,6 +23,7 @@ public class InputController : MonoBehaviour {
 	void Update() {
 		if (HasPlayer()) {
 			InputManager.Update();
+
 			// Update input values
 			LeftStick = new Vector2(player.device.LeftStickX, player.device.LeftStickY);
 			RightStick = new Vector2(player.device.RightStickX, player.device.RightStickY);
@@ -35,6 +36,7 @@ public class InputController : MonoBehaviour {
 			LeftBumper = player.device.GetControl(InputControlType.LeftBumper).IsPressed;
 			RightBumper = player.device.GetControl(InputControlType.RightBumper).IsPressed;
 
+			Debug.Log(AButton);
 			Controls();
 
 			Mount();

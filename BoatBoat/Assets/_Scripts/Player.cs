@@ -4,9 +4,11 @@ using InControl;
 
 public class Player : MonoBehaviour {
 	public int playerNum;
+	public int actualPlayerNum;
 	public InputController controller;
 	public InputDevice device;
 	public GameObject zone;
+	private int oldNumDevices;
 
 	// Use this for initialization
 	void Start () {
@@ -15,10 +17,41 @@ public class Player : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if (device == null) {
+		if (InputManager.Devices.Count != oldNumDevices) {
 			Debug.Log("Number of Devices Available: " + InputManager.Devices.Count);
-			device = InputManager.Devices[playerNum];
+			device = null;
 		}
+
+		if (device == null) {
+			//Debug.Log(playerNum + ", " + actualPlayerNum + ": null device");
+			actualPlayerNum = FindActualPlayerNum();
+			if (actualPlayerNum < InputManager.Devices.Count && actualPlayerNum > -1) {
+				device = InputManager.Devices[actualPlayerNum];
+				Debug.Log(playerNum + ", " + actualPlayerNum + ": " + (device as UnityInputDevice).Profile);
+				Enable();
+			} else {
+				Disable();
+			}
+		}
+
+		oldNumDevices = InputManager.Devices.Count;
+	}
+
+	public int FindActualPlayerNum() {
+		int i = 0;
+		int found = 0;
+		while (i < InputManager.Devices.Count) {
+			if ((InputManager.Devices[i] as UnityInputDevice).Profile.IsKnown) {
+				if (found == playerNum) {
+					return i;
+				}
+
+				found++;
+			}
+			i++;
+		}
+
+		return -1;
 	}
 
 	public bool SetController(InputController newController) {
@@ -43,6 +76,20 @@ public class Player : MonoBehaviour {
 			this.controller = defaultController;
 			Debug.Log("Player " + playerNum + " dismount successful");
 		}
+	}
+
+	public void Disable() {
+		this.renderer.enabled = false;
+		this.collider.enabled = false;
+		controller.player = null;
+		zone = null;
+	}
+
+	public void Enable() {
+		this.renderer.enabled = true;
+		this.collider.enabled = true;
+		controller.player = this;
+		ResetController();
 	}
 
 	void OnTriggerEnter(Collider collider) {
