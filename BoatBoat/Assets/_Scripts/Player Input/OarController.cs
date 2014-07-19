@@ -234,5 +234,15 @@ public class OarController : InputController {
 		}else{
 			rightSplashCount = 0;
 		}
+
+		if(isHittingWater(LeftStick, 80)){
+			leftSplasher.transform.eulerAngles = new Vector3(270, 0, 0);
+			if(leftSplashCount < 15){
+				leftSplasher.Emit (5);
+			}
+			leftSplashCount++;
+		}else{
+			leftSplashCount = 0;
+		}
 	}
 }
