@@ -15,6 +15,7 @@ public class Ship : MonoBehaviour {
 	//private SpoutMove spoutMove;
 	//private bool spoutUpDirection;
 	public AudioClip spoutSound;
+	public bool sinking;
 
 	private Vector3 pointN, pointE, pointS, pointW;
 	private float width, length, zAngle, xAngle;
@@ -81,6 +82,9 @@ public class Ship : MonoBehaviour {
 		//this.transform.Rotate(this.transform.forward, xAngle - this.transform.eulerAngles.x);
 		//this.transform.Rotate(this.transform.right, zAngle - this.transform.eulerAngles.z);
 		//Debug.Log(zAngle);
+		if(Input.GetKeyDown (KeyCode.Backspace)){
+			sinking = true;
+		}
 
 	}
 
@@ -100,6 +104,8 @@ public class Ship : MonoBehaviour {
 			rigidbody.AddForce(Vector3.up * pushUpSpeed);
 		} else if (!hitFlag && this.transform.position.y > targetHeight + 1f) {
 			rigidbody.AddForce(-Vector3.up * pushUpSpeed/2);
+		}else if(sinking){
+			sink();
 		} else {
 			this.transform.position = new Vector3(x, targetHeight, z);
 			this.rigidbody.AddTorque(this.transform.right * zAngle/3);
@@ -130,5 +136,10 @@ public class Ship : MonoBehaviour {
 	    return Mathf.Atan2(
 	        Vector3.Dot(n, Vector3.Cross(v1, v2)),
 	        Vector3.Dot(v1, v2)) * Mathf.Rad2Deg;
+	}
+
+	void sink(){
+		this.rigidbody.AddTorque (this.transform.right * -0.5f);
+		this.rigidbody.AddForce(Vector3.down * 20);
 	}
 }

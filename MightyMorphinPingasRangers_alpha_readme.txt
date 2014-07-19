@@ -1,4 +1,4 @@
-MightyMorphinPingasRangers_alpha_readme.txt
+MightyMorphinPingasRangers_m4_readme.txt
 
 TEAM:
 Sebastian Monroy - sebash@gatech.edu - smonroy3
@@ -6,26 +6,15 @@ Thomas Cole Carver - tcarver3@gatech.edu - tcarver3
 Chase Johnston - cjohnston8@gatech.edu - cjohnston8
 Jory Folker - jfolker10@outlook.com - jfolker3
 
-GAME FEATURES:
-In BoatBoat, four players take up roles as the crew of BoatBoat, the mightiest vessel on the great blue! There are many jobs available aboard BoatBoat, and the crew will have to work together to weather the dangers of the waters and find the hidden treasure! Cooperation will be rewarded, but squabble and you'll find yourselves in Davy Jones' Locker!
-	Working Features:
-		Four players roaming the deck of BoatBoat.
-		Mounting any of the three types of stations.
-		Unmounting any of the three types of stations in order to explore the deck.
-		Control scheme changes to match the station.
-		When mounted on Oars:
-			Padding Oars is controlled by rotating the Left and Right stick.
-		When mounted on Cannons:
-			Loading Cannons is performed by pressing X(xbox)/[](psx).
-			Firing Cannons is performed by pressing RightTrigger(xbox)/R2(psx).
-		When mounted on Lookout:
-			Changing the camera angle is performed by moving the Left stick.
-		There is a hidden target in the level, finding and touching that target moves the players into the Win-State, prompting them to restart the game with a press of the "1" key. "1" can be pressed at any time to restart!
-		The river rapids can take you on a wild ride through a narrow straight, without the need of crewmen paddling BoatBoat!
-		Enemy AI with patrolling, chasing, and flanking behaviors!
-	Features not showcased in Alpha:
-		HUD Healthbar to show the state of BoatBoat.
-		The ability to sink the enemy ships.
+COMPLETED REQUIREMENTS:
+	Environmental Animation - Programmatic Scripts:
+		Animated Part #1 - Ocean Mesh:
+			The ocean mesh uses a Perlin Map in order to determine wave height. There are many vertexes on the wave mesh that determine their height via the pixel color of the perlin map.
+		Animated Part #2 - Ship:
+			The ship consists of many moving parts. The Ship object has a cloth sail that moves depending upon motion of the ship. The ship also has 4 rotating oars where motion depends upon player input when a player is mounted on the oar zone. Similarly, the ship has 6 rotation cannons that can be aimed by any player mounted on a cannon zone. The ship also has a simple sinking animation, which rotates the ship backwards and pushes it downwards under the ocean mesh.
+		Physical Collider - The Ship:
+			The Ship object contains a capsule collider that interacts with outside elements. Other enemy ships (which use the same collider and movement scripts as the player ship) can ram the player ship. The player can also push forward through gates, ram the target, and bump onto land! To much damage to the hull will eventually cause the player to sink!
+
 
 OUTSIDE RESOURCES:
     1. Wood Texture - https://support.solidangle.com/download/attachments/1083508/wood-flooring-041_d.jpg?api=v2
