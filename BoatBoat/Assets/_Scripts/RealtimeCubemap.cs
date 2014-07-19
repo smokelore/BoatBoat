@@ -6,14 +6,13 @@ public class RealtimeCubemap : MonoBehaviour {
 	public RenderTexture rendertexture;
 	public Camera cam;
 	public GameObject boatboatObject;
-	private Vector3 aimAtPoint;
+	public SpotterController spotterZoneController;
 	//public Vector3 camPositionOffset;
 	//public Vector3 camTargetOffset;
 
 	// Use this for initialization
 	void Start () {
 		rendertexture.isCubemap = true;
-		
 	}
 	
 	// Update is called once per frame
@@ -45,12 +44,10 @@ public class RealtimeCubemap : MonoBehaviour {
 		//Vector3 aimAtPoint = boatboatObject.transform.position + newForward * camTargetOffset.z + newRight * camTargetOffset.x + Vector3.up * camTargetOffset.y;
 		Vector3 newPosition = Camera.main.transform.position;
 		newPosition = new Vector3(newPosition.x, -newPosition.y, newPosition.z);
-		aimAtPoint = Camera.main.gameObject.GetComponent<cameraController>().aimAtPoint;
+		Vector3 aimAtPoint = boatboatObject.transform.position + spotterZoneController.aimOffset;
 
 		cam.transform.position = newPosition;
 		cam.transform.LookAt(aimAtPoint);
-
-
 
 		//rendertexture = new RenderTexture (64, 64, 16);
 		rendertexture.isCubemap = true;

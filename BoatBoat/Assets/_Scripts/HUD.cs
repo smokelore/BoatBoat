@@ -15,14 +15,10 @@ public class HUD : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		if (Input.GetKeyUp(KeyCode.Alpha1)) {
-			Application.LoadLevel("playtestScene");
+			Application.LoadLevel("playtestScene DiffuseWater");
 		} else if (Input.GetKeyUp(KeyCode.Alpha2)) {
-			Application.LoadLevel("playtestScene");
-		} else if (Input.GetKeyUp(KeyCode.Alpha3)) {
-			Application.LoadLevel("playtestScene");
-		} else if (Input.GetKeyUp(KeyCode.Alpha4)) {
-			Application.LoadLevel("playtestScene");
-		} 
+			Application.LoadLevel("playtestScene ReflectiveWater");
+		}
 
 		if (winState){
 			personName = "You Win!";

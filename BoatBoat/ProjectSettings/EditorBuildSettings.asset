@@ -8,4 +8,6 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/InControl/Test/TestInputManager.unity
   - enabled: 1
-    path: Assets/_Scenes/playtestScene.unity
+    path: Assets/_Scenes/playtestScene DiffuseWater.unity
+  - enabled: 1
+    path: Assets/_Scenes/playtestScene ReflectiveWater.unity
