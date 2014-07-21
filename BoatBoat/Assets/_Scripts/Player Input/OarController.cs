@@ -92,14 +92,14 @@ public class OarController : InputController {
 
 	public override void Idle() {
 		float speed = 1f;
-		if (Mathf.Abs(currentRightStick.x - 0f) > 0.05f || Mathf.Abs(currentRightStick.y + 1f) > 0.05f) {
+		if (Mathf.Abs(currentRightStick.x - 0f) > 0.1f || Mathf.Abs(currentRightStick.y + 1f) > 0.1f) {
 			currentRightStick.x = Mathf.Lerp(currentRightStick.x, 0f, Time.deltaTime * speed);
 			currentRightStick.y = Mathf.Lerp(currentRightStick.y, -1f, Time.deltaTime * speed);
 			rightguideball.position = rightOar.transform.position + BoatBoat.transform.right * rightOar.transform.Find("Oar").lossyScale.x + BoatBoat.transform.up * currentRightStick.y * maxHeight - BoatBoat.transform.forward * currentRightStick.x * maxHeight;
 			rightOar.transform.LookAt(rightguideball);
 		}
 
-		if (Mathf.Abs(currentLeftStick.x - 0f) > 0.05f || Mathf.Abs(currentLeftStick.y + 1f) > 0.05f) {
+		if (Mathf.Abs(currentLeftStick.x - 0f) > 0.1f || Mathf.Abs(currentLeftStick.y + 1f) > 0.1f) {
 			currentLeftStick.x = Mathf.Lerp(currentLeftStick.x, 0f, Time.deltaTime * speed);
 			currentLeftStick.y = Mathf.Lerp(currentLeftStick.y, -1f, Time.deltaTime * speed);
 			leftguideball.position = leftOar.transform.position - BoatBoat.transform.right * leftOar.transform.Find("Oar").lossyScale.x + BoatBoat.transform.up * currentLeftStick.y * maxHeight + BoatBoat.transform.forward * currentLeftStick.x * maxHeight;

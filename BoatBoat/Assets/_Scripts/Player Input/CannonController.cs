@@ -15,11 +15,13 @@ public class CannonController : InputController {
 	public float aimSpeed;
 	public float aimX, aimY;
 	private bool needsResetting;
+	private LineRenderer lineRenderer;
 
 	// Use this for initialization
 	void Start () {
 		InputManager.Setup();
 		cannonballSpawn = cannonObject.transform.Find("chamber/spawn");
+		lineRenderer = cannonballSpawn.gameObject.GetComponent<LineRenderer>();
 	}
 	
 	// Controls is called once per frame
@@ -92,6 +94,8 @@ public class CannonController : InputController {
 	}
 
 	public override void Idle() {
+		ClearTrajectory();
+
 		if (needsResetting) {
 			aimX = 0f;
 			aimY = 0f;
@@ -128,19 +132,17 @@ public class CannonController : InputController {
 			}
 		}
 
-		LineRenderer lr = cannonballSpawn.gameObject.GetComponent<LineRenderer>();
-		if (lr != null) {
-			lr.SetVertexCount(positions.Count);
+		if (lineRenderer != null) {
+			lineRenderer.SetVertexCount(positions.Count);
 			for (int i = 0; i < positions.Count; i++) {
-				lr.SetPosition(i, positions[i]);
+				lineRenderer.SetPosition(i, positions[i]);
 			}
 		}
 	}
 
 	private void ClearTrajectory() {
-		LineRenderer lr = cannonballSpawn.gameObject.GetComponent<LineRenderer>();
-		if (lr != null) {
-			lr.SetVertexCount(0);
+		if (lineRenderer != null) {
+			lineRenderer.SetVertexCount(0);
 		}
 	}
 

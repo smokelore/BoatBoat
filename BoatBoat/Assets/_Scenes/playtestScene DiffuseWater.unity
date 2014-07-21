@@ -1306,6 +1306,7 @@ GameObject:
   - 4: {fileID: 43563580}
   - 33: {fileID: 43563582}
   - 23: {fileID: 43563581}
+  - 120: {fileID: 43563583}
   m_Layer: 0
   m_Name: spawn
   m_TagString: Untagged
@@ -1354,6 +1355,37 @@ MeshFilter:
   m_PrefabInternal: {fileID: 1647513533}
   m_GameObject: {fileID: 43563579}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!120 &43563583
+LineRenderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 43563579}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 0
+  m_LightmapIndex: 255
+  m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
+  m_Materials:
+  - {fileID: 2100000, guid: 31852f4166a292244b75cc01ac2a13c4, type: 2}
+  m_SubsetIndices: 
+  m_StaticBatchRoot: {fileID: 0}
+  m_UseLightProbes: 0
+  m_LightProbeAnchor: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_SortingLayerID: 0
+  m_SortingOrder: 0
+  m_Positions: []
+  m_Parameters:
+    startWidth: .0299999993
+    endWidth: .200000003
+    m_StartColor:
+      serializedVersion: 2
+      rgba: 2533359615
+    m_EndColor:
+      serializedVersion: 2
+      rgba: 520093695
+  m_UseWorldSpace: 1
 --- !u!1 &50545746
 GameObject:
   m_ObjectHideFlags: 0
@@ -3983,6 +4015,7 @@ GameObject:
   - 4: {fileID: 155604786}
   - 33: {fileID: 155604788}
   - 23: {fileID: 155604787}
+  - 120: {fileID: 155604789}
   m_Layer: 0
   m_Name: spawn
   m_TagString: Untagged
@@ -4031,6 +4064,37 @@ MeshFilter:
   m_PrefabInternal: {fileID: 1647513533}
   m_GameObject: {fileID: 155604785}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!120 &155604789
+LineRenderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 155604785}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 0
+  m_LightmapIndex: 255
+  m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
+  m_Materials:
+  - {fileID: 2100000, guid: 31852f4166a292244b75cc01ac2a13c4, type: 2}
+  m_SubsetIndices: 
+  m_StaticBatchRoot: {fileID: 0}
+  m_UseLightProbes: 0
+  m_LightProbeAnchor: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_SortingLayerID: 0
+  m_SortingOrder: 0
+  m_Positions: []
+  m_Parameters:
+    startWidth: .0299999993
+    endWidth: .200000003
+    m_StartColor:
+      serializedVersion: 2
+      rgba: 2533359615
+    m_EndColor:
+      serializedVersion: 2
+      rgba: 520093695
+  m_UseWorldSpace: 1
 --- !u!1 &155703616
 GameObject:
   m_ObjectHideFlags: 0
@@ -39292,6 +39356,7 @@ GameObject:
   - 4: {fileID: 1475870712}
   - 33: {fileID: 1475870714}
   - 23: {fileID: 1475870713}
+  - 120: {fileID: 1475870715}
   m_Layer: 0
   m_Name: spawn
   m_TagString: Untagged
@@ -39340,6 +39405,37 @@ MeshFilter:
   m_PrefabInternal: {fileID: 1647513533}
   m_GameObject: {fileID: 1475870711}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!120 &1475870715
+LineRenderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1475870711}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 0
+  m_LightmapIndex: 255
+  m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
+  m_Materials:
+  - {fileID: 2100000, guid: 31852f4166a292244b75cc01ac2a13c4, type: 2}
+  m_SubsetIndices: 
+  m_StaticBatchRoot: {fileID: 0}
+  m_UseLightProbes: 0
+  m_LightProbeAnchor: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_SortingLayerID: 0
+  m_SortingOrder: 0
+  m_Positions: []
+  m_Parameters:
+    startWidth: .0299999993
+    endWidth: .200000003
+    m_StartColor:
+      serializedVersion: 2
+      rgba: 2533359615
+    m_EndColor:
+      serializedVersion: 2
+      rgba: 520093695
+  m_UseWorldSpace: 1
 --- !u!1 &1476394258
 GameObject:
   m_ObjectHideFlags: 0
@@ -42779,6 +42875,7 @@ GameObject:
   - 4: {fileID: 1592123365}
   - 33: {fileID: 1592123367}
   - 23: {fileID: 1592123366}
+  - 120: {fileID: 1592123368}
   m_Layer: 0
   m_Name: spawn
   m_TagString: Untagged
@@ -42827,6 +42924,37 @@ MeshFilter:
   m_PrefabInternal: {fileID: 1647513533}
   m_GameObject: {fileID: 1592123364}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!120 &1592123368
+LineRenderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1592123364}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 0
+  m_LightmapIndex: 255
+  m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
+  m_Materials:
+  - {fileID: 2100000, guid: 31852f4166a292244b75cc01ac2a13c4, type: 2}
+  m_SubsetIndices: 
+  m_StaticBatchRoot: {fileID: 0}
+  m_UseLightProbes: 0
+  m_LightProbeAnchor: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_SortingLayerID: 0
+  m_SortingOrder: 0
+  m_Positions: []
+  m_Parameters:
+    startWidth: .0299999993
+    endWidth: .200000003
+    m_StartColor:
+      serializedVersion: 2
+      rgba: 2533359615
+    m_EndColor:
+      serializedVersion: 2
+      rgba: 520093695
+  m_UseWorldSpace: 1
 --- !u!1 &1593897239
 GameObject:
   m_ObjectHideFlags: 0
@@ -54016,6 +54144,7 @@ GameObject:
   - 4: {fileID: 2032354791}
   - 33: {fileID: 2032354793}
   - 23: {fileID: 2032354792}
+  - 120: {fileID: 2032354794}
   m_Layer: 0
   m_Name: spawn
   m_TagString: Untagged
@@ -54064,6 +54193,37 @@ MeshFilter:
   m_PrefabInternal: {fileID: 1647513533}
   m_GameObject: {fileID: 2032354790}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!120 &2032354794
+LineRenderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2032354790}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 0
+  m_LightmapIndex: 255
+  m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
+  m_Materials:
+  - {fileID: 2100000, guid: 31852f4166a292244b75cc01ac2a13c4, type: 2}
+  m_SubsetIndices: 
+  m_StaticBatchRoot: {fileID: 0}
+  m_UseLightProbes: 0
+  m_LightProbeAnchor: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_SortingLayerID: 0
+  m_SortingOrder: 0
+  m_Positions: []
+  m_Parameters:
+    startWidth: .0299999993
+    endWidth: .200000003
+    m_StartColor:
+      serializedVersion: 2
+      rgba: 2533359615
+    m_EndColor:
+      serializedVersion: 2
+      rgba: 520093695
+  m_UseWorldSpace: 1
 --- !u!1 &2033227854
 GameObject:
   m_ObjectHideFlags: 0
