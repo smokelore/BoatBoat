@@ -43,104 +43,23 @@ public class OarController : InputController {
 
 	// Use this for initialization
 	void Start () {
+		currentLeftStick.y = -1f;
+		prevLeftStick.y = -1f;
+		currentRightStick.y = -1f;
+		prevRightStick.y = -1f;
+
 		forcer = BoatBoat.GetComponent<forceController>();
 		forcer.allOars.Add(this);
-		InputManager.Setup();
-//		rightguideball.position = new Vector3(rightguideball.position.x, -1, rightguideball.position.z);
-//		rightOar.transform.LookAt(rightguideball);
-//
-//		leftguideball.position = new Vector3(leftguideball.position.x, -1, leftguideball.position.z);
-//		leftOar.transform.LookAt(leftguideball);
 	}
 	
 	// Controls is called once per frame
 	public override void Controls() {
-		/*leftOarPrevious = leftOarCurrent;
-		leftOarCurrent = LeftStick.y;
-
-		if (leftOarStarted) {
-			if (leftOarEnded) {
-				// row finished
-				if (leftOarFinal > leftOarInitial) {
-					Row(false, Mathf.Pow((leftOarFinal - leftOarInitial)/2, 2));
-				}
-				leftOarStarted = false;
-			} else {
-				// row in progress
-				if (leftOarCurrent >= leftOarPrevious) {
-					// still rowing
-					leftOarFinal = leftOarCurrent;
-				} else {
-					// stopped rowing
-					leftOarEnded = true;
-				}
-			}
-		} else {
-			if (leftOarEnded) {
-				// row needs resetting
-				if (leftOarCurrent > leftOarPrevious) {
-					// new row started before last row reset
-					leftOarStarted = true;
-					leftOarEnded = false;
-					leftOarInitial = leftOarCurrent;
-				}
-			} else {
-				// row already reset
-				if (leftOarCurrent > 0) {
-					// new row started
-					leftOarStarted = true;
-					leftOarInitial = leftOarCurrent;
-				}
-			}
-		}*/
-
-		/*rightOarPrevious = rightOarCurrent;
-		rightOarCurrent = RightStick.y;
-
-		if (rightOarStarted) {
-			if (rightOarEnded) {
-				// row finished
-				if (rightOarFinal > rightOarInitial) {
-					Row(true, Mathf.Pow((rightOarFinal - rightOarInitial)/2, 2));
-				}
-				rightOarStarted = false;
-			} else {
-				// row in progress
-				if (rightOarCurrent >= rightOarPrevious) {
-					// still rowing
-					rightOarFinal = rightOarCurrent;
-				} else {
-					// stopped rowing
-					rightOarEnded = true;
-				}
-			}
-		} else {
-			if (rightOarEnded) {
-				// row needs resetting
-				if (rightOarCurrent > rightOarPrevious) {
-					// new row started before last row reset
-					rightOarStarted = true;
-					rightOarEnded = false;
-					rightOarInitial = rightOarCurrent;
-				}
-			} else {
-				// row already reset
-				if (rightOarCurrent > 0) {
-					// new row started
-					rightOarStarted = true;
-					rightOarInitial = rightOarCurrent;
-				}
-			}
-		}*/
 
 		prevRightStick = currentRightStick;
 		currentRightStick = RightStick;
 
 		prevLeftStick = currentLeftStick;
 		currentLeftStick = LeftStick;
-
-		//Row(true, getRightRowAmount());
-		//Row(false, getLeftRowAmount());
 
 		//****OAR ANIMATION****//
 
@@ -169,6 +88,19 @@ public class OarController : InputController {
 		HUDText();
 
 		splash();
+	}
+
+	public override void Idle() {
+		float speed = 1f;
+		currentRightStick.x = Mathf.Lerp(currentRightStick.x, 0f, Time.deltaTime * speed);
+		currentRightStick.y = Mathf.Lerp(currentRightStick.y, -1f, Time.deltaTime * speed);
+		rightguideball.position = rightOar.transform.position + BoatBoat.transform.right * rightOar.transform.Find("Oar").lossyScale.x + BoatBoat.transform.up * currentRightStick.y * maxHeight - BoatBoat.transform.forward * currentRightStick.x * maxHeight;
+		rightOar.transform.LookAt(rightguideball);
+
+		currentLeftStick.x = Mathf.Lerp(currentLeftStick.x, 0f, Time.deltaTime * speed);
+		currentLeftStick.y = Mathf.Lerp(currentLeftStick.y, -1f, Time.deltaTime * speed);
+		leftguideball.position = leftOar.transform.position - BoatBoat.transform.right * leftOar.transform.Find("Oar").lossyScale.x + BoatBoat.transform.up * currentLeftStick.y * maxHeight + BoatBoat.transform.forward * currentLeftStick.x * maxHeight;
+		leftOar.transform.LookAt(leftguideball);
 	}
 
 	private bool isHittingWater(Vector2 stick, float degreeRange) {
