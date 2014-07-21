@@ -83,7 +83,7 @@ TrailRenderer:
   m_GameObject: {fileID: 100000}
   m_Enabled: 1
   m_CastShadows: 1
-  m_ReceiveShadows: 1
+  m_ReceiveShadows: 0
   m_LightmapIndex: 255
   m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
   m_Materials:
@@ -95,22 +95,22 @@ TrailRenderer:
   m_ScaleInLightmap: 1
   m_SortingLayerID: 0
   m_SortingOrder: 0
-  m_Time: 5
-  m_StartWidth: 1
-  m_EndWidth: 1
+  m_Time: .200000003
+  m_StartWidth: .0299999993
+  m_EndWidth: 0
   m_Colors:
     m_Color[0]:
       serializedVersion: 2
       rgba: 4294967295
     m_Color[1]:
       serializedVersion: 2
-      rgba: 4294967295
+      rgba: 3053453311
     m_Color[2]:
       serializedVersion: 2
-      rgba: 4294967295
+      rgba: 1660944383
     m_Color[3]:
       serializedVersion: 2
-      rgba: 4294967295
+      rgba: 838860799
     m_Color[4]:
       serializedVersion: 2
       rgba: 16777215
