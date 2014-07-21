@@ -20,6 +20,9 @@ public class Ship : MonoBehaviour {
 	private Vector3 pointN, pointE, pointS, pointW;
 	private float width, length, zAngle, xAngle;
 
+	public ParticleSystem wakeSystemL;
+	public ParticleSystem wakeSystemR;
+
 	// Use this for initialization
 	void Start () {
 
@@ -84,6 +87,13 @@ public class Ship : MonoBehaviour {
 		//Debug.Log(zAngle);
 		if(Input.GetKeyDown (KeyCode.Backspace)){
 			sinking = true;
+		}
+
+		Vector3 localVelocity = this.transform.InverseTransformDirection(this.rigidbody.velocity);
+		forceController fc = this.gameObject.GetComponent<forceController>();
+		if (localVelocity.z > 0f) {
+			wakeSystemL.emissionRate = 1000f * fc.curSpeed/fc.maxSpeed;
+			wakeSystemR.emissionRate = 1000f * fc.curSpeed/fc.maxSpeed;
 		}
 
 	}
