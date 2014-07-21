@@ -91,7 +91,7 @@ public class Ship : MonoBehaviour {
 
 		Vector3 localVelocity = this.transform.InverseTransformDirection(this.rigidbody.velocity);
 		forceController fc = this.gameObject.GetComponent<forceController>();
-		if (localVelocity.z > 0f) {
+		if (localVelocity.z >= 0f) {
 			wakeSystemL.emissionRate = 1000f * fc.curSpeed/fc.maxSpeed;
 			wakeSystemR.emissionRate = 1000f * fc.curSpeed/fc.maxSpeed;
 		}
