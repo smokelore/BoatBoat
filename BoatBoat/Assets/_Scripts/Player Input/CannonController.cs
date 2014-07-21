@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using InControl;
 using System.Collections;
+using System.Collections.Generic;
 
 public class CannonController : InputController {
 	public bool rightSide;
@@ -59,12 +60,18 @@ public class CannonController : InputController {
 				cannonObject.transform.RotateAround(cannonObject.transform.position, boatboatObject.transform.forward, deltaY);	
 			}				
 		}
+
+		// render trajectory prediction lines
+		if (canShoot && loaded) {
+			UpdateTrajectory();
+		}
 	}
 
 	private void ShootControls() {
 		if (canShoot && loaded && RightTrigger > 0.9f) {
 			Debug.Log("Player " + player.playerNum + " shot " + cannonObject.name);
 			cannonballTemp = Instantiate(cannonballPrefab, cannonballSpawn.position, cannonballSpawn.rotation) as GameObject;
+			ClearTrajectory();
 			loaded = false;
 		}
 	}
@@ -94,6 +101,46 @@ public class CannonController : InputController {
 				cannonObject.transform.localEulerAngles = new Vector3(270f, 90f, 0f);
 			}
 			needsResetting = false;
+		}
+	}
+
+	private void UpdateTrajectory() {
+		const float timePerTrajectorySegment = 0.1f;
+
+		List<Vector3> positions = new List<Vector3>();
+		positions.Add(cannonballSpawn.position);
+		Vector3 lastPos;
+
+		float speed = cannonballPrefab.GetComponent<CannonBall>().speed;
+		Vector3 direction = cannonballSpawn.forward;
+		Vector3 velocity = direction * speed;
+		bool done = false;
+		int j = 0;
+		while (!done) {
+			lastPos = positions[positions.Count-1];
+			Vector3 newPos = lastPos + velocity * timePerTrajectorySegment + 0.5f * Physics.gravity * timePerTrajectorySegment * timePerTrajectorySegment;
+			if (newPos.y < -1f) {
+				done = true;
+			} else {
+				j++;
+				positions.Add(newPos);
+				velocity += Physics.gravity * timePerTrajectorySegment;
+			}
+		}
+
+		LineRenderer lr = cannonballSpawn.gameObject.GetComponent<LineRenderer>();
+		if (lr != null) {
+			lr.SetVertexCount(positions.Count);
+			for (int i = 0; i < positions.Count; i++) {
+				lr.SetPosition(i, positions[i]);
+			}
+		}
+	}
+
+	private void ClearTrajectory() {
+		LineRenderer lr = cannonballSpawn.gameObject.GetComponent<LineRenderer>();
+		if (lr != null) {
+			lr.SetVertexCount(0);
 		}
 	}
 
