@@ -10,10 +10,11 @@ public class PerlinMap : MonoBehaviour {
 	public float pixelScale;
 	public float timeScale;
 	public float heightScale;
-	public float xOffset, yOffset;
+	private float xOffset, yOffset;
 
-	public int texSize;
-	private Texture2D baseTex, normalTex;
+	public int meshSize;
+	private int texSize;
+	private Texture2D baseTex;
 
 	public Material verticesMaterial;
 	public MeshFilter terrainMesh;
@@ -26,49 +27,50 @@ public class PerlinMap : MonoBehaviour {
 	public bool whirlpoolsEnabled;
 	public GameObject[] allWhirlpools;
 
-	private float blockSize;
+	private float blockSize, pixelSize;
 	private bool[] render;
 
 	// Use this for initialization
 	void Start () {
+		texSize = meshSize / 4;
 		baseTex = new Texture2D(texSize, texSize);
-		normalTex = new Texture2D(texSize, texSize);
 
-		verts = new Vector3[baseTex.height*baseTex.width];
+		verts = new Vector3[meshSize*meshSize];
 		tris = new List<int>();
-		uvs = new Vector2[baseTex.height*baseTex.width];
-		colors = new Color[baseTex.height*baseTex.width];
-		heights = new float[baseTex.height*baseTex.width];
-		render = new bool[baseTex.height*baseTex.width];
+		uvs = new Vector2[meshSize*meshSize];
+		colors = new Color[baseTex.width*baseTex.height];
+		heights = new float[meshSize*meshSize];
+		render = new bool[meshSize*meshSize];
 
 		//this.renderer.enabled = true;
 		//renderer.material = verticesMaterial;
-		this.gameObject.renderer.material.SetTextureScale("_MainTex",new Vector2(1/this.transform.localScale.x,1/this.transform.localScale.z))  ;
+		this.gameObject.renderer.material.SetTextureScale("_MainTex",new Vector2(1/this.transform.localScale.x,1/this.transform.localScale.z));
 		renderer.material.SetTextureOffset("_MainTex", new Vector2(0.5f, 0.5f));
 
-		blockSize = this.transform.localScale.x / texSize;
-		for (int j = 0; j < baseTex.height; j++) {
+		blockSize = this.transform.localScale.x / meshSize;
+		pixelSize = this.transform.localScale.x / texSize;
+		for (int j = 0; j < meshSize; j++) {
 			float zCoord = this.transform.position.z - this.transform.localScale.z/2 + j*blockSize + blockSize/2;
-			for (int i = 0; i < baseTex.width; i++) {
+			for (int i = 0; i < meshSize; i++) {
 				float xCoord = this.transform.position.x - this.transform.localScale.x/2 + i*blockSize + blockSize/2;
 
 				if (isWithinRadius(xCoord, zCoord)) {
-					render[j * baseTex.width + i] = true;
-					verts[j * baseTex.width + i] = new Vector3(xCoord/this.transform.localScale.x, this.transform.position.y, zCoord/this.transform.localScale.z);
-					uvs[j * baseTex.width + i] = new Vector2(xCoord, zCoord);
-					colors[j * baseTex.width + i] = lowColor;
+					render[j * meshSize + i] = true;
+					verts[j * meshSize + i] = new Vector3(xCoord/this.transform.localScale.x, this.transform.position.y, zCoord/this.transform.localScale.z);
+					uvs[j * meshSize + i] = new Vector2(xCoord, zCoord);
+					//colors[j * meshSize + i] = lowColor;
 
-					//if (i+1 >= baseTex.width || j+1 >= baseTex.width || !isWithinRadius(i+1,j) || !isWithinRadius(i,j+1)) {
+					//if (i+1 >= meshSize || j+1 >= meshSize || !isWithinRadius(i+1,j) || !isWithinRadius(i,j+1)) {
 					if (!isWithinRadius(i+1,j) || !isWithinRadius(i,j+1) || !isWithinRadius(i+1,j+1)) {
 						continue;
 					}
-					tris.Add(i + j*baseTex.width);
-					tris.Add(i + (j+1)*baseTex.width);
-					tris.Add((i+1) + j*baseTex.width);
+					tris.Add(i + j*meshSize);
+					tris.Add(i + (j+1)*meshSize);
+					tris.Add((i+1) + j*meshSize);
 
-					tris.Add(i + (j+1)*baseTex.width);
-					tris.Add((i+1) + (j+1)*baseTex.width);
-					tris.Add((i+1) + j*baseTex.width);
+					tris.Add(i + (j+1)*meshSize);
+					tris.Add((i+1) + (j+1)*meshSize);
+					tris.Add((i+1) + j*meshSize);
 				}
 			}
 		}
@@ -101,24 +103,36 @@ public class PerlinMap : MonoBehaviour {
 
 	public void CalculateNoise() {
 		Vector3 vertPosition;
-		for (int y = 0; y < baseTex.height; y++) {
-			float zCoord = this.transform.position.z - this.transform.localScale.z/2 + y*blockSize + blockSize/2;
-			for (int x = 0; x < baseTex.width; x++) {
-				float xCoord = this.transform.position.x - this.transform.localScale.x/2 + x*blockSize + blockSize/2;
+		for (int j = 0; j < meshSize; j++) {
+			float zCoord = this.transform.position.z - this.transform.localScale.z/2 + j*blockSize + blockSize/2;
+			for (int i = 0; i < meshSize; i++) {
+				float xCoord = this.transform.position.x - this.transform.localScale.x/2 + i*blockSize + blockSize/2;
 				
-				if (render[y * baseTex.width + x]) {
-					colors[y * baseTex.width + x] = GetColor(xCoord, zCoord);
-					heights[y * baseTex.width + x] = GetHeight(xCoord, zCoord);//this.transform.position.y + perlin * heightScale;
-
-					vertPosition = verts[y * baseTex.width + x];
-					verts[y * baseTex.width + x] = new Vector3(vertPosition.x, heights[y * baseTex.width + x], vertPosition.z);
+				if (i % 4 == 0 && j % 4 == 0) {	
+					colors[j/4 * texSize + i/4] = GetColor(xCoord, zCoord);
+					// if there is a vertex at this location, move it and stuff
+					
 				}
+
+				if (render[j * meshSize + i]) {
+					heights[j * meshSize + i] = GetHeight(xCoord, zCoord);//this.transform.position.j + perlin * heightScale;
+
+					vertPosition = verts[j * meshSize + i];
+					verts[j * meshSize + i] = new Vector3(vertPosition.x, heights[j * meshSize + i], vertPosition.z);
+				}
+
+				// but still get texture colors even if there isn't a vertex here
+				
 			}
 		}
 
-		normalTex.SetPixels(colors);
-		normalTex.Apply();
-		renderer.material.SetTexture("_BumpMap", GetNormalMap(normalTex, 1f));
+		baseTex.SetPixels(colors);
+		baseTex.Apply();
+		renderer.material.SetTexture("_BumpMap", GetNormalMap(baseTex, 1f));
+
+		//renderer.material.SetTexture("_MainTex", baseTex);
+
+
 
 		/*for (int i = 0; i < colors.Length; i++) {
 			colors[i] = lowColor;
@@ -129,7 +143,7 @@ public class PerlinMap : MonoBehaviour {
 
 		Mesh ret = terrainMesh.mesh;
         ret.vertices = verts;
-        ret.colors = colors;
+        //ret.colors = colors;
 
         ret.RecalculateBounds();
         ret.RecalculateNormals();
@@ -191,6 +205,13 @@ public class PerlinMap : MonoBehaviour {
 
 		return value;
 	}
+
+	/*public Color GetColor(int i, int j) {
+		// input in terms of array position
+		float xCoord = this.transform.position.x - this.transform.localScale.x/2 + i*pixelSize/2 + pixelSize/4;
+		float zCoord = this.transform.position.z - this.transform.localScale.z/2 + j*pixelSize/2 + pixelSize/4;
+
+	}*/
 
 	public Color GetColor(float x, float z) {
 		// input in terms of world position
@@ -254,20 +275,20 @@ public class PerlinMap : MonoBehaviour {
 		blockSize = this.transform.localScale.x / texSize;
 		whirlCenter = new Vector2(xWhirl, zWhirl);
 		whirlRadius = radius;
-		for (int j = 0; j < baseTex.height; j++) {
-			for (int i = 0; i < baseTex.width; i++) {
+		for (int j = 0; j < meshSize; j++) {
+			for (int i = 0; i < meshSize; i++) {
 				if (dist < radius) {
-					whirl[j * baseTex.width + i] = true;
+					whirl[j * meshSize + i] = true;
 
 					value = Mathf.Cos((radius - dist)/radius * Mathf.PI);
 					newColor =  lowColor * (1-Mathf.Pow(value/2+0.5f,colorExponent)) + highColor * (Mathf.Pow(value/2+0.5f,colorExponent));
-					colors[j * baseTex.width + i] = newColor;
+					colors[j * meshSize + i] = newColor;
 
 					newHeight =  this.transform.position.y + (value-1)/2 * heightScale;
-					heights[j * baseTex.width + i] = newHeight;
+					heights[j * meshSize + i] = newHeight;
 
-					vertPosition = verts[j * baseTex.width + i];
-					verts[j * baseTex.width + i] = new Vector3(vertPosition.x, newHeight, vertPosition.z);
+					vertPosition = verts[j * meshSize + i];
+					verts[j * meshSize + i] = new Vector3(vertPosition.x, newHeight, vertPosition.z);
 				}
 			}
 		}
@@ -299,6 +320,6 @@ public class PerlinMap : MonoBehaviour {
 	// 	newX = (int) Mathf.Round(newX / blockSize);
 	// 	//Debug.Log(newX + "/" + newY);
 
-	// 	return heights[newY * baseTex.width + newX];
+	// 	return heights[newY * meshSize + newX];
 	// }
 }
