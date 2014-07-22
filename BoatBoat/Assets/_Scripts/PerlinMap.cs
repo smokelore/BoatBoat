@@ -13,7 +13,7 @@ public class PerlinMap : MonoBehaviour {
 	public float xOffset, yOffset;
 
 	public int texSize;
-	private Texture2D baseTex;
+	private Texture2D baseTex, normalTex;
 
 	public Material verticesMaterial;
 	public MeshFilter terrainMesh;
@@ -32,6 +32,7 @@ public class PerlinMap : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		baseTex = new Texture2D(texSize, texSize);
+		normalTex = new Texture2D(texSize, texSize);
 
 		verts = new Vector3[baseTex.height*baseTex.width];
 		tris = new List<int>();
@@ -81,6 +82,9 @@ public class PerlinMap : MonoBehaviour {
         ret.RecalculateNormals();
         terrainMesh.mesh = ret;
 
+        /*baseTex.SetPixels(colors);
+		baseTex.Apply();
+        renderer.material.SetTexture("_MainTex", baseTex);*/
 
 		// xOffset = -this.transform.position.x;
 		// yOffset = -this.transform.position.y;
@@ -112,9 +116,16 @@ public class PerlinMap : MonoBehaviour {
 			}
 		}
 
+		normalTex.SetPixels(colors);
+		normalTex.Apply();
+		renderer.material.SetTexture("_BumpMap", GetNormalMap(normalTex, 1f));
+
+		/*for (int i = 0; i < colors.Length; i++) {
+			colors[i] = lowColor;
+		}
 		baseTex.SetPixels(colors);
-		baseTex.Apply();
-		renderer.material.SetTexture("_MainTex", baseTex);
+		baseTex.Apply();*/
+		//renderer.material.SetTexture("_MainTex", baseTex);
 
 		Mesh ret = terrainMesh.mesh;
         ret.vertices = verts;
@@ -123,6 +134,31 @@ public class PerlinMap : MonoBehaviour {
         ret.RecalculateBounds();
         ret.RecalculateNormals();
         terrainMesh.mesh = ret;
+	}
+
+	private Texture2D GetNormalMap(Texture2D source, float strength) {
+         strength=Mathf.Clamp(strength,0.0F,10.0F);
+         Texture2D result;
+         float xLeft;
+         float xRight;
+         float yUp;
+         float yDown;
+         float yDelta;
+         float xDelta;
+         result = new Texture2D (source.width, source.height, TextureFormat.ARGB32, true);
+         for (int by=0; by<result.height; by++) {
+                    for (int bx=0; bx<result.width; bx++) {
+                                xLeft = source.GetPixel(bx-1,by).grayscale*strength;
+                                xRight = source.GetPixel(bx+1,by).grayscale*strength;
+                                yUp = source.GetPixel(bx,by-1).grayscale*strength;
+                                yDown = source.GetPixel(bx,by+1).grayscale*strength;
+                                xDelta = ((xLeft-xRight)+1)*0.5f;
+                                yDelta = ((yUp-yDown)+1)*0.5f;
+                                result.SetPixel(bx,by,new Color(xDelta,yDelta,1.0f,yDelta));
+                    }
+         }
+         result.Apply();
+         return result;
 	}
 
 	public bool isWithinRadius(float x, float z) {
@@ -149,7 +185,7 @@ public class PerlinMap : MonoBehaviour {
 
 	public float GetPerlinValue(float x, float z) {
 		// input in terms of world position
-		float perlin1 = -0.5f + Mathf.PerlinNoise(timeScale * Time.time + x * pixelScale/2 + xOffset, timeScale * Time.time + z * pixelScale/2 + yOffset);
+		float perlin1 = -0.5f + Mathf.PerlinNoise(timeScale * Time.time + x * pixelScale + xOffset, timeScale * Time.time + z * pixelScale + yOffset);
 		float perlin2 = -0.5f + Mathf.PerlinNoise(-timeScale * Time.time + x * pixelScale + xOffset, -timeScale * Time.time + z * pixelScale + yOffset);
 		float value = (0.5f*perlin1 + 0.5f*perlin2);
 
