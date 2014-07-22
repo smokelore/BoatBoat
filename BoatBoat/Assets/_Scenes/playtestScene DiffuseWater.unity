@@ -9876,6 +9876,7 @@ MonoBehaviour:
   levelTheme: 
   hudGUI: {fileID: 1291983017}
   winState: 0
+  healthBarTexture: {fileID: 2800000, guid: 6583e049dd6077d45b27ab6cb1e6361f, type: 3}
 --- !u!81 &371161748
 AudioListener:
   m_ObjectHideFlags: 0
@@ -37921,7 +37922,7 @@ GameObject:
   - 136: {fileID: 1429473176}
   m_Layer: 0
   m_Name: Enemy
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
