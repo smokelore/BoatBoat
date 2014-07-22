@@ -32,7 +32,7 @@ public class PerlinMap : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		texSize = meshSize / 4;
+		texSize = meshSize / 2;
 		baseTex = new Texture2D(texSize, texSize);
 
 		verts = new Vector3[meshSize*meshSize];
@@ -108,8 +108,8 @@ public class PerlinMap : MonoBehaviour {
 			for (int i = 0; i < meshSize; i++) {
 				float xCoord = this.transform.position.x - this.transform.localScale.x/2 + i*blockSize + blockSize/2;
 				
-				if (i % 4 == 0 && j % 4 == 0) {	
-					colors[j/4 * texSize + i/4] = GetColor(xCoord, zCoord);
+				if (i % 2 == 0 && j % 2 == 0) {	
+					colors[j/2 * texSize + i/2] = GetColor(xCoord, zCoord);
 					// if there is a vertex at this location, move it and stuff
 					
 				}
@@ -128,18 +128,8 @@ public class PerlinMap : MonoBehaviour {
 
 		baseTex.SetPixels(colors);
 		baseTex.Apply();
+		renderer.material.SetTexture("_MainTex", baseTex);
 		renderer.material.SetTexture("_BumpMap", GetNormalMap(baseTex, 1f));
-
-		//renderer.material.SetTexture("_MainTex", baseTex);
-
-
-
-		/*for (int i = 0; i < colors.Length; i++) {
-			colors[i] = lowColor;
-		}
-		baseTex.SetPixels(colors);
-		baseTex.Apply();*/
-		//renderer.material.SetTexture("_MainTex", baseTex);
 
 		Mesh ret = terrainMesh.mesh;
         ret.vertices = verts;
