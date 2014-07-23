@@ -17,7 +17,6 @@ public class InputController : MonoBehaviour {
 
 	public void Start() {
 		InputManager.Setup();
-		//SetPlayer(1);
 	}
 
 	void Update() {

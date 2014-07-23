@@ -128,7 +128,8 @@ public class PerlinMap : MonoBehaviour {
 
 		baseTex.SetPixels(colors);
 		baseTex.Apply();
-		renderer.material.SetTexture("_MainTex", baseTex);
+		//renderer.material.SetTexture("_MainTex", baseTex);
+		renderer.material.SetTexture("_Ramp", baseTex);
 		renderer.material.SetTexture("_BumpMap", GetNormalMap(baseTex, 1f));
 
 		Mesh ret = terrainMesh.mesh;

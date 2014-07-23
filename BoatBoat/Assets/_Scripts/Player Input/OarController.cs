@@ -17,24 +17,8 @@ public class OarController : InputController {
 	private int rightSplashCount;
 	private int leftSplashCount;
 
-	/*public bool leftOarStarted;
-	public bool leftOarEnded;
-	public float leftOarInitial;
-	public float leftOarFinal;
-	public float leftOarPrevious;
-	public float leftOarCurrent;
-
-	public bool rightOarStarted;
-	public bool rightOarEnded;
-	public float rightOarInitial;
-	public float rightOarFinal;
-	public float rightOarPrevious;
-	public float rightOarCurrent;*/
-
 	public float maxHeight = 1.5f;
 	public float rowSpeedMax = 8.0f;
-	//private float rightTempHeight;
-	//private float leftTempHeight;
 
 	public Vector2 prevLeftStick;
 	public Vector2 currentLeftStick;
@@ -43,11 +27,6 @@ public class OarController : InputController {
 
 	// Use this for initialization
 	void Start () {
-		currentLeftStick.y = -1f;
-		prevLeftStick.y = -1f;
-		currentRightStick.y = -1f;
-		prevRightStick.y = -1f;
-
 		forcer = BoatBoat.GetComponent<forceController>();
 		forcer.allOars.Add(this);
 	}
@@ -91,6 +70,7 @@ public class OarController : InputController {
 	}
 
 	public override void Idle() {
+		Debug.Log("IDLE OARS");
 		float speed = 1f;
 		if (Mathf.Abs(currentRightStick.x - 0f) > 0.1f || Mathf.Abs(currentRightStick.y + 1f) > 0.1f) {
 			currentRightStick.x = Mathf.Lerp(currentRightStick.x, 0f, Time.deltaTime * speed);
@@ -136,14 +116,6 @@ public class OarController : InputController {
 			return deltaAngle/rowAngleRange;
 		} else {
 			return 0f;
-		}
-	}
-
-	public void Row(bool right, float amount) {
-		if (right) {
-			Debug.Log("Player " + player.playerNum + " rowed right oar: " + amount);
-		} else {
-			Debug.Log("Player " + player.playerNum + " rowed left oar: " + amount);
 		}
 	}
 
