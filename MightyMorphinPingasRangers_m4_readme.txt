@@ -31,6 +31,7 @@ OUTSIDE RESOURCES:
 	7. Boat hull - https://3dwarehouse.sketchup.com/model.html?id=24cdab178b28271296a1d1a7ead34b37
 	8. Space Invaders Pirate Texture - http://s3.gamefreaks.co.nz/wp-content/uploads/2010/11/Space_Invaders_Pirate_Flag_by_deadroach.jpg
 	9. InControl - https://github.com/pbhogan/InControl
+	10. SSAO Post Processing - http://www.mediafire.com/download/42mq19g50t80c8b/SSAOeffect.zip
 
 SPECIAL INSTRUCTIONS:
 	Controller is required! Most gamepad controllers are accepted!
@@ -44,7 +45,7 @@ HOW TO USE:
 	The ship object has several moving parts:
 		The Sail - The sail begins to move automatically, where motion causes more movement.
 		The Oars - The oars are moved due to controller input when mounted on an oar position. Rotating the left and right sticks control the left and right oars, respectively. The oars splash in the water!
-		The Cannons - The cannons are moved due to controller input when mounted on a cannon position. The left stick controls the aim of the cannons. Holding down aims the cannon higher, while holding up aims the cannon lower. The cannons can also swivel left and right via left and right.
+		The Cannons - The cannons are moved due to controller input when mounted on a cannon position. The left stick controls the aim of the cannons. Holding down aims the cannon higher, while holding up aims the cannon lower. 	The cannons can also swivel left and right via left and right.
 
 
 MAIN SCENE FILE:
