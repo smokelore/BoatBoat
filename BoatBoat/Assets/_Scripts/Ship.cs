@@ -50,6 +50,7 @@ public class Ship : MonoBehaviour {
 
 		if (this.gameObject.tag == "Player") {
 			waveMesh.transform.position = new Vector3(x, waveMesh.transform.position.y, z);
+			waveMesh.renderer.material.SetTextureOffset("_MainTex", new Vector2(x/10, z/10));
 		}
 		//float newHeight = Mathf.Lerp(currentHeight, targetHeight, Time.deltaTime * lerpFactor);
 		
