@@ -3947,6 +3947,10 @@ MonoBehaviour:
   WalkableArea: {fileID: 2087999177}
   speedFactor: .5
   zone: {fileID: 0}
+  indicatorPrefab: {fileID: 100000, guid: 7bfe28aed8470104d8f9d443ccfe8264, type: 2}
+  indicatorHeight: .100000001
+  indicatorPeriod: 1
+  indicatorAmplitude: .0500000007
 --- !u!114 &152984895
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6495,6 +6499,10 @@ MonoBehaviour:
   WalkableArea: {fileID: 2087999177}
   speedFactor: .5
   zone: {fileID: 0}
+  indicatorPrefab: {fileID: 100000, guid: 7bfe28aed8470104d8f9d443ccfe8264, type: 2}
+  indicatorHeight: .100000001
+  indicatorPeriod: 1
+  indicatorAmplitude: .0500000007
 --- !u!114 &229712056
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -33367,6 +33375,10 @@ MonoBehaviour:
   WalkableArea: {fileID: 2087999177}
   speedFactor: .5
   zone: {fileID: 0}
+  indicatorPrefab: {fileID: 100000, guid: 7bfe28aed8470104d8f9d443ccfe8264, type: 2}
+  indicatorHeight: .100000001
+  indicatorPeriod: 1
+  indicatorAmplitude: .0500000007
 --- !u!114 &1154815937
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -37554,6 +37566,10 @@ MonoBehaviour:
   WalkableArea: {fileID: 2087999177}
   speedFactor: .5
   zone: {fileID: 0}
+  indicatorPrefab: {fileID: 100000, guid: 7bfe28aed8470104d8f9d443ccfe8264, type: 2}
+  indicatorHeight: .100000001
+  indicatorPeriod: 1
+  indicatorAmplitude: .0500000007
 --- !u!114 &1386100906
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -45155,6 +45171,70 @@ Prefab:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 2b23a88892c0a45bcbb38f9f97f53ecf, type: 2}
+    - target: {fileID: 11400006, guid: dfd0bbef2a2c2ac4b88fbf8408800159, type: 2}
+      propertyPath: indicatorPrefab
+      value: 
+      objectReference: {fileID: 100000, guid: 7bfe28aed8470104d8f9d443ccfe8264, type: 2}
+    - target: {fileID: 11400014, guid: dfd0bbef2a2c2ac4b88fbf8408800159, type: 2}
+      propertyPath: indicatorPrefab
+      value: 
+      objectReference: {fileID: 100000, guid: 7bfe28aed8470104d8f9d443ccfe8264, type: 2}
+    - target: {fileID: 11400026, guid: dfd0bbef2a2c2ac4b88fbf8408800159, type: 2}
+      propertyPath: indicatorPrefab
+      value: 
+      objectReference: {fileID: 100000, guid: 7bfe28aed8470104d8f9d443ccfe8264, type: 2}
+    - target: {fileID: 11400030, guid: dfd0bbef2a2c2ac4b88fbf8408800159, type: 2}
+      propertyPath: indicatorPrefab
+      value: 
+      objectReference: {fileID: 100000, guid: 7bfe28aed8470104d8f9d443ccfe8264, type: 2}
+    - target: {fileID: 11400006, guid: dfd0bbef2a2c2ac4b88fbf8408800159, type: 2}
+      propertyPath: indicatorHeight
+      value: .100000001
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400014, guid: dfd0bbef2a2c2ac4b88fbf8408800159, type: 2}
+      propertyPath: indicatorHeight
+      value: .100000001
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400026, guid: dfd0bbef2a2c2ac4b88fbf8408800159, type: 2}
+      propertyPath: indicatorHeight
+      value: .100000001
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400030, guid: dfd0bbef2a2c2ac4b88fbf8408800159, type: 2}
+      propertyPath: indicatorHeight
+      value: .100000001
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400006, guid: dfd0bbef2a2c2ac4b88fbf8408800159, type: 2}
+      propertyPath: indicatorPeriod
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400014, guid: dfd0bbef2a2c2ac4b88fbf8408800159, type: 2}
+      propertyPath: indicatorPeriod
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400026, guid: dfd0bbef2a2c2ac4b88fbf8408800159, type: 2}
+      propertyPath: indicatorPeriod
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400030, guid: dfd0bbef2a2c2ac4b88fbf8408800159, type: 2}
+      propertyPath: indicatorPeriod
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400006, guid: dfd0bbef2a2c2ac4b88fbf8408800159, type: 2}
+      propertyPath: indicatorAmplitude
+      value: .0500000007
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400014, guid: dfd0bbef2a2c2ac4b88fbf8408800159, type: 2}
+      propertyPath: indicatorAmplitude
+      value: .0500000007
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400026, guid: dfd0bbef2a2c2ac4b88fbf8408800159, type: 2}
+      propertyPath: indicatorAmplitude
+      value: .0500000007
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400030, guid: dfd0bbef2a2c2ac4b88fbf8408800159, type: 2}
+      propertyPath: indicatorAmplitude
+      value: .0500000007
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: dfd0bbef2a2c2ac4b88fbf8408800159, type: 2}
   m_RootGameObject: {fileID: 1087372591}

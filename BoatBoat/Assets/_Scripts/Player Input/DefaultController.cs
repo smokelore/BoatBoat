@@ -7,6 +7,11 @@ public class DefaultController : InputController {
 	public Collider WalkableArea;
 	public float speedFactor;
 	public GameObject zone;
+	public GameObject indicatorPrefab;
+	private GameObject indicatorObject;
+	public float indicatorHeight;
+	public float indicatorPeriod;
+	public float indicatorAmplitude;
 
 	// Use this for initialization
 	void Start () {
@@ -17,6 +22,7 @@ public class DefaultController : InputController {
 	// Controls is called once per frame
 	public override void Controls() {
 		MovementControls();
+		ZoneIndicator();
 		HUDText();
 	}
 
@@ -46,6 +52,24 @@ public class DefaultController : InputController {
 		if (player.zone != null && AButton) {
 			if (this.player.SetController(player.zone.GetComponent<InputController>())) {
 				this.player = null;
+				if (indicatorObject != null) {
+					Destroy(indicatorObject);
+				}
+			}
+		}
+	}
+
+	private void ZoneIndicator() {
+		if (player.zone != null && player.zone.GetComponent<InputController>().player == null) {
+			if (indicatorObject == null) {
+				indicatorObject = Instantiate(indicatorPrefab, Vector3.zero, Quaternion.identity) as GameObject;
+			}
+			float height = player.zone.transform.position.y + indicatorHeight + indicatorAmplitude * Mathf.Sin(Time.time / indicatorPeriod * 2 * Mathf.PI);
+			indicatorObject.transform.position = new Vector3(player.zone.transform.position.x, height, player.zone.transform.position.z);
+			indicatorObject.transform.LookAt(Camera.main.transform);
+		} else {
+			if (indicatorObject != null) {
+				Destroy(indicatorObject);
 			}
 		}
 	}
