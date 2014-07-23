@@ -41,15 +41,11 @@ public class OarController : InputController {
 		currentLeftStick = LeftStick;
 
 		//****OAR ANIMATION****//
-
+		
 		//STICK CONTROLS
-		//rightTempHeight = Mathf.MoveTowards(rightguideball.position.y, RightStick.y * maxHeight, rowSpeedMax * Time.deltaTime);
-		//rightguideball.position = new Vector3(rightguideball.position.x, rightTempHeight, rightguideball.position.z);
 		rightguideball.position = rightOar.transform.position + BoatBoat.transform.right * rightOar.transform.Find("Oar").lossyScale.x + BoatBoat.transform.up * RightStick.y * maxHeight - BoatBoat.transform.forward * RightStick.x * maxHeight;
 		rightOar.transform.LookAt(rightguideball);
 
-		//leftTempHeight = Mathf.MoveTowards(leftguideball.position.y, LeftStick.y * maxHeight, rowSpeedMax * Time.deltaTime);
-		//leftguideball.position = new Vector3(leftguideball.position.x, leftTempHeight, leftguideball.position.z);
 		leftguideball.position = leftOar.transform.position - BoatBoat.transform.right * leftOar.transform.Find("Oar").lossyScale.x + BoatBoat.transform.up * LeftStick.y * maxHeight + BoatBoat.transform.forward * LeftStick.x * maxHeight;
 		leftOar.transform.LookAt(leftguideball);
 
@@ -70,7 +66,6 @@ public class OarController : InputController {
 	}
 
 	public override void Idle() {
-		Debug.Log("IDLE OARS");
 		float speed = 1f;
 		if (Mathf.Abs(currentRightStick.x - 0f) > 0.1f || Mathf.Abs(currentRightStick.y + 1f) > 0.1f) {
 			currentRightStick.x = Mathf.Lerp(currentRightStick.x, 0f, Time.deltaTime * speed);

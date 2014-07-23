@@ -42,10 +42,10 @@ public class PerlinMap : MonoBehaviour {
 		heights = new float[meshSize*meshSize];
 		render = new bool[meshSize*meshSize];
 
-		//this.renderer.enabled = true;
-		//renderer.material = verticesMaterial;
-		this.gameObject.renderer.material.SetTextureScale("_MainTex",new Vector2(1/this.transform.localScale.x,1/this.transform.localScale.z));
-		renderer.material.SetTextureOffset("_MainTex", new Vector2(0.5f, 0.5f));
+		this.renderer.enabled = true;
+
+		//this.gameObject.renderer.material.SetTextureScale("_MainTex",new Vector2(1/this.transform.localScale.x,1/this.transform.localScale.z));
+		//renderer.material.SetTextureOffset("_MainTex", new Vector2(0.5f, 0.5f));
 
 		blockSize = this.transform.localScale.x / meshSize;
 		pixelSize = this.transform.localScale.x / texSize;
@@ -129,7 +129,7 @@ public class PerlinMap : MonoBehaviour {
 		baseTex.SetPixels(colors);
 		baseTex.Apply();
 		//renderer.material.SetTexture("_MainTex", baseTex);
-		renderer.material.SetTexture("_Ramp", baseTex);
+		//renderer.material.SetTexture("_Ramp", baseTex);
 		renderer.material.SetTexture("_BumpMap", GetNormalMap(baseTex, 1f));
 
 		Mesh ret = terrainMesh.mesh;
