@@ -16,9 +16,7 @@ public class HUD : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		if (Input.GetKeyUp(KeyCode.Alpha1)) {
-			Application.LoadLevel("playtestScene DiffuseWater");
-		} else if (Input.GetKeyUp(KeyCode.Alpha2)) {
-			Application.LoadLevel("playtestScene ReflectiveWater");
+			Application.LoadLevel("playtestScene");
 		}
 
 		if (winState){
@@ -44,7 +42,7 @@ public class HUD : MonoBehaviour {
 				int width = (int)(distance/40) * 20;
 
 				Vector2 healthBarScreenPosition = Camera.main.WorldToScreenPoint(healthBarWorldPosition);
-				GUI.DrawTexture(new Rect(healthBarWorldPosition.x - (int)(length/2), healthBarWorldPosition.y + (int)(width/2), length, width), healthBarTexture, ScaleMode.StretchToFill, true, 0);
+				//GUI.DrawTexture(new Rect(healthBarWorldPosition.x - (int)(length/2), healthBarWorldPosition.y + (int)(width/2), length, width), healthBarTexture, ScaleMode.StretchToFill, true, 0);
 			}
 		}
 	}
