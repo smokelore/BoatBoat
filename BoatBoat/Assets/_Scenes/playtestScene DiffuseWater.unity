@@ -3948,7 +3948,7 @@ MonoBehaviour:
   speedFactor: .5
   zone: {fileID: 0}
   indicatorPrefab: {fileID: 100000, guid: 7bfe28aed8470104d8f9d443ccfe8264, type: 2}
-  indicatorHeight: .100000001
+  indicatorHeight: .200000003
   indicatorPeriod: 1
   indicatorAmplitude: .0500000007
 --- !u!114 &152984895
@@ -6500,7 +6500,7 @@ MonoBehaviour:
   speedFactor: .5
   zone: {fileID: 0}
   indicatorPrefab: {fileID: 100000, guid: 7bfe28aed8470104d8f9d443ccfe8264, type: 2}
-  indicatorHeight: .100000001
+  indicatorHeight: .200000003
   indicatorPeriod: 1
   indicatorAmplitude: .0500000007
 --- !u!114 &229712056
@@ -33376,7 +33376,7 @@ MonoBehaviour:
   speedFactor: .5
   zone: {fileID: 0}
   indicatorPrefab: {fileID: 100000, guid: 7bfe28aed8470104d8f9d443ccfe8264, type: 2}
-  indicatorHeight: .100000001
+  indicatorHeight: .200000003
   indicatorPeriod: 1
   indicatorAmplitude: .0500000007
 --- !u!114 &1154815937
@@ -37567,7 +37567,7 @@ MonoBehaviour:
   speedFactor: .5
   zone: {fileID: 0}
   indicatorPrefab: {fileID: 100000, guid: 7bfe28aed8470104d8f9d443ccfe8264, type: 2}
-  indicatorHeight: .100000001
+  indicatorHeight: .200000003
   indicatorPeriod: 1
   indicatorAmplitude: .0500000007
 --- !u!114 &1386100906
@@ -45189,19 +45189,19 @@ Prefab:
       objectReference: {fileID: 100000, guid: 7bfe28aed8470104d8f9d443ccfe8264, type: 2}
     - target: {fileID: 11400006, guid: dfd0bbef2a2c2ac4b88fbf8408800159, type: 2}
       propertyPath: indicatorHeight
-      value: .100000001
+      value: .200000003
       objectReference: {fileID: 0}
     - target: {fileID: 11400014, guid: dfd0bbef2a2c2ac4b88fbf8408800159, type: 2}
       propertyPath: indicatorHeight
-      value: .100000001
+      value: .200000003
       objectReference: {fileID: 0}
     - target: {fileID: 11400026, guid: dfd0bbef2a2c2ac4b88fbf8408800159, type: 2}
       propertyPath: indicatorHeight
-      value: .100000001
+      value: .200000003
       objectReference: {fileID: 0}
     - target: {fileID: 11400030, guid: dfd0bbef2a2c2ac4b88fbf8408800159, type: 2}
       propertyPath: indicatorHeight
-      value: .100000001
+      value: .200000003
       objectReference: {fileID: 0}
     - target: {fileID: 11400006, guid: dfd0bbef2a2c2ac4b88fbf8408800159, type: 2}
       propertyPath: indicatorPeriod
