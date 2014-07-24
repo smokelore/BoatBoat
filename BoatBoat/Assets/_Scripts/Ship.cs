@@ -25,7 +25,6 @@ public class Ship : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-
 		perlinMap = waveMesh.GetComponent<PerlinMap>();
 
 		length = this.gameObject.GetComponent<CapsuleCollider>().height * this.transform.lossyScale.z;
@@ -50,7 +49,7 @@ public class Ship : MonoBehaviour {
 
 		if (this.gameObject.tag == "Player") {
 			waveMesh.transform.position = new Vector3(x, waveMesh.transform.position.y, z);
-			waveMesh.renderer.material.SetTextureOffset("_MainTex", new Vector2(x/10, z/10));
+			//waveMesh.renderer.material.SetTextureOffset("_MainTex", new Vector2(x/10, z/10));
 		}
 		//float newHeight = Mathf.Lerp(currentHeight, targetHeight, Time.deltaTime * lerpFactor);
 		
@@ -94,38 +93,36 @@ public class Ship : MonoBehaviour {
 		forceController fc = this.gameObject.GetComponent<forceController>();
 		if (localVelocity.z >= 0f) {
 			if (wakeSystemL != null && wakeSystemR != null) {
-				wakeSystemL.emissionRate = 500f * fc.curSpeed/fc.maxSpeed;
-				wakeSystemR.emissionRate = 500f * fc.curSpeed/fc.maxSpeed;
+				wakeSystemL.emissionRate = 500f * Mathf.Abs(fc.curSpeed/fc.maxSpeed);
+				wakeSystemR.emissionRate = 500f * Mathf.Abs(fc.curSpeed/fc.maxSpeed);
 			}
 		}
-
 	}
 
 	void FixedUpdate() {
-		float x = this.transform.position.x;
-		float z = this.transform.position.z;
+		// if (this.transform.position.y > targetHeight + pushHeight) {
+		// 	hitFlag = false;
+		// }
 
-		if (this.transform.position.y > targetHeight + pushHeight) {
-			hitFlag = false;
-		}
+		// if (hitFlag && !prevHitFlag) {
+		// 	audio.PlayOneShot(spoutSound, 0.7f);
+		// }
 
-		if (hitFlag && !prevHitFlag) {
-			audio.PlayOneShot(spoutSound, 0.7f);
-		}
+		// if (hitFlag && this.transform.position.y < targetHeight + pushHeight) {
+		// 	rigidbody.AddForce(Vector3.up * pushUpSpeed);
+		// } else if (!hitFlag && this.transform.position.y > targetHeight + 1f) {
+		// 	rigidbody.AddForce(-Vector3.up * pushUpSpeed/2);
+		// }else if(sinking){
+		// 	sink();
+		// } else {
+			Vector3 newRight = new Vector3(this.transform.right.x, 0f, this.transform.right.z).normalized;
+			Vector3 newForward = new Vector3(this.transform.forward.x, 0f, this.transform.forward.z).normalized;
+			this.transform.position = new Vector3(this.transform.position.x, targetHeight, this.transform.position.z);
+			this.rigidbody.AddTorque(newRight * zAngle/3);
+			this.rigidbody.AddTorque(newForward * xAngle/5);
+		// }
 
-		if (hitFlag && this.transform.position.y < targetHeight + pushHeight) {
-			rigidbody.AddForce(Vector3.up * pushUpSpeed);
-		} else if (!hitFlag && this.transform.position.y > targetHeight + 1f) {
-			rigidbody.AddForce(-Vector3.up * pushUpSpeed/2);
-		}else if(sinking){
-			sink();
-		} else {
-			this.transform.position = new Vector3(x, targetHeight, z);
-			this.rigidbody.AddTorque(this.transform.right * zAngle/3);
-			this.rigidbody.AddTorque(this.transform.forward * xAngle/5);
-		}
-
-		prevHitFlag = hitFlag;
+		// prevHitFlag = hitFlag;
 	}
 
 	void OnTriggerStay(Collider other)

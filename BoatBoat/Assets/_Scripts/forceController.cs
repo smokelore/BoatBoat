@@ -43,13 +43,13 @@ public class forceController : MonoBehaviour {
 			// ACCELERATE
 			this.rigidbody.drag = 0;
 			if (localVelocity.z < maxSpeed) {
-				this.rigidbody.AddForce(this.transform.forward * forceFactor);
+				this.rigidbody.AddForce(new Vector3(this.transform.forward.x, 0f, this.transform.forward.z).normalized * forceFactor);
 			}
 		} else if (fakeVerticalAxis < 0) {
 			// DECELERATE
 			this.rigidbody.drag = 0;
 			if (localVelocity.z > -maxSpeed/2) {
-				this.rigidbody.AddForce(this.transform.forward * -forceFactor/2);
+				this.rigidbody.AddForce(new Vector3(this.transform.forward.x, 0f, this.transform.forward.z).normalized * -forceFactor/2);
 			}
 		} else {
 			this.rigidbody.drag = idleDrag;
@@ -71,13 +71,14 @@ public class forceController : MonoBehaviour {
 			}
 		}
 
-		Vector2 planeVelocity = new Vector2(this.rigidbody.velocity.x, this.rigidbody.velocity.z);
+		Vector3 newForward = new Vector3(this.transform.forward.x, 0f, this.transform.forward.z).normalized;
+		float planeVelocity = new Vector3(this.rigidbody.velocity.x, 0f, this.rigidbody.velocity.z).magnitude;
 		if (movingForward) {
 			// if moving forward, redirect all velocity forward after turning
-			this.rigidbody.velocity = this.transform.forward * planeVelocity.magnitude;
+			this.rigidbody.velocity = planeVelocity * newForward;
 		} else if (movingBackward) {
 			// if moving backward, redirect all velocity backward after turning
-			this.rigidbody.velocity = this.transform.forward * -planeVelocity.magnitude;
+			this.rigidbody.velocity = -planeVelocity * newForward;
 		}
 
 		clothAcceleration = new Vector3(rigidbody.angularVelocity.y / maxTurn * 100f, 0f, 5f - localVelocity.z / maxSpeed * 5f);//curMaxTurn/maxTurn, 0);
