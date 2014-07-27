@@ -8,8 +8,10 @@ public class CannonController : InputController {
 	public GameObject boatboatObject;
 	public GameObject cannonObject;
 	public GameObject cannonballPrefab;
+	public GameObject smokeShotPrefab;
 	public Transform cannonballSpawn;
-	public GameObject cannonballTemp;
+	private GameObject cannonballTemp;
+	private GameObject smokeTemp;
 	public bool loaded, canShoot;
 	public float stickDeadzone;
 	public float aimSpeed;
@@ -73,6 +75,7 @@ public class CannonController : InputController {
 		if (canShoot && loaded && RightTrigger > 0.9f) {
 			Debug.Log("Player " + player.playerNum + " shot " + cannonObject.name);
 			cannonballTemp = Instantiate(cannonballPrefab, cannonballSpawn.position, cannonballSpawn.rotation) as GameObject;
+			smokeTemp = Instantiate(smokeShotPrefab, cannonballSpawn.position, cannonballSpawn.rotation) as GameObject;
 			ClearTrajectory();
 			loaded = false;
 		}
