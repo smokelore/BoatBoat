@@ -114,15 +114,17 @@ public class Ship : MonoBehaviour {
 		// 	rigidbody.AddForce(Vector3.up * pushUpSpeed);
 		// } else if (!hitFlag && this.transform.position.y > targetHeight + 1f) {
 		// 	rigidbody.AddForce(-Vector3.up * pushUpSpeed/2);
-		// }else if(sinking){
-		// 	sink();
-		// } else {
+		// }else 
+
+		if (sinking){
+			sink();
+		} else {
 			Vector3 newRight = new Vector3(this.transform.right.x, 0f, this.transform.right.z).normalized;
 			Vector3 newForward = new Vector3(this.transform.forward.x, 0f, this.transform.forward.z).normalized;
 			this.transform.position = new Vector3(this.transform.position.x, targetHeight, this.transform.position.z);
 			this.rigidbody.AddTorque(newRight * zAngle/3);
 			this.rigidbody.AddTorque(newForward * xAngle/5);
-		// }
+		}
 
 		// prevHitFlag = hitFlag;
 	}
@@ -147,7 +149,7 @@ public class Ship : MonoBehaviour {
 	public void ApplyDamage(float damage) {
 		health = Mathf.Clamp(health - damage, 0, 100);
 		if (health <= 0) {
-			sink();
+			sinking = true;
 		}
 	}
 
@@ -160,5 +162,9 @@ public class Ship : MonoBehaviour {
 	void sink(){
 		this.rigidbody.AddTorque (this.transform.right * -0.5f);
 		this.rigidbody.AddForce(Vector3.down * 20);
+
+		if (this.transform.position.y <= -2f) {
+			Destroy(this.gameObject);
+		}
 	}
 }
