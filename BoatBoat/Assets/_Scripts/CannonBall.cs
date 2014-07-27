@@ -3,11 +3,13 @@ using System.Collections;
 
 public class CannonBall : MonoBehaviour {
 	public GameObject explosion;
-	public GameObject explosionWater;
+	public GameObject explosionWaterL;
+	public GameObject explosionWaterR;
 	public GameObject explosionBoat;
 	private int hit = 0;
 	public float lifetime;
 	public float speed;
+	public bool cannonOnRightSide;
 	
 	void Start() {
 		Shoot();
@@ -38,7 +40,11 @@ public class CannonBall : MonoBehaviour {
 
 	void OnDestroy() {
 		if (hit == 0) {
-			Instantiate(explosionWater, transform.position, transform.rotation);
+			if (cannonOnRightSide) {
+				Instantiate(explosionWaterR, transform.position, transform.rotation);
+			} else {
+				Instantiate(explosionWaterL, transform.position, transform.rotation);
+			}
 		}
 		else if (hit == 1){
 			Instantiate(explosion, transform.position, transform.rotation);

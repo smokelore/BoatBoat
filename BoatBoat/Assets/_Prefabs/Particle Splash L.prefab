@@ -29,7 +29,7 @@ GameObject:
   - 199: {fileID: 19900002}
   - 114: {fileID: 11400000}
   m_Layer: 0
-  m_Name: Particle Toon Splash
+  m_Name: Particle Splash L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1396,7 +1396,7 @@ ParticleSystem:
         m_PreInfinity: 2
         m_PostInfinity: 2
       minMaxState: 0
-    gravityModifier: 0
+    gravityModifier: .200000003
     inheritVelocity: 0
     maxNumParticles: 100
   ShapeModule:
@@ -1500,12 +1500,12 @@ ParticleSystem:
         serializedVersion: 2
         m_Curve:
         - time: 0
-          value: 1
+          value: -1
           inSlope: 0
           outSlope: 0
           tangentMode: 0
         - time: 1
-          value: -.0196080133
+          value: -1
           inSlope: 0
           outSlope: 0
           tangentMode: 0
@@ -3272,7 +3272,7 @@ ParticleSystemRenderer:
   m_LightmapIndex: 255
   m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
   m_Materials:
-  - {fileID: 2100000, guid: aeee48a9523ee4747ac37d4315e06693, type: 2}
+  - {fileID: 2100000, guid: 22027bb7f297bb944809d4a698883929, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 0

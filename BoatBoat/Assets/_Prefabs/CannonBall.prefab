@@ -128,10 +128,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   explosion: {fileID: 100000, guid: 9bb6aec99932f4c74bcda13db700fe8e, type: 2}
-  explosionWater: {fileID: 100002, guid: f9aaf9e233d37114db7286259ec22008, type: 2}
+  explosionWaterR: {fileID: 100002, guid: f9aaf9e233d37114db7286259ec22008, type: 2}
+  explosionWaterL: {fileID: 100002, guid: 60a4bcd9df900ca439000f90d00cdd40, type: 2}
   explosionBoat: {fileID: 100004, guid: 1cef7f9d980bb894c985570403d17a1e, type: 2}
   lifetime: 2
   speed: 15
+  cannonOnRightside: 0
 --- !u!135 &13500000
 SphereCollider:
   m_ObjectHideFlags: 1

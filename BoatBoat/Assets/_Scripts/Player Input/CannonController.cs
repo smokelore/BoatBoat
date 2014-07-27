@@ -75,6 +75,7 @@ public class CannonController : InputController {
 		if (canShoot && loaded && RightTrigger > 0.9f) {
 			Debug.Log("Player " + player.playerNum + " shot " + cannonObject.name);
 			cannonballTemp = Instantiate(cannonballPrefab, cannonballSpawn.position, cannonballSpawn.rotation) as GameObject;
+			cannonballTemp.GetComponent<CannonBall>().cannonOnRightSide = rightSide;
 			smokeTemp = Instantiate(smokeShotPrefab, cannonballSpawn.position, cannonballSpawn.rotation) as GameObject;
 			ClearTrajectory();
 			loaded = false;
