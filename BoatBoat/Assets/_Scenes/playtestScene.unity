@@ -31281,12 +31281,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 42f020bef7819b748a52ba477a56257d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  health: 100
   waveMesh: {fileID: 1630417249}
-  perlinMap: {fileID: 0}
-  lerpFactor: 75
-  pushUpSpeed: 500
-  pushHeight: 9
-  spoutSound: {fileID: 8300000, guid: 880f034fe284b40da858e62747de5882, type: 3}
   sinking: 0
   wakeSystemL: {fileID: 469814950}
   wakeSystemR: {fileID: 520479094}
@@ -38739,12 +38735,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 42f020bef7819b748a52ba477a56257d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  health: 100
   waveMesh: {fileID: 1630417249}
-  perlinMap: {fileID: 0}
-  lerpFactor: 75
-  pushUpSpeed: 500
-  pushHeight: 9
-  spoutSound: {fileID: 8300000, guid: 880f034fe284b40da858e62747de5882, type: 3}
   sinking: 0
   wakeSystemL: {fileID: 0}
   wakeSystemR: {fileID: 0}

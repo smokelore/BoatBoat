@@ -9,6 +9,7 @@ public class CannonBall : MonoBehaviour {
 	private int hit = 0;
 	public float lifetime;
 	public float speed;
+	public float damage;
 	public bool cannonOnRightSide;
 	
 	void Start() {
@@ -32,7 +33,8 @@ public class CannonBall : MonoBehaviour {
 			hit = 1; // makes smoke
 			Destroy(gameObject);
 		}
-		else if (other.collider.name == "Enemy"){
+		else if (other.collider.gameObject.GetComponent<Ship>() != null){
+			other.collider.gameObject.GetComponent<Ship>().ApplyDamage(damage);
 			hit = 2; // makes splinters
 			Destroy(gameObject);
 		}

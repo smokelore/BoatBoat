@@ -2,19 +2,21 @@
 using System.Collections;
 
 public class Ship : MonoBehaviour {
+	public float health = 100f;
+
 	public GameObject waveMesh;
-	public PerlinMap perlinMap;
-	public float lerpFactor;
-	public float pushUpSpeed;
-	public float pushHeight;
+	private PerlinMap perlinMap;
+	// public float lerpFactor;
+	// public float pushUpSpeed;
+	// public float pushHeight;
 	private float targetHeight;
-	private bool hitFlag, prevHitFlag;
-	//private bool pushBoat = false;
-	private bool pushBoatUp;
-	private bool pushBoatDown;
-	//private SpoutMove spoutMove;
-	//private bool spoutUpDirection;
-	public AudioClip spoutSound;
+	// private bool hitFlag, prevHitFlag;
+	// private bool pushBoat = false;
+	// private bool pushBoatUp;
+	// private bool pushBoatDown;
+	// private SpoutMove spoutMove;
+	// private bool spoutUpDirection;
+	// public AudioClip spoutSound;
 	public bool sinking;
 
 	private Vector3 pointN, pointE, pointS, pointW;
@@ -131,7 +133,7 @@ public class Ship : MonoBehaviour {
 		{
 			Debug.Log("inside spout");
 			// Get velocity of y right as we enter, only once, to set it the same as we leave
-			hitFlag = true;
+			// hitFlag = true;
 		}
 	}
 	
@@ -139,6 +141,13 @@ public class Ship : MonoBehaviour {
 		if (other.tag == "Spout")
 		{
 			//hitFlag = false;
+		}
+	}
+
+	public void ApplyDamage(float damage) {
+		health = Mathf.Clamp(health - damage, 0, 100);
+		if (health <= 0) {
+			sink();
 		}
 	}
 
