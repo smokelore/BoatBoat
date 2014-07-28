@@ -19,6 +19,12 @@ public class CannonController : InputController {
 	private bool needsResetting;
 	private LineRenderer lineRenderer;
 
+	public GameObject indicatorPrefab;
+	private GameObject indicatorObject;
+	public float indicatorHeight = 0.2f;
+	public float indicatorPeriod = 1;
+	public float indicatorAmplitude = 0.05f;
+
 	// Use this for initialization
 	void Start () {
 		InputManager.Setup();
@@ -38,6 +44,7 @@ public class CannonController : InputController {
 		ShootControls();
 		ReloadControls();
 		HUDText();
+		ZoneIndicator();
 
 		needsResetting = true;
 	}
@@ -94,6 +101,7 @@ public class CannonController : InputController {
 		if (BButton) {
 			player.ResetController();
 			UnsetPlayer();
+			Destroy(indicatorObject);
 		}
 	}
 
@@ -153,5 +161,20 @@ public class CannonController : InputController {
 	private void HUDText() {
 		Camera.main.GetComponent<HUD>().personName = "Left Stick to aim, X to reload";
 		Camera.main.GetComponent<HUD>().levelTheme = "Right Trigger to shoot, B to Dismount";
+	}
+
+	private void ZoneIndicator() {
+		if (!loaded) {
+			if (indicatorObject == null) {
+				indicatorObject = Instantiate(indicatorPrefab, Vector3.zero, Quaternion.identity) as GameObject;
+			}
+			float height = player.zone.transform.position.y + indicatorHeight + indicatorAmplitude * Mathf.Sin(Time.time / indicatorPeriod * 2 * Mathf.PI);
+			indicatorObject.transform.position = new Vector3(player.zone.transform.position.x, height, player.zone.transform.position.z);
+			indicatorObject.transform.LookAt(Camera.main.transform);
+		} else {
+			if (indicatorObject != null) {
+				Destroy(indicatorObject);
+			}
+		}
 	}
 }
