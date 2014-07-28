@@ -33,10 +33,10 @@ public class CannonBall : MonoBehaviour {
 			hit = 1; // makes smoke
 			Destroy(gameObject);
 		}
-		else if (other.collider.gameObject.GetComponent<Ship>() != null){
-			other.collider.gameObject.GetComponent<Ship>().ApplyDamage(damage);
+		else if (other.gameObject.GetComponent<Ship>() != null) {
 			hit = 2; // makes splinters
 			Destroy(gameObject);
+			other.gameObject.GetComponent<Ship>().ApplyDamage(damage);
 		}
 	}
 

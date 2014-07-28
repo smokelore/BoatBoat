@@ -157,6 +157,7 @@ public class Ship : MonoBehaviour {
 	}
 
 	public void ApplyDamage(float damage) {
+		Debug.Log(gameObject.name + " was shot for " + damage + " damage.");
 		health = Mathf.Clamp(health - damage, 0, 100);
 		if (health <= 0) {
 			sinking = true;
