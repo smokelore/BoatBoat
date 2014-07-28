@@ -43,7 +43,7 @@ public class HUD : MonoBehaviour {
 
 	private Rect getHealthRect(Ship ship) {
 		float distance = Vector3.Distance(Camera.main.transform.position, ship.transform.position);
-		
+		if (distance < 50f) {
 			distance = Mathf.Clamp(distance, 10, 50);
 			Vector3 healthBarWorldPosition = ship.transform.position + Vector3.up * (2.5f + (distance-10)/25);
 			int length = (int)(Mathf.Pow(2-distance/40,2) * ship.health) ;
