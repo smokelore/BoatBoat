@@ -24,15 +24,18 @@ public class CannonAI : MonoBehaviour {
 	
 	void Update () {
 		if (Vector3.Distance(this.transform.position, playerObject.transform.position) < 15f) {
-			if ((rightSide && Mathf.Abs(AngleSigned(shipObject.transform.right, playerObject.transform.position - this.transform.position, Vector3.up)) < 20f) ||
-				(!rightSide && Mathf.Abs(AngleSigned(-shipObject.transform.right, playerObject.transform.position - this.transform.position, Vector3.up)) < 20f)) {
-				//this.transform.LookAt(playerObject.transform.position, shipObject.transform.up);
-				if (loaded) {
+			float angle;
+			if (rightSide) {
+				angle = Mathf.Abs(AngleSigned(shipObject.transform.right, playerObject.transform.position - this.transform.position, Vector3.up));
+				if (loaded && Random.Range(0, Mathf.Pow(angle, 2)) < 5f) {
 					Shoot();
+				} else {
+					this.transform.localEulerAngles = new Vector3(270f, 270f, 0f);
 				}
 			} else {
-				if (rightSide) {
-					this.transform.localEulerAngles = new Vector3(270f, 270f, 0f);
+				angle = Mathf.Abs(AngleSigned(-shipObject.transform.right, playerObject.transform.position - this.transform.position, Vector3.up));
+				if (loaded && Random.Range(0, Mathf.Pow(angle, 2)) < 5f) {
+					Shoot();
 				} else {
 					this.transform.localEulerAngles = new Vector3(270f, 90f, 0f);
 				}
@@ -43,7 +46,8 @@ public class CannonAI : MonoBehaviour {
 			reloadCount += Time.deltaTime;
 			if (reloadCount > reloadCountTarget) {
 				loaded = true;
-				reloadCount = 0;
+				reloadCount = 0f;
+				reloadCountTarget = Random.Range(reloadDuration, reloadDuration * 3f);
 			}
 		}
 	}
@@ -54,7 +58,6 @@ public class CannonAI : MonoBehaviour {
 		cannonballTemp.GetComponent<CannonBall>().cannonOnRightSide = rightSide;
 		smokeTemp = Instantiate(smokeShotPrefab, cannonballSpawn.position, cannonballSpawn.rotation) as GameObject;
 		loaded = false;
-		reloadCountTarget = Random.Range(reloadDuration, reloadDuration * 3f);
 	}
 
 	public static float AngleSigned(Vector3 v1, Vector3 v2, Vector3 n) {
