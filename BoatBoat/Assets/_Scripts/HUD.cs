@@ -7,6 +7,7 @@ public class HUD : MonoBehaviour {
 	public GameObject hudGUI;
 	public bool winState;
 	public Texture healthBarTexture;
+	//public Ship ship;
 
 	// Use this for initialization
 	void Start () {
