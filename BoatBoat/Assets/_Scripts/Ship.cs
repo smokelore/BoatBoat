@@ -51,7 +51,7 @@ public class Ship : MonoBehaviour {
 
 		if (this.gameObject.tag == "Player") {
 			waveMesh.transform.position = new Vector3(x, waveMesh.transform.position.y, z);
-			//waveMesh.renderer.material.SetTextureOffset("_MainTex", new Vector2(x/10, z/10));
+			waveMesh.renderer.material.SetTextureOffset("_MainTex", new Vector2(x/10, z/10));
 		}
 		//float newHeight = Mathf.Lerp(currentHeight, targetHeight, Time.deltaTime * lerpFactor);
 		
@@ -92,11 +92,21 @@ public class Ship : MonoBehaviour {
 		}
 
 		Vector3 localVelocity = this.transform.InverseTransformDirection(this.rigidbody.velocity);
-		forceController fc = this.gameObject.GetComponent<forceController>();
-		if (localVelocity.z >= 0f) {
-			if (wakeSystemL != null && wakeSystemR != null) {
-				wakeSystemL.emissionRate = 500f * Mathf.Abs(fc.curSpeed/fc.maxSpeed);
-				wakeSystemR.emissionRate = 500f * Mathf.Abs(fc.curSpeed/fc.maxSpeed);
+		if (this.gameObject.tag == "Player") {
+			forceController fc = this.gameObject.GetComponent<forceController>();
+			if (localVelocity.z >= 0f) {
+				if (wakeSystemL != null && wakeSystemR != null) {
+					wakeSystemL.emissionRate = 500f * Mathf.Abs(fc.curSpeed/fc.maxSpeed);
+					wakeSystemR.emissionRate = 500f * Mathf.Abs(fc.curSpeed/fc.maxSpeed);
+				}
+			}
+		} else if (this.gameObject.tag == "Enemy") {
+			enemyController fc = this.gameObject.GetComponent<enemyController>();
+			if (localVelocity.z >= 0f) {
+				if (wakeSystemL != null && wakeSystemR != null) {
+					wakeSystemL.emissionRate = 500f * Mathf.Abs(fc.curSpeed/fc.maxSpeed);
+					wakeSystemR.emissionRate = 500f * Mathf.Abs(fc.curSpeed/fc.maxSpeed);
+				}
 			}
 		}
 	}

@@ -16,7 +16,8 @@ public class enemyController : MonoBehaviour {
 	public float maxTurn, curMaxTurn;
 	public float idleDrag;
 	private bool movingForward, movingBackward;
-
+	public Cloth sailCloth;
+	public Vector3 clothAcceleration;
 	public float fakeVerticalAxis, fakeHorizontalAxis;
 	
 	public float viewDistance;
@@ -307,14 +308,18 @@ public class enemyController : MonoBehaviour {
 			}
 		}
 
-		Vector2 planeVelocity = new Vector2(this.rigidbody.velocity.x, this.rigidbody.velocity.z);
+		Vector3 newForward = new Vector3(this.transform.forward.x, 0f, this.transform.forward.z).normalized;
+		float planeVelocity = new Vector3(this.rigidbody.velocity.x, 0f, this.rigidbody.velocity.z).magnitude;
 		if (movingForward) {
 			// if moving forward, redirect all velocity forward after turning
-			this.rigidbody.velocity = new Vector3(this.transform.forward.x, 0, this.transform.forward.z) * planeVelocity.magnitude;
+			this.rigidbody.velocity = planeVelocity * newForward;
 		} else if (movingBackward) {
 			// if moving backward, redirect all velocity backward after turning
-			this.rigidbody.velocity = new Vector3(this.transform.forward.x, 0, this.transform.forward.z) * -planeVelocity.magnitude;
+			this.rigidbody.velocity = -planeVelocity * newForward;
 		}
+
+		clothAcceleration = new Vector3(rigidbody.angularVelocity.y / maxTurn * 100f, 0f, 5f - localVelocity.z / maxSpeed * 5f);//curMaxTurn/maxTurn, 0);
+		sailCloth.externalAcceleration = clothAcceleration;
 	}
 
 	public static float AngleSigned(Vector3 v1, Vector3 v2, Vector3 n) {
