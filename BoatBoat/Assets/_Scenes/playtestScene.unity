@@ -4473,7 +4473,7 @@ GameObject:
   - 114: {fileID: 163761514}
   - 82: {fileID: 163761513}
   m_Layer: 0
-  m_Name: River
+  m_Name: river
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4603,7 +4603,7 @@ Transform:
   m_LocalScale: {x: 20.8139477, y: 4, z: 41.2041473}
   m_Children: []
   m_Father: {fileID: 1148447350}
-  m_RootOrder: 0
+  m_RootOrder: 13
 --- !u!1 &164056469
 GameObject:
   m_ObjectHideFlags: 0
@@ -15625,7 +15625,7 @@ GameObject:
   - 114: {fileID: 506640755}
   - 82: {fileID: 506640754}
   m_Layer: 0
-  m_Name: River
+  m_Name: river
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -15755,7 +15755,7 @@ Transform:
   m_LocalScale: {x: 20.6615314, y: 4, z: 11.5641413}
   m_Children: []
   m_Father: {fileID: 1148447350}
-  m_RootOrder: 9
+  m_RootOrder: 7
 --- !u!1 &507717709
 GameObject:
   m_ObjectHideFlags: 0
@@ -19699,6 +19699,10 @@ MonoBehaviour:
   aimSpeed: 35
   aimX: 0
   aimY: 0
+  indicatorPrefab: {fileID: 100000, guid: d57f91b1402431042bf8b00fefe5a7ad, type: 2}
+  indicatorHeight: .200000003
+  indicatorPeriod: 1
+  indicatorAmplitude: .0500000007
 --- !u!23 &623867518
 Renderer:
   m_ObjectHideFlags: 0
@@ -19873,7 +19877,7 @@ GameObject:
   - 114: {fileID: 645896987}
   - 82: {fileID: 645896986}
   m_Layer: 0
-  m_Name: River
+  m_Name: river
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -20003,7 +20007,7 @@ Transform:
   m_LocalScale: {x: 13.4758749, y: 4, z: 12.9152822}
   m_Children: []
   m_Father: {fileID: 1148447350}
-  m_RootOrder: 11
+  m_RootOrder: 9
 --- !u!1 &646583600
 GameObject:
   m_ObjectHideFlags: 0
@@ -23180,7 +23184,7 @@ GameObject:
   - 114: {fileID: 728409567}
   - 82: {fileID: 728409566}
   m_Layer: 0
-  m_Name: River
+  m_Name: river
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -23310,7 +23314,7 @@ Transform:
   m_LocalScale: {x: 17.1958447, y: 4, z: 15.9691124}
   m_Children: []
   m_Father: {fileID: 1148447350}
-  m_RootOrder: 1
+  m_RootOrder: 14
 --- !u!1 &730949146
 GameObject:
   m_ObjectHideFlags: 0
@@ -23953,7 +23957,7 @@ GameObject:
   - 114: {fileID: 764233624}
   - 82: {fileID: 764233623}
   m_Layer: 0
-  m_Name: River
+  m_Name: river
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -24083,7 +24087,7 @@ Transform:
   m_LocalScale: {x: 11.1954174, y: 4, z: 25.8234577}
   m_Children: []
   m_Father: {fileID: 1148447350}
-  m_RootOrder: 12
+  m_RootOrder: 10
 --- !u!1 &767743161
 GameObject:
   m_ObjectHideFlags: 0
@@ -24990,6 +24994,10 @@ MonoBehaviour:
   aimSpeed: 35
   aimX: 0
   aimY: 0
+  indicatorPrefab: {fileID: 100000, guid: d57f91b1402431042bf8b00fefe5a7ad, type: 2}
+  indicatorHeight: .200000003
+  indicatorPeriod: 1
+  indicatorAmplitude: .0500000007
 --- !u!23 &815118135
 Renderer:
   m_ObjectHideFlags: 0
@@ -25549,7 +25557,7 @@ GameObject:
   - 114: {fileID: 834405577}
   - 82: {fileID: 834405576}
   m_Layer: 0
-  m_Name: River
+  m_Name: river
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -25679,7 +25687,7 @@ Transform:
   m_LocalScale: {x: 15.2740469, y: 4, z: 7.9942584}
   m_Children: []
   m_Father: {fileID: 1148447350}
-  m_RootOrder: 5
+  m_RootOrder: 3
 --- !u!1 &839350361
 GameObject:
   m_ObjectHideFlags: 0
@@ -25985,7 +25993,7 @@ GameObject:
   - 114: {fileID: 849711649}
   - 82: {fileID: 849711648}
   m_Layer: 0
-  m_Name: River
+  m_Name: river
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -26115,7 +26123,7 @@ Transform:
   m_LocalScale: {x: 16.5041599, y: 4, z: 40.941185}
   m_Children: []
   m_Father: {fileID: 1148447350}
-  m_RootOrder: 4
+  m_RootOrder: 2
 --- !u!1 &851093021
 GameObject:
   m_ObjectHideFlags: 0
@@ -26247,7 +26255,7 @@ GameObject:
   - 114: {fileID: 855046852}
   - 82: {fileID: 855046851}
   m_Layer: 0
-  m_Name: River
+  m_Name: river
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -26377,7 +26385,7 @@ Transform:
   m_LocalScale: {x: 15.4068642, y: 4, z: 10.9546337}
   m_Children: []
   m_Father: {fileID: 1148447350}
-  m_RootOrder: 6
+  m_RootOrder: 4
 --- !u!1 &855065773
 GameObject:
   m_ObjectHideFlags: 0
@@ -28784,6 +28792,10 @@ MonoBehaviour:
   aimSpeed: 35
   aimX: 0
   aimY: 0
+  indicatorPrefab: {fileID: 100000, guid: d57f91b1402431042bf8b00fefe5a7ad, type: 2}
+  indicatorHeight: .200000003
+  indicatorPeriod: 1
+  indicatorAmplitude: .0500000007
 --- !u!23 &900646579
 Renderer:
   m_ObjectHideFlags: 0
@@ -29626,7 +29638,7 @@ GameObject:
   - 114: {fileID: 950611397}
   - 82: {fileID: 950611396}
   m_Layer: 0
-  m_Name: River
+  m_Name: river
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -29756,7 +29768,7 @@ Transform:
   m_LocalScale: {x: 15.3831654, y: 4, z: 10.7712612}
   m_Children: []
   m_Father: {fileID: 1148447350}
-  m_RootOrder: 3
+  m_RootOrder: 1
 --- !u!1 &955430219
 GameObject:
   m_ObjectHideFlags: 0
@@ -30042,6 +30054,10 @@ MonoBehaviour:
   aimSpeed: 35
   aimX: 0
   aimY: 0
+  indicatorPrefab: {fileID: 100000, guid: d57f91b1402431042bf8b00fefe5a7ad, type: 2}
+  indicatorHeight: .200000003
+  indicatorPeriod: 1
+  indicatorAmplitude: .0500000007
 --- !u!23 &959569458
 Renderer:
   m_ObjectHideFlags: 0
@@ -31449,7 +31465,7 @@ GameObject:
   - 114: {fileID: 1018875422}
   - 82: {fileID: 1018875421}
   m_Layer: 0
-  m_Name: River
+  m_Name: river
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -31579,7 +31595,7 @@ Transform:
   m_LocalScale: {x: 25.6963425, y: 4, z: 22.3934288}
   m_Children: []
   m_Father: {fileID: 1148447350}
-  m_RootOrder: 10
+  m_RootOrder: 8
 --- !u!1 &1025555053
 GameObject:
   m_ObjectHideFlags: 0
@@ -32507,6 +32523,10 @@ MonoBehaviour:
   aimSpeed: 35
   aimX: 0
   aimY: 0
+  indicatorPrefab: {fileID: 100000, guid: d57f91b1402431042bf8b00fefe5a7ad, type: 2}
+  indicatorHeight: .200000003
+  indicatorPeriod: 1
+  indicatorAmplitude: .0500000007
 --- !u!23 &1073657350
 Renderer:
   m_ObjectHideFlags: 0
@@ -34763,8 +34783,6 @@ Transform:
   m_LocalPosition: {x: -108.650581, y: 11.6886063, z: 13.3376255}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 163761518}
-  - {fileID: 728409571}
   - {fileID: 1799482859}
   - {fileID: 950611401}
   - {fileID: 849711653}
@@ -34778,6 +34796,8 @@ Transform:
   - {fileID: 764233628}
   - {fileID: 1718830495}
   - {fileID: 1515999820}
+  - {fileID: 163761518}
+  - {fileID: 728409571}
   m_Father: {fileID: 0}
   m_RootOrder: 6
 --- !u!1 &1151341856
@@ -41019,7 +41039,7 @@ GameObject:
   - 114: {fileID: 1404525497}
   - 82: {fileID: 1404525496}
   m_Layer: 0
-  m_Name: River
+  m_Name: river
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -41149,7 +41169,7 @@ Transform:
   m_LocalScale: {x: 23.0870953, y: 4, z: 38.8063011}
   m_Children: []
   m_Father: {fileID: 1148447350}
-  m_RootOrder: 8
+  m_RootOrder: 6
 --- !u!1 &1405788230
 GameObject:
   m_ObjectHideFlags: 0
@@ -44012,7 +44032,7 @@ GameObject:
   - 114: {fileID: 1515999816}
   - 82: {fileID: 1515999815}
   m_Layer: 0
-  m_Name: River
+  m_Name: river
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -44142,7 +44162,7 @@ Transform:
   m_LocalScale: {x: 24.420826, y: 4, z: 42.2644958}
   m_Children: []
   m_Father: {fileID: 1148447350}
-  m_RootOrder: 14
+  m_RootOrder: 12
 --- !u!1 &1517336314
 GameObject:
   m_ObjectHideFlags: 0
@@ -47483,6 +47503,10 @@ MonoBehaviour:
   aimSpeed: 35
   aimX: 0
   aimY: 0
+  indicatorPrefab: {fileID: 100000, guid: d57f91b1402431042bf8b00fefe5a7ad, type: 2}
+  indicatorHeight: .200000003
+  indicatorPeriod: 1
+  indicatorAmplitude: .0500000007
 --- !u!23 &1618304132
 Renderer:
   m_ObjectHideFlags: 0
@@ -49545,7 +49569,7 @@ GameObject:
   - 114: {fileID: 1718830491}
   - 82: {fileID: 1718830490}
   m_Layer: 0
-  m_Name: River
+  m_Name: river
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -49675,7 +49699,7 @@ Transform:
   m_LocalScale: {x: 21.3076096, y: 4, z: 21.1059418}
   m_Children: []
   m_Father: {fileID: 1148447350}
-  m_RootOrder: 13
+  m_RootOrder: 11
 --- !u!1 &1720866973
 GameObject:
   m_ObjectHideFlags: 0
@@ -53619,7 +53643,7 @@ GameObject:
   - 114: {fileID: 1799482855}
   - 82: {fileID: 1799482854}
   m_Layer: 0
-  m_Name: River
+  m_Name: river
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -53749,7 +53773,7 @@ Transform:
   m_LocalScale: {x: 15.8529167, y: 4, z: 20.3090057}
   m_Children: []
   m_Father: {fileID: 1148447350}
-  m_RootOrder: 2
+  m_RootOrder: 0
 --- !u!1 &1801431484
 GameObject:
   m_ObjectHideFlags: 0
@@ -55849,6 +55873,30 @@ Prefab:
       propertyPath: m_Materials.Array.data[1]
       value: 
       objectReference: {fileID: 2100000, guid: f8e794af0c9c047e6852fc8146fc36fe, type: 2}
+    - target: {fileID: 11400014, guid: 142591d391191e04d96811d24031fc5c, type: 2}
+      propertyPath: indicatorPrefab
+      value: 
+      objectReference: {fileID: 100000, guid: d57f91b1402431042bf8b00fefe5a7ad, type: 2}
+    - target: {fileID: 11400016, guid: 142591d391191e04d96811d24031fc5c, type: 2}
+      propertyPath: indicatorPrefab
+      value: 
+      objectReference: {fileID: 100000, guid: d57f91b1402431042bf8b00fefe5a7ad, type: 2}
+    - target: {fileID: 11400018, guid: 142591d391191e04d96811d24031fc5c, type: 2}
+      propertyPath: indicatorPrefab
+      value: 
+      objectReference: {fileID: 100000, guid: d57f91b1402431042bf8b00fefe5a7ad, type: 2}
+    - target: {fileID: 11400020, guid: 142591d391191e04d96811d24031fc5c, type: 2}
+      propertyPath: indicatorPrefab
+      value: 
+      objectReference: {fileID: 100000, guid: d57f91b1402431042bf8b00fefe5a7ad, type: 2}
+    - target: {fileID: 11400022, guid: 142591d391191e04d96811d24031fc5c, type: 2}
+      propertyPath: indicatorPrefab
+      value: 
+      objectReference: {fileID: 100000, guid: d57f91b1402431042bf8b00fefe5a7ad, type: 2}
+    - target: {fileID: 11400036, guid: 142591d391191e04d96811d24031fc5c, type: 2}
+      propertyPath: indicatorPrefab
+      value: 
+      objectReference: {fileID: 100000, guid: d57f91b1402431042bf8b00fefe5a7ad, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 142591d391191e04d96811d24031fc5c, type: 2}
   m_RootGameObject: {fileID: 1087372591}
@@ -58941,7 +58989,7 @@ GameObject:
   - 114: {fileID: 2029625994}
   - 82: {fileID: 2029625993}
   m_Layer: 0
-  m_Name: River
+  m_Name: river
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -59071,7 +59119,7 @@ Transform:
   m_LocalScale: {x: 17.0149593, y: 4, z: 21.361618}
   m_Children: []
   m_Father: {fileID: 1148447350}
-  m_RootOrder: 7
+  m_RootOrder: 5
 --- !u!1 &2032354790
 GameObject:
   m_ObjectHideFlags: 0
