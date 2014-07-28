@@ -31,18 +31,27 @@ public class HUD : MonoBehaviour {
 		GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
 		GameObject player = GameObject.FindWithTag("Player");
 
+		int length, width;
 		foreach (GameObject enemy in enemies) {
-			float distance = Vector3.Distance(Camera.main.transform.position, enemy.transform.position);
-			if (distance < 50f) {
-				distance = Mathf.Clamp(distance, 10, 50);
-				Vector3 healthBarWorldPosition = enemy.transform.position + Vector3.up * (1.5f + (distance-10)/20);
-				int length = (int)(Mathf.Pow(2-distance/40,2) * enemy.GetComponent<Ship>().health) ;
-				int width = (int)(Mathf.Pow(2-distance/40,2) * 10);
-
-				Vector2 healthBarScreenPosition = Camera.main.WorldToScreenPoint(healthBarWorldPosition);
-				Debug.Log((healthBarScreenPosition.x - (int)(length/2)) + " " + (healthBarScreenPosition.y - (int)(width/2)));
-				GUI.DrawTexture(new Rect(healthBarScreenPosition.x - (int)(length/2), Screen.height - healthBarScreenPosition.y + (int)(width/2), length, width), healthBarTexture, ScaleMode.StretchToFill, true, 0);
-			}
+			// Draw enemy health bars
+			GUI.DrawTexture(getHealthRect(enemy.GetComponent<Ship>()), healthBarTexture, ScaleMode.StretchToFill, true, 0);
 		}
+
+		// Draw player health bars
+		GUI.DrawTexture(getHealthRect(player.GetComponent<Ship>()), healthBarTexture, ScaleMode.StretchToFill, true, 0);
+	}
+
+	private Rect getHealthRect(Ship ship) {
+		float distance = Vector3.Distance(Camera.main.transform.position, ship.transform.position);
+		
+			distance = Mathf.Clamp(distance, 10, 50);
+			Vector3 healthBarWorldPosition = ship.transform.position + Vector3.up * (2.5f + (distance-10)/25);
+			int length = (int)(Mathf.Pow(2-distance/40,2) * ship.health) ;
+			int width = (int)(Mathf.Pow(2-distance/40,2) * 7.5f);
+
+			Vector2 healthBarScreenPosition = Camera.main.WorldToScreenPoint(healthBarWorldPosition);
+			return new Rect(healthBarScreenPosition.x - (int)(length/2), Screen.height - healthBarScreenPosition.y + (int)(width/2), length, width);
+		}
+		return new Rect(-100,-100,0,0);
 	}
 }
