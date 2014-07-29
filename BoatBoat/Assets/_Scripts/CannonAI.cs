@@ -47,7 +47,7 @@ public class CannonAI : MonoBehaviour {
 			if (reloadCount > reloadCountTarget) {
 				loaded = true;
 				reloadCount = 0f;
-				reloadCountTarget = Random.Range(reloadDuration, reloadDuration * 3f);
+				reloadCountTarget = Random.Range(reloadDuration/2, reloadDuration * 1.5f);
 			}
 		}
 	}

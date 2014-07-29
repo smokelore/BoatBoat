@@ -29852,7 +29852,7 @@ MonoBehaviour:
   cannonballPrefab: {fileID: 100000, guid: 2ca484819d88fd4469da9cf9ae3cd93d, type: 2}
   smokeShotPrefab: {fileID: 100000, guid: cde38bec364ac42bc971c98e0fda544b, type: 2}
   cannonballSpawn: {fileID: 1047187594}
-  reloadDuration: 3
+  reloadDuration: 5
   loaded: 0
   canShoot: 0
 --- !u!1 &870091756
@@ -36107,6 +36107,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3a2612a5892a9634caf300e96af41c0b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  target: {fileID: 0}
 --- !u!82 &1081561026
 AudioSource:
   m_ObjectHideFlags: 0
@@ -37343,7 +37344,7 @@ MonoBehaviour:
   cannonballPrefab: {fileID: 100000, guid: 2ca484819d88fd4469da9cf9ae3cd93d, type: 2}
   smokeShotPrefab: {fileID: 100000, guid: cde38bec364ac42bc971c98e0fda544b, type: 2}
   cannonballSpawn: {fileID: 1806731617}
-  reloadDuration: 3
+  reloadDuration: 5
   loaded: 0
   canShoot: 0
 --- !u!1 &1129481355
@@ -48340,7 +48341,7 @@ MonoBehaviour:
   cannonballPrefab: {fileID: 100000, guid: 2ca484819d88fd4469da9cf9ae3cd93d, type: 2}
   smokeShotPrefab: {fileID: 100000, guid: cde38bec364ac42bc971c98e0fda544b, type: 2}
   cannonballSpawn: {fileID: 736748101}
-  reloadDuration: 3
+  reloadDuration: 5
   loaded: 0
   canShoot: 0
 --- !u!1 &1537484720
@@ -61068,7 +61069,7 @@ MonoBehaviour:
   cannonballPrefab: {fileID: 100000, guid: 2ca484819d88fd4469da9cf9ae3cd93d, type: 2}
   smokeShotPrefab: {fileID: 100000, guid: cde38bec364ac42bc971c98e0fda544b, type: 2}
   cannonballSpawn: {fileID: 652043343}
-  reloadDuration: 3
+  reloadDuration: 5
   loaded: 0
   canShoot: 0
 --- !u!1 &1918953662
@@ -61895,7 +61896,7 @@ MonoBehaviour:
   cannonballPrefab: {fileID: 100000, guid: 2ca484819d88fd4469da9cf9ae3cd93d, type: 2}
   smokeShotPrefab: {fileID: 100000, guid: cde38bec364ac42bc971c98e0fda544b, type: 2}
   cannonballSpawn: {fileID: 54574126}
-  reloadDuration: 3
+  reloadDuration: 5
   loaded: 0
   canShoot: 0
 --- !u!1 &1957064862
@@ -66153,7 +66154,7 @@ MonoBehaviour:
   cannonballPrefab: {fileID: 100000, guid: 2ca484819d88fd4469da9cf9ae3cd93d, type: 2}
   smokeShotPrefab: {fileID: 100000, guid: cde38bec364ac42bc971c98e0fda544b, type: 2}
   cannonballSpawn: {fileID: 1904396564}
-  reloadDuration: 3
+  reloadDuration: 5
   loaded: 0
   canShoot: 0
 --- !u!1 &2075223762

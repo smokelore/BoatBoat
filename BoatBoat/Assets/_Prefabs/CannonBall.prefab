@@ -14,6 +14,7 @@ GameObject:
   - 23: {fileID: 2300000}
   - 114: {fileID: 11400000}
   - 96: {fileID: 9600000}
+  - 82: {fileID: 8200000}
   m_Layer: 0
   m_Name: CannonBall
   m_TagString: Untagged
@@ -75,6 +76,64 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!82 &8200000
+AudioSource:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100000}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_audioClip: {fileID: 8300000, guid: 292c57a5166d4b14b8328fb6426a1b02, type: 3}
+  m_PlayOnAwake: 1
+  m_Volume: .400000006
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
 --- !u!96 &9600000
 TrailRenderer:
   m_ObjectHideFlags: 1
@@ -131,6 +190,9 @@ MonoBehaviour:
   explosionWaterL: {fileID: 100002, guid: 60a4bcd9df900ca439000f90d00cdd40, type: 2}
   explosionWaterR: {fileID: 100002, guid: f9aaf9e233d37114db7286259ec22008, type: 2}
   explosionBoat: {fileID: 100004, guid: 1cef7f9d980bb894c985570403d17a1e, type: 2}
+  landHit: {fileID: 8300000, guid: 51dba7aefd169884f8ef82a2c902cf70, type: 3}
+  waterHit: {fileID: 8300000, guid: 703962bf674e41340aec9295ce2dd218, type: 3}
+  enemyHit: {fileID: 8300000, guid: 7ed1f4e214555f04293c217350e94131, type: 3}
   lifetime: 2
   speed: 15
   damage: 10

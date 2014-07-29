@@ -6,6 +6,9 @@ public class CannonBall : MonoBehaviour {
 	public GameObject explosionWaterL;
 	public GameObject explosionWaterR;
 	public GameObject explosionBoat;
+	public AudioClip landHit;
+	public AudioClip waterHit;
+	public AudioClip enemyHit;
 	private int hit = 0;
 	public float lifetime;
 	public float speed;
@@ -44,15 +47,26 @@ public class CannonBall : MonoBehaviour {
 		if (hit == 0) {
 			if (cannonOnRightSide) {
 				Instantiate(explosionWaterR, transform.position, transform.rotation);
+				//waterHit.volume = 0.5F;
+				AudioSource.PlayClipAtPoint(waterHit, transform.position);
 			} else {
 				Instantiate(explosionWaterL, transform.position, transform.rotation);
+				//waterHit.volume = 0.5F;
+				//waterHit.Play();
+				AudioSource.PlayClipAtPoint(waterHit, transform.position);
 			}
 		}
 		else if (hit == 1){
 			Instantiate(explosion, transform.position, transform.rotation);
+			//landHit.volume = 0.5F;
+			//landHit.Play();
+			AudioSource.PlayClipAtPoint(landHit, transform.position);
 		}
 		else if (hit == 2){
 			Instantiate(explosionBoat, transform.position, transform.rotation);
+			//enemyHit.volume = 0.5F;
+			//enemyHit.Play();
+			AudioSource.PlayClipAtPoint(enemyHit, transform.position);
 		}
 	}
 }
