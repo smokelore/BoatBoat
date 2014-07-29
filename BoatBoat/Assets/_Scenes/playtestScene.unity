@@ -4032,6 +4032,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 0}
+  StartButton: 0
   LeftStick: {x: 0, y: 0}
   RightStick: {x: 0, y: 0}
   AButton: 0
@@ -4050,6 +4051,8 @@ MonoBehaviour:
   indicatorHeight: .200000003
   indicatorPeriod: 1
   indicatorAmplitude: .0500000007
+  disableControls: 0
+  mainMenuControl: 0
 --- !u!114 &152984895
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5199,6 +5202,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 0}
+  StartButton: 0
   LeftStick: {x: 0, y: 0}
   RightStick: {x: 0, y: 0}
   AButton: 0
@@ -7537,6 +7541,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 0}
+  StartButton: 0
   LeftStick: {x: 0, y: 0}
   RightStick: {x: 0, y: 0}
   AButton: 0
@@ -7555,6 +7560,8 @@ MonoBehaviour:
   indicatorHeight: .200000003
   indicatorPeriod: 1
   indicatorAmplitude: .0500000007
+  disableControls: 0
+  mainMenuControl: 0
 --- !u!114 &229712056
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -20585,6 +20592,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 0}
+  StartButton: 0
   LeftStick: {x: 0, y: 0}
   RightStick: {x: 0, y: 0}
   AButton: 0
@@ -26303,6 +26311,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 0}
+  StartButton: 0
   LeftStick: {x: 0, y: 0}
   RightStick: {x: 0, y: 0}
   AButton: 0
@@ -28609,6 +28618,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 0}
+  StartButton: 0
   LeftStick: {x: 0, y: 0}
   RightStick: {x: 0, y: 0}
   AButton: 0
@@ -29650,6 +29660,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 0}
+  StartButton: 0
   LeftStick: {x: 0, y: 0}
   RightStick: {x: 0, y: 0}
   AButton: 0
@@ -32720,6 +32731,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 0}
+  StartButton: 0
   LeftStick: {x: 0, y: 0}
   RightStick: {x: 0, y: 0}
   AButton: 0
@@ -33174,6 +33186,7 @@ GameObject:
   - 4: {fileID: 1087372592}
   - 114: {fileID: 1087372597}
   - 114: {fileID: 1087372596}
+  - 114: {fileID: 1087372598}
   - 54: {fileID: 1087372595}
   - 136: {fileID: 1087372594}
   - 82: {fileID: 1087372593}
@@ -33358,6 +33371,18 @@ MonoBehaviour:
   sinking: 0
   wakeSystemL: {fileID: 469814950}
   wakeSystemR: {fileID: 520479094}
+--- !u!114 &1087372598
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1087372591}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 343afa5cc00f8ff49be8b9443227bfdb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  waveMesh: {fileID: 1630417249}
 --- !u!1 &1087777075
 GameObject:
   m_ObjectHideFlags: 0
@@ -35054,6 +35079,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 0}
+  StartButton: 0
   LeftStick: {x: 0, y: 0}
   RightStick: {x: 0, y: 0}
   AButton: 0
@@ -35072,6 +35098,8 @@ MonoBehaviour:
   indicatorHeight: .200000003
   indicatorPeriod: 1
   indicatorAmplitude: .0500000007
+  disableControls: 0
+  mainMenuControl: 0
 --- !u!114 &1154815937
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -39859,6 +39887,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 0}
+  StartButton: 0
   LeftStick: {x: 0, y: 0}
   RightStick: {x: 0, y: 0}
   AButton: 0
@@ -39877,6 +39906,8 @@ MonoBehaviour:
   indicatorHeight: .200000003
   indicatorPeriod: 1
   indicatorAmplitude: .0500000007
+  disableControls: 0
+  mainMenuControl: 0
 --- !u!114 &1386100906
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -40807,6 +40838,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 0}
+  StartButton: 0
   LeftStick: {x: 0, y: 0}
   RightStick: {x: 0, y: 0}
   AButton: 0
@@ -47564,6 +47596,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 0}
+  StartButton: 0
   LeftStick: {x: 0, y: 0}
   RightStick: {x: 0, y: 0}
   AButton: 0
@@ -53111,6 +53144,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 0}
+  StartButton: 0
   LeftStick: {x: 0, y: 0}
   RightStick: {x: 0, y: 0}
   AButton: 0

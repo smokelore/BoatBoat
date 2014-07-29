@@ -1,4 +1,4 @@
-Main Menu (with controller indicators)
+Improve controller connects/disconnects
 
 Pause Menu
 
@@ -17,3 +17,10 @@ Environmental effects?
 Better ocean rocking
 
 Make a complete level
+
+Fonts:
+http://www.fontsquirrel.com/fonts/oswald
+http://www.fontsquirrel.com/fonts/ostrich-sans
+
+3D Text Shader:
+http://wiki.unity3d.com/index.php?title=3DText

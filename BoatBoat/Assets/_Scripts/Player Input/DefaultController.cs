@@ -25,7 +25,10 @@ public class DefaultController : InputController {
 		if (!disableControls) {
 			MovementControls();
 			ZoneIndicator();
+		} else {
+			StartGameControls();
 		}
+
 		//HUDText();
 	}
 
@@ -59,6 +62,12 @@ public class DefaultController : InputController {
 					Destroy(indicatorObject);
 				}
 			}
+		}
+	}
+
+	private void StartGameControls() {
+		if (RightBumper) {
+			Application.LoadLevel("playtestScene");
 		}
 	}
 

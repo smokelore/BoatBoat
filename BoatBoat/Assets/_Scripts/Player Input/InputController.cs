@@ -4,6 +4,7 @@ using System.Collections;
 
 public class InputController : MonoBehaviour {
 	public Player player;
+	//public bool StartButton;
 	public Vector2 LeftStick;
 	public Vector2 RightStick;
 	public bool AButton;
@@ -24,6 +25,7 @@ public class InputController : MonoBehaviour {
 			InputManager.Update();
 
 			// Update input values
+			//StartButton = player.device.GetControl(InputControlType.Start).WasPressed;
 			LeftStick = new Vector2(player.device.LeftStickX, player.device.LeftStickY);
 			RightStick = new Vector2(player.device.RightStickX, player.device.RightStickY);
 			AButton = player.device.GetControl(InputControlType.Action1).IsPressed;
@@ -68,6 +70,7 @@ public class InputController : MonoBehaviour {
 		if (newPlayer != null && newPlayer.playerNum <= 4 && newPlayer.playerNum >= 0) {
 			this.player = newPlayer;
 		} else {
+			//StartButton = false;
 			LeftStick = Vector2.zero;
 			RightStick = Vector2.zero;
 			AButton = false;

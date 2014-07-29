@@ -6,7 +6,7 @@ Material:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: 3DText
+  m_Name: Press Start Text
   m_Shader: {fileID: 4800000, guid: d9852f674928ed24b9a39b7486c1af26, type: 3}
   m_ShaderKeywords: []
   m_CustomRenderQueue: -1
@@ -17,7 +17,7 @@ Material:
         first:
           name: _MainTex
         second:
-          m_Texture: {fileID: 2800000, guid: 157ae42e734092f42a530ef074dab4b0, type: 3}
+          m_Texture: {fileID: 2800000, guid: ab0e84f51806d9545a07fd8405d4468a, type: 3}
           m_Scale: {x: 1, y: 1}
           m_Offset: {x: 0, y: 0}
     m_Floats: {}
