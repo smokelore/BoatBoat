@@ -19,7 +19,7 @@ public class CannonAI : MonoBehaviour {
 	void Start () {
 		playerObject = GameObject.FindWithTag("Player");
 		ec = shipObject.GetComponent<enemyController>();
-		reloadCountTarget = Random.Range(reloadDuration, reloadDuration * 3f);
+		reloadCountTarget = Random.Range(reloadDuration/2, reloadDuration * 1.5f);
 	}
 	
 	void Update () {

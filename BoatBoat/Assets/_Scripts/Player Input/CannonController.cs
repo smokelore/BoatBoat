@@ -12,7 +12,10 @@ public class CannonController : InputController {
 	public Transform cannonballSpawn;
 	private GameObject cannonballTemp;
 	private GameObject smokeTemp;
-	public bool loaded, canShoot;
+	public bool loaded, loading, canShoot;
+	public float reloadDuration = 3f;
+	private float reloadCount;
+
 	public float stickDeadzone;
 	public float aimSpeed;
 	public float aimX, aimY;
@@ -90,9 +93,17 @@ public class CannonController : InputController {
 	}
 
 	private void ReloadControls() {
-		if (!loaded && XButton) {
-			Debug.Log("Player " + player.playerNum + " reloaded " + cannonObject.name);
-			loaded = true;
+		if (!loaded && !loading && XButton) {
+			Debug.Log("Player " + player.playerNum + " reloading " + cannonObject.name);
+			loading = true;
+		} else if (!loaded && loading) {
+			reloadCount += Time.deltaTime;
+			if (reloadCount > reloadDuration) {
+				Debug.Log("Player " + player.playerNum + " reloaded " + cannonObject.name);
+				loaded = true;
+				loading = false;
+				reloadCount = 0f;
+			}
 		}
 	}
 
