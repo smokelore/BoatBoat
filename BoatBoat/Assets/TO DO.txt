@@ -1,0 +1,21 @@
+Cannon reload indicator
+
+Compass or target direction indicator?
+
+Enemy ship cannon shooting
+
+Rowing sounds
+Cannon shot sounds
+Cannonball collision sounds
+Target sound?
+
+New oar models
+New target model (treasure?)
+
+Terrain props (trees, docks?)
+
+Timer?
+
+Environmental effects?
+
+Better ocean rocking

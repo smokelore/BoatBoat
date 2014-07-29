@@ -16,6 +16,8 @@ public class OarController : InputController {
 	public ParticleSystem leftSplasher;
 	private int rightSplashCount;
 	private int leftSplashCount;
+	private int soundNum;
+	public float vol = 12.0f;
 
 	public float maxHeight = 1.5f;
 	public float rowSpeedMax = 8.0f;
@@ -24,6 +26,12 @@ public class OarController : InputController {
 	public Vector2 currentLeftStick;
 	public Vector2 prevRightStick;
 	public Vector2 currentRightStick;
+
+	public AudioClip row1;
+	public AudioClip row2;
+	public AudioClip row3;
+	public AudioClip row4;
+	public AudioClip row5;
 
 	// Use this for initialization
 	void Start () {
@@ -131,6 +139,9 @@ public class OarController : InputController {
 		if(isHittingWater (RightStick, 80)){
 			rightSplasher.transform.eulerAngles = new Vector3(270, 0, 0);
 			if(rightSplashCount < 25){
+				if(rightSplashCount < 1){
+					rightRowSounds ();
+				}
 				rightSplasher.Emit (10);
 			}
 			rightSplashCount++;
@@ -141,11 +152,44 @@ public class OarController : InputController {
 		if(isHittingWater(LeftStick, 80)){
 			leftSplasher.transform.eulerAngles = new Vector3(270, 0, 0);
 			if(leftSplashCount < 25){
+				if(leftSplashCount < 1){
+					leftRowSounds ();
+				}
 				leftSplasher.Emit (10);
 			}
 			leftSplashCount++;
 		}else{
 			leftSplashCount = 0;
+		}
+	}
+
+	public void rightRowSounds(){
+		soundNum = Random.Range (1, 6);
+		if(soundNum == 1){
+			AudioSource.PlayClipAtPoint (row1, rightSplasher.transform.position, getRightRowAmount()*vol);
+		}else if(soundNum == 2){
+			AudioSource.PlayClipAtPoint (row2, rightSplasher.transform.position, getRightRowAmount()*vol);
+		}else if(soundNum == 3){
+			AudioSource.PlayClipAtPoint (row3, rightSplasher.transform.position, getRightRowAmount()*vol);
+		}else if(soundNum == 4){
+			AudioSource.PlayClipAtPoint (row4, rightSplasher.transform.position, getRightRowAmount()*vol);
+		}else if(soundNum == 5){
+			AudioSource.PlayClipAtPoint (row5, rightSplasher.transform.position, getRightRowAmount()*vol);
+		}
+	}
+
+	public void leftRowSounds(){
+		soundNum = Random.Range (1, 6);
+		if(soundNum == 1){
+			AudioSource.PlayClipAtPoint (row1, leftSplasher.transform.position, getLeftRowAmount ()*vol);
+		}else if(soundNum == 2){
+			AudioSource.PlayClipAtPoint (row2, leftSplasher.transform.position, getLeftRowAmount ()*vol);
+		}else if(soundNum == 3){
+			AudioSource.PlayClipAtPoint (row3, leftSplasher.transform.position, getLeftRowAmount ()*vol);
+		}else if(soundNum == 4){
+			AudioSource.PlayClipAtPoint (row4, leftSplasher.transform.position, getLeftRowAmount ()*vol);
+		}else if(soundNum == 5){
+			AudioSource.PlayClipAtPoint (row5, leftSplasher.transform.position, getLeftRowAmount ()*vol);
 		}
 	}
 }
