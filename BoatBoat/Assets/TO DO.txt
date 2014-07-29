@@ -1,16 +1,8 @@
-Cannon reload indicator
+Treasure flare script
 
-Compass or target direction indicator?
+Finish treasure chest model and interactions and sound
 
-Enemy ship cannon shooting
-
-Rowing sounds
-Cannon shot sounds
-Cannonball collision sounds
-Target sound?
-
-New oar models
-New target model (treasure?)
+Improve enemy cannon shooting?
 
 Terrain props (trees, docks?)
 
@@ -19,3 +11,5 @@ Timer?
 Environmental effects?
 
 Better ocean rocking
+
+Make a complete level
