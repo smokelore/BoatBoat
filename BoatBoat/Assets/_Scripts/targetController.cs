@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+﻿ using UnityEngine;
 using System.Collections;
 
 public class targetController : MonoBehaviour {
@@ -30,7 +30,8 @@ public class targetController : MonoBehaviour {
 	}
 
 	void fireFlare(){
-		flareObject = Instantiate (flare, transform.position + new Vector3(0, 2.5f, 0), transform.rotation) as GameObject;
-		flareObject.rigidbody.AddForce (new Vector3(0, 3000, 600));
+		Debug.Log("FLARE FIRED");
+		flareObject = Instantiate (flare, transform.position + Vector3.up * 2.5f, transform.rotation) as GameObject;
+		flareObject.rigidbody.velocity = Vector3.up * 100;
 	}
 }
