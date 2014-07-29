@@ -42,20 +42,16 @@ public class Ship : MonoBehaviour {
 		float x = this.transform.position.x;
 		float z = this.transform.position.z;
 
-		//float currentHeight = this.transform.position.y;
 		targetHeight = perlinMap.GetHeight(x, z) + 0.08f;
 		float NHeight = perlinMap.GetHeight(x, z+length/2) + 0.08f;
 		float EHeight = perlinMap.GetHeight(x+width/2, z) + 0.08f;
 		float SHeight = perlinMap.GetHeight(x, z-length/2) + 0.08f;
 		float WHeight = perlinMap.GetHeight(x-width/2, z) + 0.08f;
 
-		if (this.gameObject.tag == "Player") {
-			waveMesh.transform.position = new Vector3(x, waveMesh.transform.position.y, z);
-			waveMesh.renderer.material.SetTextureOffset("_MainTex", new Vector2(x/10, z/10));
-		}
-		//float newHeight = Mathf.Lerp(currentHeight, targetHeight, Time.deltaTime * lerpFactor);
-		
-		//this.transform.position = new Vector3(x, targetHeight, z);
+		// if (this.gameObject.tag == "Player") {
+		// 	waveMesh.transform.position = new Vector3(x, waveMesh.transform.position.y, z);
+		// 	waveMesh.renderer.material.SetTextureOffset("_MainTex", new Vector2(x/10, z/10));
+		// }
 
 		pointN = this.transform.position + this.transform.forward*length/2;
 		pointN = new Vector3(pointN.x, NHeight, pointN.z);

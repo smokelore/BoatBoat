@@ -12,6 +12,7 @@ public class DefaultController : InputController {
 	public float indicatorHeight;
 	public float indicatorPeriod;
 	public float indicatorAmplitude;
+	public bool disableControls;
 
 	// Use this for initialization
 	void Start () {
@@ -21,9 +22,11 @@ public class DefaultController : InputController {
 
 	// Controls is called once per frame
 	public override void Controls() {
-		MovementControls();
-		ZoneIndicator();
-		HUDText();
+		if (!disableControls) {
+			MovementControls();
+			ZoneIndicator();
+		}
+		//HUDText();
 	}
 
 	private void MovementControls() {

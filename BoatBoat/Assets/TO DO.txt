@@ -1,4 +1,8 @@
-Treasure flare script
+Main Menu (with controller indicators)
+
+Pause Menu
+
+Fix "Walkable Area" on player boat
 
 Finish treasure chest model and interactions and sound
 
