@@ -28,6 +28,8 @@ public class CannonController : InputController {
 	public float indicatorPeriod = 1;
 	public float indicatorAmplitude = 0.05f;
 
+	private bool oldXButton;
+
 	// Use this for initialization
 	void Start () {
 		InputManager.Setup();
@@ -50,6 +52,7 @@ public class CannonController : InputController {
 		ZoneIndicator();
 
 		needsResetting = true;
+		oldXButton = XButton;
 	}
 
 	private void AimControls() {
@@ -98,6 +101,9 @@ public class CannonController : InputController {
 			loading = true;
 		} else if (!loaded && loading) {
 			reloadCount += Time.deltaTime;
+			if (oldXButton != XButton) {
+				reloadCount += 10 * Time.deltaTime;
+			}
 			if (reloadCount > reloadDuration) {
 				Debug.Log("Player " + player.playerNum + " reloaded " + cannonObject.name);
 				loaded = true;
