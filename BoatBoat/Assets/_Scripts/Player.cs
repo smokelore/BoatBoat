@@ -5,6 +5,7 @@ using InControl;
 public class Player : MonoBehaviour {
 	public int playerNum;
 	public int actualPlayerNum;
+	public InputController defaultController;
 	public InputController controller;
 	public InputDevice device;
 	public GameObject zone;
@@ -69,7 +70,6 @@ public class Player : MonoBehaviour {
 	public void ResetController() {
 		// Reset this player's controller to default controller
 		//if (this.controller != this.gameObject.GetComponent<DefaultController>()) {
-			InputController defaultController = this.gameObject.GetComponent<DefaultController>();
 			this.controller = defaultController;
 			this.controller.SetPlayer(this);
 			Debug.Log("Player " + playerNum + " reset to " + defaultController + " successful");
@@ -98,6 +98,10 @@ public class Player : MonoBehaviour {
 			disabled = false;
 			Debug.Log(playerNum + ", " + actualPlayerNum + ": " + (device as UnityInputDevice).Profile);
 		}
+	}
+
+	public bool isDisabled() {
+		return disabled;
 	}
 
 	void OnTriggerEnter(Collider collider) {

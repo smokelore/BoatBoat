@@ -4066,6 +4066,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerNum: 1
   actualPlayerNum: 0
+  defaultController: {fileID: 152984894}
   controller: {fileID: 0}
   zone: {fileID: 0}
 --- !u!23 &152984896
@@ -7574,6 +7575,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerNum: 2
   actualPlayerNum: 0
+  defaultController: {fileID: 229712055}
   controller: {fileID: 0}
   zone: {fileID: 0}
 --- !u!23 &229712057
@@ -26412,6 +26414,22 @@ Prefab:
       propertyPath: m_Materials.Array.data[1]
       value: 
       objectReference: {fileID: 2100000, guid: f8e794af0c9c047e6852fc8146fc36fe, type: 2}
+    - target: {fileID: 11400028, guid: 142591d391191e04d96811d24031fc5c, type: 2}
+      propertyPath: defaultController
+      value: 
+      objectReference: {fileID: 1154815936}
+    - target: {fileID: 11400006, guid: 142591d391191e04d96811d24031fc5c, type: 2}
+      propertyPath: defaultController
+      value: 
+      objectReference: {fileID: 152984894}
+    - target: {fileID: 11400012, guid: 142591d391191e04d96811d24031fc5c, type: 2}
+      propertyPath: defaultController
+      value: 
+      objectReference: {fileID: 229712055}
+    - target: {fileID: 11400032, guid: 142591d391191e04d96811d24031fc5c, type: 2}
+      propertyPath: defaultController
+      value: 
+      objectReference: {fileID: 1386100905}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 142591d391191e04d96811d24031fc5c, type: 2}
   m_RootGameObject: {fileID: 1087372591}
@@ -35264,6 +35282,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerNum: 0
   actualPlayerNum: 0
+  defaultController: {fileID: 1154815936}
   controller: {fileID: 0}
   zone: {fileID: 0}
 --- !u!23 &1154815938
@@ -40071,6 +40090,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerNum: 3
   actualPlayerNum: 0
+  defaultController: {fileID: 1386100905}
   controller: {fileID: 0}
   zone: {fileID: 0}
 --- !u!23 &1386100907
