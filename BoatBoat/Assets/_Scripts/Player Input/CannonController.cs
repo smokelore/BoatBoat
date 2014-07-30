@@ -48,7 +48,7 @@ public class CannonController : InputController {
 		AimControls();
 		ShootControls();
 		ReloadControls();
-		HUDText();
+		//HUDText();
 		ZoneIndicator();
 
 		needsResetting = true;

@@ -56,7 +56,7 @@ public class SpotterController : InputController {
 		//}
 
 		LerpCamera();
-		HUDText();
+		//HUDText();
 	}
 
 	public override void Idle() {

@@ -68,7 +68,7 @@ public class OarController : InputController {
 
 		//**** OAR ANIMATION END****//
 
-		HUDText();
+		//HUDText();
 
 		splash();
 	}
