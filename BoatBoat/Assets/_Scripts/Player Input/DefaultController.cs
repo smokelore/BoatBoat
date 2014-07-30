@@ -31,24 +31,25 @@ public class DefaultController : InputController {
 	private void MovementControls() {
 		this.transform.rotation = WalkableArea.transform.rotation;
 		//if (LeftStick.magnitude > 0) {
+			Vector3 playerNormal = player.transform.up;
+
 			Vector3 camForward = Camera.main.transform.forward;
-			camForward = new Vector3(camForward.x, 0, camForward.z).normalized;
-			Vector3 newForward = Vector3.Cross(Vector3.up, Vector3.Cross(camForward, Vector3.up));
+			Vector3 newForward = Vector3.Cross(playerNormal, Vector3.Cross(camForward, playerNormal));
+			newForward = player.transform.InverseTransformDirection(newForward).normalized;
 
 			Vector3 camRight = Camera.main.transform.right;
-			camRight = new Vector3(camRight.x, 0, camRight.z).normalized;
-			Vector3 newRight = Vector3.Cross(Vector3.up, Vector3.Cross(camRight, Vector3.up));
+			Vector3 newRight = Vector3.Cross(playerNormal, Vector3.Cross(camRight, playerNormal));
+			newRight = player.transform.InverseTransformDirection(newRight).normalized;
 
 			Vector3 movement = newRight * LeftStick.x * speedFactor + newForward * LeftStick.y * speedFactor;
-			Vector3 newLocalPosition = this.transform.localPosition + movement * Time.deltaTime; 
-			
-			//Vector3 newWorldPosition = this.transform.position + this.transform.lossyScale.x * movement * Time.deltaTime;
-			// Debug.DrawLine(player.transform.position, player.transform.position + Vector3.up * 10f, Color.blue);
+			Vector3 newLocalPosition = player.transform.localPosition + movement * Time.deltaTime; 
+
+			// Debug.DrawLine(player.transform.position, player.transform.position + playerNormal * 10f, Color.blue);
 			// Debug.DrawLine(player.transform.position, player.transform.position + camForward * 10f, Color.red);
 			// Debug.DrawLine(player.transform.position, player.transform.position + newRight * 10f, Color.green);
 			// Debug.DrawLine(player.transform.position, player.transform.position + newForward * 10f, Color.yellow);
 			if (newLocalPosition.x < 10f && newLocalPosition.x > -10f && newLocalPosition.z < 30f && newLocalPosition.z > -35f) {
-				this.transform.localPosition = newLocalPosition;
+				player.transform.localPosition = newLocalPosition;
 			}
 		//}
 	}

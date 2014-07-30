@@ -7488,7 +7488,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100070}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.53931689, y: 9.91240215, z: -5.17921495}
+  m_LocalPosition: {x: 2.53931689, y: 8.94514275, z: -5.17921495}
   m_LocalScale: {x: 3.33333397, y: 3.33333397, z: 3.33333397}
   m_Children: []
   m_Father: {fileID: 400494}
@@ -7911,7 +7911,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100136}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3.01666284, y: 9.91240215, z: -12.8531151}
+  m_LocalPosition: {x: -3.01666284, y: 8.94514275, z: -12.8531151}
   m_LocalScale: {x: 3.33333421, y: 3.33333421, z: 3.33333421}
   m_Children: []
   m_Father: {fileID: 400494}
@@ -9773,7 +9773,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100436}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3.01666284, y: 9.91240215, z: -5.13712597}
+  m_LocalPosition: {x: -3.01666284, y: 8.94514275, z: -5.13712597}
   m_LocalScale: {x: 3.33333397, y: 3.33333397, z: 3.33333397}
   m_Children: []
   m_Father: {fileID: 400494}
@@ -10389,7 +10389,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100526}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.53931689, y: 9.91240215, z: -12.8952036}
+  m_LocalPosition: {x: 2.53931689, y: 8.94514275, z: -12.8952036}
   m_LocalScale: {x: 3.33333397, y: 3.33333397, z: 3.33333397}
   m_Children: []
   m_Father: {fileID: 400494}
@@ -22779,6 +22779,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerNum: 1
   actualPlayerNum: 0
+  defaultController: {fileID: 11400000}
   controller: {fileID: 0}
   zone: {fileID: 0}
 --- !u!114 &11400008
@@ -22869,6 +22870,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerNum: 2
   actualPlayerNum: 0
+  defaultController: {fileID: 11400010}
   controller: {fileID: 0}
   zone: {fileID: 0}
 --- !u!114 &11400014
@@ -23145,6 +23147,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerNum: 0
   actualPlayerNum: 0
+  defaultController: {fileID: 11400026}
   controller: {fileID: 0}
   zone: {fileID: 0}
 --- !u!114 &11400030
@@ -23192,6 +23195,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerNum: 3
   actualPlayerNum: 0
+  defaultController: {fileID: 11400030}
   controller: {fileID: 0}
   zone: {fileID: 0}
 --- !u!114 &11400034
