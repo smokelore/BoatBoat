@@ -1468,6 +1468,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 0}
+  StartButton: 0
   LeftStick: {x: 0, y: 0}
   RightStick: {x: 0, y: 0}
   AButton: 0
@@ -3306,6 +3307,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 0}
+  StartButton: 0
   LeftStick: {x: 0, y: 0}
   RightStick: {x: 0, y: 0}
   AButton: 0
@@ -4115,7 +4117,7 @@ GameObject:
   - 23: {fileID: 280381686}
   - 102: {fileID: 280381685}
   m_Layer: 0
-  m_Name: Press R1 to Begin
+  m_Name: Press Start to Begin
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4128,7 +4130,7 @@ TextMesh:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 280381684}
-  m_Text: Press R1 to Begin
+  m_Text: Press Start to Begin
   m_OffsetZ: 0
   m_CharacterSize: 1
   m_LineSpacing: 1
@@ -8493,6 +8495,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 0}
+  StartButton: 0
   LeftStick: {x: 0, y: 0}
   RightStick: {x: 0, y: 0}
   AButton: 0
@@ -10939,6 +10942,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 0}
+  StartButton: 0
   LeftStick: {x: 0, y: 0}
   RightStick: {x: 0, y: 0}
   AButton: 0
@@ -17752,6 +17756,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 0}
+  StartButton: 0
   LeftStick: {x: 0, y: 0}
   RightStick: {x: 0, y: 0}
   AButton: 0
@@ -25577,6 +25582,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 0}
+  StartButton: 0
   LeftStick: {x: 0, y: 0}
   RightStick: {x: 0, y: 0}
   AButton: 0

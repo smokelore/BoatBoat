@@ -46,8 +46,8 @@ public class DefaultController : InputController {
 			Vector3 newLocalPosition = this.transform.localPosition + movement * Time.deltaTime; 
 			
 			Vector3 newWorldPosition = this.transform.position + this.transform.lossyScale.x * movement * Time.deltaTime;
-			Debug.DrawLine(this.transform.position, newWorldPosition, Color.red);
-			if (WalkableArea.bounds.Contains(newWorldPosition)) {
+			//Debug.DrawLine(this.transform.position, newWorldPosition, Color.red);
+			if (newLocalPosition.x < 10f && newLocalPosition.x > -10f && newLocalPosition.z < 30f && newLocalPosition.z > -35f) {
 				this.transform.localPosition = newLocalPosition;
 			}
 		}
@@ -65,7 +65,7 @@ public class DefaultController : InputController {
 	}
 
 	private void StartGameControls() {
-		if (RightBumper) {
+		if (StartButton) {
 			Application.LoadLevel("playtestScene");
 		}
 	}
