@@ -27,14 +27,14 @@ public class CannonAI : MonoBehaviour {
 			float angle;
 			if (rightSide) {
 				angle = Mathf.Abs(AngleSigned(shipObject.transform.right, playerObject.transform.position - this.transform.position, Vector3.up));
-				if (loaded && Random.Range(0, Mathf.Pow(angle, 2)) < 5f) {
+				if (loaded && Random.Range(0, Mathf.Pow(angle, 2)) < 2f) {
 					Shoot();
 				} else {
 					this.transform.localEulerAngles = new Vector3(270f, 270f, 0f);
 				}
 			} else {
 				angle = Mathf.Abs(AngleSigned(-shipObject.transform.right, playerObject.transform.position - this.transform.position, Vector3.up));
-				if (loaded && Random.Range(0, Mathf.Pow(angle, 2)) < 5f) {
+				if (loaded && Random.Range(0, Mathf.Pow(angle, 2)) < 2f) {
 					Shoot();
 				} else {
 					this.transform.localEulerAngles = new Vector3(270f, 90f, 0f);

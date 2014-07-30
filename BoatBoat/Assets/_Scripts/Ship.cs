@@ -38,9 +38,10 @@ public class Ship : MonoBehaviour {
 		if (perlinMap == null) {
 			perlinMap = waveMesh.GetComponent<PerlinMap>();
 		}
-		
-		float x = this.transform.position.x;
-		float z = this.transform.position.z;
+
+		Vector3 nextPosition = this.transform.position + this.rigidbody.velocity * Time.deltaTime;
+		float x = nextPosition.x;
+		float z = nextPosition.z;
 
 		targetHeight = perlinMap.GetHeight(x, z) + 0.08f;
 		float NHeight = perlinMap.GetHeight(x, z+length/2) + 0.08f;
@@ -48,18 +49,13 @@ public class Ship : MonoBehaviour {
 		float SHeight = perlinMap.GetHeight(x, z-length/2) + 0.08f;
 		float WHeight = perlinMap.GetHeight(x-width/2, z) + 0.08f;
 
-		// if (this.gameObject.tag == "Player") {
-		// 	waveMesh.transform.position = new Vector3(x, waveMesh.transform.position.y, z);
-		// 	waveMesh.renderer.material.SetTextureOffset("_MainTex", new Vector2(x/10, z/10));
-		// }
-
-		pointN = this.transform.position + this.transform.forward*length/2;
+		pointN = nextPosition + this.transform.forward*length/2;
 		pointN = new Vector3(pointN.x, NHeight, pointN.z);
-		pointS = this.transform.position - this.transform.forward*length/2;
+		pointS = nextPosition - this.transform.forward*length/2;
 		pointS = new Vector3(pointS.x, SHeight, pointS.z);
-		pointE = this.transform.position + this.transform.right*width/2;
+		pointE = nextPosition + this.transform.right*width/2;
 		pointE = new Vector3(pointE.x, EHeight, pointE.z);
-		pointW = this.transform.position - this.transform.right*width/2;
+		pointW = nextPosition - this.transform.right*width/2;
 		pointW = new Vector3(pointW.x, WHeight, pointW.z);
 
 		Vector3 NSVector = (pointN - pointS).normalized;
@@ -128,7 +124,12 @@ public class Ship : MonoBehaviour {
 			Vector3 newRight = new Vector3(this.transform.right.x, 0f, this.transform.right.z).normalized;
 			Vector3 newForward = new Vector3(this.transform.forward.x, 0f, this.transform.forward.z).normalized;
 			this.transform.position = new Vector3(this.transform.position.x, targetHeight, this.transform.position.z);
-			this.rigidbody.AddTorque(newRight * zAngle/3);
+			zAngle = Mathf.Clamp(zAngle, -30f, 30f);
+			float zForce = Mathf.Sign(zAngle) * Mathf.Pow(zAngle/5f, 2f);
+			this.rigidbody.AddTorque(newRight * zForce);
+
+			xAngle = Mathf.Clamp(xAngle, -30f, 30f);
+			float xForce = Mathf.Sign(xAngle) * Mathf.Pow(xAngle/5f, 2f);
 			this.rigidbody.AddTorque(newForward * xAngle/5);
 		}
 
