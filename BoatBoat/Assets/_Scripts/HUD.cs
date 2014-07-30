@@ -7,6 +7,8 @@ public class HUD : MonoBehaviour {
 	public GameObject hudGUI;
 	public bool winState;
 	public Texture healthBarTexture;
+	public Texture miniMapTexture; //A minimap for the entire play field
+	public Texture dotTexture; //A dot on the minimap representing the ship
 	//public Ship ship;
 
 	// Use this for initialization
@@ -46,5 +48,8 @@ public class HUD : MonoBehaviour {
 				//GUI.DrawTexture(new Rect(healthBarWorldPosition.x - (int)(length/2), healthBarWorldPosition.y + (int)(width/2), length, width), healthBarTexture, ScaleMode.StretchToFill, true, 0);
 			}
 		}
+		GUI.DrawTexture (new Rect (Screen.width - 144, Screen.height - 144, 128, 128), miniMapTexture);
+		GUI.DrawTexture (new Rect ((Screen.width - 144)+(player.transform.position.x*128/300),
+		                           (Screen.height - 144)+(player.transform.position.z*128/300), 12, 12), dotTexture);
 	}
 }
