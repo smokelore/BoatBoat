@@ -30,23 +30,27 @@ public class DefaultController : InputController {
 
 	private void MovementControls() {
 		this.transform.rotation = WalkableArea.transform.rotation;
-		if (LeftStick.magnitude > 0) {
-			Vector3 newForward = Camera.main.transform.forward;
-			newForward = new Vector3(newForward.x, 0, newForward.z).normalized;
+		//if (LeftStick.magnitude > 0) {
+			Vector3 camForward = Camera.main.transform.forward;
+			camForward = new Vector3(camForward.x, 0, camForward.z).normalized;
+			Vector3 newForward = Vector3.Cross(Vector3.up, Vector3.Cross(camForward, Vector3.up));
 
-			Vector3 newRight = Camera.main.transform.right;
-			newRight = new Vector3(newRight.x, 0, newRight.z).normalized;
-
+			Vector3 camRight = Camera.main.transform.right;
+			camRight = new Vector3(camRight.x, 0, camRight.z).normalized;
+			Vector3 newRight = Vector3.Cross(Vector3.up, Vector3.Cross(camRight, Vector3.up));
 
 			Vector3 movement = newRight * LeftStick.x * speedFactor + newForward * LeftStick.y * speedFactor;
 			Vector3 newLocalPosition = this.transform.localPosition + movement * Time.deltaTime; 
 			
-			Vector3 newWorldPosition = this.transform.position + this.transform.lossyScale.x * movement * Time.deltaTime;
-			//Debug.DrawLine(this.transform.position, newWorldPosition, Color.red);
+			//Vector3 newWorldPosition = this.transform.position + this.transform.lossyScale.x * movement * Time.deltaTime;
+			// Debug.DrawLine(player.transform.position, player.transform.position + Vector3.up * 10f, Color.blue);
+			// Debug.DrawLine(player.transform.position, player.transform.position + camForward * 10f, Color.red);
+			// Debug.DrawLine(player.transform.position, player.transform.position + newRight * 10f, Color.green);
+			// Debug.DrawLine(player.transform.position, player.transform.position + newForward * 10f, Color.yellow);
 			if (newLocalPosition.x < 10f && newLocalPosition.x > -10f && newLocalPosition.z < 30f && newLocalPosition.z > -35f) {
 				this.transform.localPosition = newLocalPosition;
 			}
-		}
+		//}
 	}
 
 	public override void Mount() {
