@@ -9,6 +9,7 @@ public class Player : MonoBehaviour {
 	public InputDevice device;
 	public GameObject zone;
 	private int oldNumDevices;
+	private bool disabled = true;
 
 	// Use this for initialization
 	void Start () {
@@ -17,21 +18,19 @@ public class Player : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if (InputManager.Devices.Count != oldNumDevices) {
-			Debug.Log("Number of Devices Available: " + InputManager.Devices.Count);
-			device = null;
-		}
-
 		if (device == null) {
 			//Debug.Log(playerNum + ", " + actualPlayerNum + ": null device");
 			actualPlayerNum = FindActualPlayerNum();
 			if (actualPlayerNum < InputManager.Devices.Count && actualPlayerNum > -1) {
-				device = InputManager.Devices[actualPlayerNum];
-				Debug.Log(playerNum + ", " + actualPlayerNum + ": " + (device as UnityInputDevice).Profile);
 				Enable();
 			} else {
 				Disable();
 			}
+		}
+
+		if (InputManager.Devices.Count != oldNumDevices) {
+			Debug.Log("Number of Devices Available: " + InputManager.Devices.Count);
+			Disable();
 		}
 
 		oldNumDevices = InputManager.Devices.Count;
@@ -56,13 +55,12 @@ public class Player : MonoBehaviour {
 
 	public bool SetController(InputController newController) {
 		// Set this player's controller to new controller
-		if (!newController.HasPlayer()) {
-			this.controller.UnsetPlayer();
+		//if (!newController.HasPlayer()) {
 			this.controller = newController;
 			this.controller.SetPlayer(this);
 			Debug.Log("Player " + playerNum + " mount to " + newController + " successful");
 			return true;	// return true if setting controller is successful
-		}
+		//}
 		
 		Debug.Log("Player " + playerNum + " mount to " + newController + " unsuccessful");
 		return false;	// return false if controller already occupied
@@ -70,26 +68,35 @@ public class Player : MonoBehaviour {
 
 	public void ResetController() {
 		// Reset this player's controller to default controller
-		if (this.controller != this.gameObject.GetComponent<DefaultController>()) {
+		//if (this.controller != this.gameObject.GetComponent<DefaultController>()) {
 			InputController defaultController = this.gameObject.GetComponent<DefaultController>();
-			defaultController.SetPlayer(this);
-			this.controller = defaultController;
-			Debug.Log("Player " + playerNum + " dismount successful");
-		}
+			this.SetController(defaultController);
+			//Debug.Log("Player " + playerNum + " dismount successful");
+		//}
 	}
 
 	public void Disable() {
-		this.renderer.enabled = false;
-		this.collider.enabled = false;
-		controller.player = null;
-		zone = null;
+		if (!disabled) {
+			device = null;
+			this.controller.UnsetPlayer();
+			this.renderer.enabled = false;
+			this.collider.enabled = false;
+			zone = null;
+			disabled = true;
+		}
 	}
 
 	public void Enable() {
-		this.renderer.enabled = true;
-		this.collider.enabled = true;
-		controller.player = this;
-		ResetController();
+		if (disabled) {
+			device = InputManager.Devices[actualPlayerNum];
+			ResetController();
+			this.controller.enabled = false;
+			this.renderer.enabled = true;
+			this.collider.enabled = true;
+			this.controller.enabled = true;
+			disabled = false;
+			Debug.Log(playerNum + ", " + actualPlayerNum + ": " + (device as UnityInputDevice).Profile);
+		}
 	}
 
 	void OnTriggerEnter(Collider collider) {

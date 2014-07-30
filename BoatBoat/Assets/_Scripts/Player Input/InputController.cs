@@ -21,11 +21,10 @@ public class InputController : MonoBehaviour {
 	}
 
 	void Update() {
+		InputManager.Update();
 		if (HasPlayer()) {
-			InputManager.Update();
-
 			// Update input values
-			//StartButton = player.device.GetControl(InputControlType.Start).WasPressed;
+			//StartButton = player.device.GetControl(InputControlType.Start).IsPressed;
 			LeftStick = new Vector2(player.device.LeftStickX, player.device.LeftStickY);
 			RightStick = new Vector2(player.device.RightStickX, player.device.RightStickY);
 			AButton = player.device.GetControl(InputControlType.Action1).IsPressed;
@@ -66,8 +65,9 @@ public class InputController : MonoBehaviour {
 	}
 
 	public void SetPlayer(Player newPlayer) {
-		Debug.Log("Number of Devices Available: " + InputManager.Devices.Count);
+		//Debug.Log("Number of Devices Available: " + InputManager.Devices.Count);
 		if (newPlayer != null && newPlayer.playerNum <= 4 && newPlayer.playerNum >= 0) {
+			Debug.Log("Player " + newPlayer.playerNum + " connected");
 			this.player = newPlayer;
 		} else {
 			//StartButton = false;
@@ -81,12 +81,11 @@ public class InputController : MonoBehaviour {
 			RightTrigger = 0f;
 			LeftBumper = false;
 			RightBumper = false;
-
-			this.player = null;
 		}
 	}
 
 	public void UnsetPlayer() {
+		Debug.Log("Player " + player.playerNum + " disconnected");
 		SetPlayer(null);
 	}
 
