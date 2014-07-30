@@ -27,6 +27,7 @@ public class DefaultController : InputController {
 			ZoneIndicator();
 		} else {
 			StartGameControls();
+			TestController();
 		}
 
 		//HUDText();
@@ -77,6 +78,21 @@ public class DefaultController : InputController {
 			}
 			float height = player.zone.transform.position.y + indicatorHeight + indicatorAmplitude * Mathf.Sin(Time.time / indicatorPeriod * 2 * Mathf.PI);
 			indicatorObject.transform.position = new Vector3(player.zone.transform.position.x, height, player.zone.transform.position.z);
+			indicatorObject.transform.LookAt(Camera.main.transform);
+		} else {
+			if (indicatorObject != null) {
+				Destroy(indicatorObject);
+			}
+		}
+	}
+
+	private void TestController() {
+		if (AButton) {
+			if (indicatorObject == null) {
+				indicatorObject = Instantiate(indicatorPrefab, Vector3.zero, Quaternion.identity) as GameObject;
+			}
+			float height = player.transform.position.y + indicatorHeight;
+			indicatorObject.transform.position = new Vector3(player.transform.position.x, height, player.transform.position.z);
 			indicatorObject.transform.LookAt(Camera.main.transform);
 		} else {
 			if (indicatorObject != null) {
