@@ -37859,7 +37859,7 @@ GUIText:
   m_GameObject: {fileID: 1291983017}
   m_Enabled: 1
   serializedVersion: 3
-  m_Text: person & level theme
+  m_Text: 
   m_Anchor: 6
   m_Alignment: 0
   m_PixelOffset: {x: 0, y: 0}
