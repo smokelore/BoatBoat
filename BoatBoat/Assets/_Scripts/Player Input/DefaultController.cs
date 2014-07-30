@@ -30,7 +30,7 @@ public class DefaultController : InputController {
 
 	private void MovementControls() {
 		this.transform.rotation = WalkableArea.transform.rotation;
-		//if (LeftStick.magnitude > 0) {
+		if (LeftStick.magnitude > 0) {
 			Vector3 playerNormal = player.transform.up;
 
 			Vector3 camForward = Camera.main.transform.forward;
@@ -51,7 +51,7 @@ public class DefaultController : InputController {
 			if (newLocalPosition.x < 10f && newLocalPosition.x > -10f && newLocalPosition.z < 30f && newLocalPosition.z > -35f) {
 				player.transform.localPosition = newLocalPosition;
 			}
-		//}
+		}
 	}
 
 	public override void Mount() {
