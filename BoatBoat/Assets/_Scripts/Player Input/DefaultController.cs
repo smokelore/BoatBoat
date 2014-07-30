@@ -43,13 +43,12 @@ public class DefaultController : InputController {
 
 
 			Vector3 movement = newRight * LeftStick.x * speedFactor + newForward * LeftStick.y * speedFactor;
-			Vector3 newLocation = this.transform.position + movement*Time.deltaTime; 
+			Vector3 newLocalPosition = this.transform.localPosition + movement * Time.deltaTime; 
 			
-			newLocation.y = boatboatObject.transform.position.y + 0.3f; 	// FIX THIS MORE BETTER
-			
-			//Debug.Log("// " + newLocation);
-			if (WalkableArea.bounds.Contains(newLocation)) {
-				this.transform.position = newLocation;
+			Vector3 newWorldPosition = this.transform.position + this.transform.lossyScale.x * movement * Time.deltaTime;
+			Debug.DrawLine(this.transform.position, newWorldPosition, Color.red);
+			if (WalkableArea.bounds.Contains(newWorldPosition)) {
+				this.transform.localPosition = newLocalPosition;
 			}
 		}
 	}

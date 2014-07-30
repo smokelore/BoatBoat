@@ -4032,6 +4032,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 0}
+  StartButton: 0
   LeftStick: {x: 0, y: 0}
   RightStick: {x: 0, y: 0}
   AButton: 0
@@ -4044,7 +4045,7 @@ MonoBehaviour:
   RightBumper: 0
   boatboatObject: {fileID: 1087372591}
   WalkableArea: {fileID: 2087999177}
-  speedFactor: .5
+  speedFactor: 10
   zone: {fileID: 0}
   indicatorPrefab: {fileID: 100000, guid: 7bfe28aed8470104d8f9d443ccfe8264, type: 2}
   indicatorHeight: .200000003
@@ -4074,7 +4075,7 @@ Renderer:
     type: 2}
   m_PrefabInternal: {fileID: 2019445830}
   m_GameObject: {fileID: 152984891}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_LightmapIndex: 255
@@ -5200,6 +5201,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 0}
+  StartButton: 0
   LeftStick: {x: 0, y: 0}
   RightStick: {x: 0, y: 0}
   AButton: 0
@@ -7538,6 +7540,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 0}
+  StartButton: 0
   LeftStick: {x: 0, y: 0}
   RightStick: {x: 0, y: 0}
   AButton: 0
@@ -7550,7 +7553,7 @@ MonoBehaviour:
   RightBumper: 0
   boatboatObject: {fileID: 1087372591}
   WalkableArea: {fileID: 2087999177}
-  speedFactor: .5
+  speedFactor: 10
   zone: {fileID: 0}
   indicatorPrefab: {fileID: 100000, guid: 7bfe28aed8470104d8f9d443ccfe8264, type: 2}
   indicatorHeight: .200000003
@@ -7580,7 +7583,7 @@ Renderer:
     type: 2}
   m_PrefabInternal: {fileID: 2019445830}
   m_GameObject: {fileID: 229712052}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_LightmapIndex: 255
@@ -20591,6 +20594,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 0}
+  StartButton: 0
   LeftStick: {x: 0, y: 0}
   RightStick: {x: 0, y: 0}
   AButton: 0
@@ -26309,6 +26313,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 0}
+  StartButton: 0
   LeftStick: {x: 0, y: 0}
   RightStick: {x: 0, y: 0}
   AButton: 0
@@ -28615,6 +28620,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 0}
+  StartButton: 0
   LeftStick: {x: 0, y: 0}
   RightStick: {x: 0, y: 0}
   AButton: 0
@@ -29656,6 +29662,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 0}
+  StartButton: 0
   LeftStick: {x: 0, y: 0}
   RightStick: {x: 0, y: 0}
   AButton: 0
@@ -32726,6 +32733,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 0}
+  StartButton: 0
   LeftStick: {x: 0, y: 0}
   RightStick: {x: 0, y: 0}
   AButton: 0
@@ -35073,6 +35081,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 0}
+  StartButton: 0
   LeftStick: {x: 0, y: 0}
   RightStick: {x: 0, y: 0}
   AButton: 0
@@ -35085,7 +35094,7 @@ MonoBehaviour:
   RightBumper: 0
   boatboatObject: {fileID: 1087372591}
   WalkableArea: {fileID: 2087999177}
-  speedFactor: .5
+  speedFactor: 10
   zone: {fileID: 0}
   indicatorPrefab: {fileID: 100000, guid: 7bfe28aed8470104d8f9d443ccfe8264, type: 2}
   indicatorHeight: .200000003
@@ -35115,7 +35124,7 @@ Renderer:
     type: 2}
   m_PrefabInternal: {fileID: 2019445830}
   m_GameObject: {fileID: 1154815933}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_LightmapIndex: 255
@@ -39879,6 +39888,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 0}
+  StartButton: 0
   LeftStick: {x: 0, y: 0}
   RightStick: {x: 0, y: 0}
   AButton: 0
@@ -39891,7 +39901,7 @@ MonoBehaviour:
   RightBumper: 0
   boatboatObject: {fileID: 1087372591}
   WalkableArea: {fileID: 2087999177}
-  speedFactor: .5
+  speedFactor: 10
   zone: {fileID: 0}
   indicatorPrefab: {fileID: 100000, guid: 7bfe28aed8470104d8f9d443ccfe8264, type: 2}
   indicatorHeight: .200000003
@@ -39921,7 +39931,7 @@ Renderer:
     type: 2}
   m_PrefabInternal: {fileID: 2019445830}
   m_GameObject: {fileID: 1386100902}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_LightmapIndex: 255
@@ -40828,6 +40838,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 0}
+  StartButton: 0
   LeftStick: {x: 0, y: 0}
   RightStick: {x: 0, y: 0}
   AButton: 0
@@ -47585,6 +47596,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 0}
+  StartButton: 0
   LeftStick: {x: 0, y: 0}
   RightStick: {x: 0, y: 0}
   AButton: 0
@@ -53132,6 +53144,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 0}
+  StartButton: 0
   LeftStick: {x: 0, y: 0}
   RightStick: {x: 0, y: 0}
   AButton: 0
@@ -57937,6 +57950,38 @@ Prefab:
       propertyPath: row5
       value: 
       objectReference: {fileID: 8300000, guid: 3e9011fc2befa564a8c3b18808d93158, type: 3}
+    - target: {fileID: 2300064, guid: 142591d391191e04d96811d24031fc5c, type: 2}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2300118, guid: 142591d391191e04d96811d24031fc5c, type: 2}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2300366, guid: 142591d391191e04d96811d24031fc5c, type: 2}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2300434, guid: 142591d391191e04d96811d24031fc5c, type: 2}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400026, guid: 142591d391191e04d96811d24031fc5c, type: 2}
+      propertyPath: speedFactor
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: 142591d391191e04d96811d24031fc5c, type: 2}
+      propertyPath: speedFactor
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400010, guid: 142591d391191e04d96811d24031fc5c, type: 2}
+      propertyPath: speedFactor
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400030, guid: 142591d391191e04d96811d24031fc5c, type: 2}
+      propertyPath: speedFactor
+      value: 10
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 142591d391191e04d96811d24031fc5c, type: 2}
   m_RootGameObject: {fileID: 1087372591}

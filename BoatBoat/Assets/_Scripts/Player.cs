@@ -13,7 +13,7 @@ public class Player : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		ResetController();
+		//ResetController();
 	}
 	
 	// Update is called once per frame
