@@ -2341,7 +2341,7 @@ GameObject:
   - 23: {fileID: 2300274}
   - 64: {fileID: 6400000}
   m_Layer: 0
-  m_Name: ID10
+  m_Name: Dock
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2357,7 +2357,6 @@ GameObject:
   - 4: {fileID: 400276}
   - 33: {fileID: 3300276}
   - 23: {fileID: 2300276}
-  - 95: {fileID: 9500000}
   m_Layer: 0
   m_Name: Dock
   m_TagString: Untagged
@@ -4027,9 +4026,9 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100276}
-  m_LocalRotation: {x: .707106829, y: 0, z: 0, w: .707106829}
-  m_LocalPosition: {x: -91.3045959, y: 1.67890501, z: -103.754845}
-  m_LocalScale: {x: 4, y: 4, z: 4}
+  m_LocalRotation: {x: .703840911, y: .0678820163, z: -.0678820238, w: .703840911}
+  m_LocalPosition: {x: -59.8132172, y: 1.40006781, z: -37.6328011}
+  m_LocalScale: {x: 3.99999976, y: 4, z: 4}
   m_Children:
   - {fileID: 400274}
   - {fileID: 400228}
@@ -7939,20 +7938,6 @@ MeshCollider:
   m_SmoothSphereCollisions: 0
   m_Convex: 0
   m_Mesh: {fileID: 4300002, guid: 41bdb8d56e919454880c9b25bd1e067f, type: 3}
---- !u!95 &9500000
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 100276}
-  m_Enabled: 1
-  m_Avatar: {fileID: 9000000, guid: 41bdb8d56e919454880c9b25bd1e067f, type: 3}
-  m_Controller: {fileID: 0}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 1
-  m_HasTransformHierarchy: 1
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

@@ -79,10 +79,7 @@ public class Ship : MonoBehaviour {
 		//this.transform.Rotate(this.transform.forward, xAngle - this.transform.eulerAngles.x);
 		//this.transform.Rotate(this.transform.right, zAngle - this.transform.eulerAngles.z);
 		//Debug.Log(zAngle);
-		if(Input.GetKeyDown (KeyCode.Backspace)){
-			sinking = true;
-		}
-
+		
 		Vector3 localVelocity = this.transform.InverseTransformDirection(this.rigidbody.velocity);
 		if (this.gameObject.tag == "Player") {
 			forceController fc = this.gameObject.GetComponent<forceController>();

@@ -330,7 +330,7 @@ public class enemyController : MonoBehaviour {
 
 	void OnCollisionEnter(Collision collision) {
 		Debug.Log(this.gameObject.name + " Collision: " + collision.gameObject.name);
-		if (collision.gameObject.name == "Terrain") {
+		if (collision.gameObject.name == "Terrain" || collision.gameObject.name == "Dock") {
 			Vector3 newForward = new Vector3(this.transform.forward.x, 0, this.transform.forward.z);
 			Vector3 toCollision = collision.contacts[0].point - this.transform.position;
 			float hitAngle = AngleSigned(newForward, toCollision, Vector3.up);
