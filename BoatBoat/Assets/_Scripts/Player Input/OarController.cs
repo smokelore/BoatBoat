@@ -136,7 +136,7 @@ public class OarController : InputController {
 	}
 
 	public void splash(){
-		if(isHittingWater (RightStick, 80)){
+		if(Mathf.Abs(getRightRowAmount()) > 0.05f){
 			rightSplasher.transform.eulerAngles = new Vector3(270, 0, 0);
 			if(rightSplashCount < 25){
 				if(rightSplashCount < 1){
@@ -149,7 +149,7 @@ public class OarController : InputController {
 			rightSplashCount = 0;
 		}
 
-		if(isHittingWater(LeftStick, 80)){
+		if(Mathf.Abs(getLeftRowAmount()) > 0.05f){
 			leftSplasher.transform.eulerAngles = new Vector3(270, 0, 0);
 			if(leftSplashCount < 25){
 				if(leftSplashCount < 1){
