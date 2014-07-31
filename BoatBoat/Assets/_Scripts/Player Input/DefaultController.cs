@@ -24,7 +24,6 @@ public class DefaultController : InputController {
 	public override void Controls() {
 		MovementControls();
 		ZoneIndicator();
-
 		//HUDText();
 	}
 

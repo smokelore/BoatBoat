@@ -7,6 +7,7 @@ public class HUD : MonoBehaviour {
 	public GameObject hudGUI;
 	public bool winState;
 	public Texture healthBarTexture;
+	//public Player[] players = new Player[2];
 
 	// Use this for initialization
 	void Start () {
@@ -24,7 +25,15 @@ public class HUD : MonoBehaviour {
 			levelTheme = "Press 1 to Exit";
 		}
 
-		hudGUI.guiText.text = personName + "\n" + levelTheme;
+		// hudGUI.guiText.text = personName + "\n" + levelTheme;
+		// string temp = "";
+		// foreach(Player player in players) {
+		// 	if (player.controller != null) {
+		// 		temp += player.name + " " + player.controller.RightBumper + " ";
+		// 	}
+		// }
+
+		// hudGUI.guiText.text = temp;
 	}
 
 	void OnGUI() {

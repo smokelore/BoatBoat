@@ -90,10 +90,10 @@ public class PerlinMap : MonoBehaviour {
 
 		// xOffset = -this.transform.position.x;
 		// yOffset = -this.transform.position.y;
-		allWhirlpools = GameObject.FindGameObjectsWithTag("Whirlpool");
-		if (!whirlpoolsEnabled) {
-			DestroyAllWhirlpools();
-		}
+		// allWhirlpools = GameObject.FindGameObjectsWithTag("Whirlpool");
+		// if (!whirlpoolsEnabled) {
+		// 	DestroyAllWhirlpools();
+		// }
 	}
 	
 	// Update is called once per frame
