@@ -79,7 +79,7 @@ public class Ship : MonoBehaviour {
 		//this.transform.Rotate(this.transform.forward, xAngle - this.transform.eulerAngles.x);
 		//this.transform.Rotate(this.transform.right, zAngle - this.transform.eulerAngles.z);
 		//Debug.Log(zAngle);
-		
+
 		Vector3 localVelocity = this.transform.InverseTransformDirection(this.rigidbody.velocity);
 		if (this.gameObject.tag == "Player") {
 			forceController fc = this.gameObject.GetComponent<forceController>();
@@ -97,6 +97,10 @@ public class Ship : MonoBehaviour {
 					wakeSystemR.emissionRate = 500f * Mathf.Abs(fc.curSpeed/fc.maxSpeed);
 				}
 			}
+		}
+
+		if (this.transform.position.y <= -2f) {
+			Destroy(this.gameObject);
 		}
 	}
 
@@ -121,12 +125,12 @@ public class Ship : MonoBehaviour {
 			Vector3 newRight = new Vector3(this.transform.right.x, 0f, this.transform.right.z).normalized;
 			Vector3 newForward = new Vector3(this.transform.forward.x, 0f, this.transform.forward.z).normalized;
 			this.transform.position = new Vector3(this.transform.position.x, targetHeight, this.transform.position.z);
-			zAngle = Mathf.Clamp(zAngle, -30f, 30f);
-			float zForce = Mathf.Sign(zAngle) * Mathf.Pow(zAngle/5f, 2f);
+			zAngle = Mathf.Clamp(zAngle, -10f, 10f);
+			float zForce = Mathf.Sign(zAngle) * Mathf.Pow(zAngle/10f, 2f);
 			this.rigidbody.AddTorque(newRight * zForce);
 
-			xAngle = Mathf.Clamp(xAngle, -30f, 30f);
-			float xForce = Mathf.Sign(xAngle) * Mathf.Pow(xAngle/5f, 2f);
+			xAngle = Mathf.Clamp(xAngle, -10f, 10f);
+			float xForce = Mathf.Sign(xAngle) * Mathf.Pow(xAngle/10f, 2f);
 			this.rigidbody.AddTorque(newForward * xAngle/5);
 		}
 
@@ -167,9 +171,5 @@ public class Ship : MonoBehaviour {
 	void sink(){
 		this.rigidbody.AddTorque (this.transform.right * -0.5f);
 		this.rigidbody.AddForce(Vector3.down * 20);
-
-		if (this.transform.position.y <= -2f) {
-			Destroy(this.gameObject);
-		}
 	}
 }

@@ -28,6 +28,11 @@ public class forceController : MonoBehaviour {
 		Vector3 localVelocity = this.transform.InverseTransformDirection(this.rigidbody.velocity);
 		curSpeed = new Vector3(rigidbody.velocity.x, 0, rigidbody.velocity.z).magnitude;
 
+		// if (localVelocity.z > maxSpeed) {
+		// 	Debug.Log("slow it down");
+		// 	this.rigidbody.velocity = this.rigidbody.velocity.normalized * maxSpeed;
+		// }
+
 		// turning speed limited when going to slow or going too fast (max is at 3/5 of top speed)
 		if (curSpeed > maxSpeed) {
 			curMaxTurn = maxTurn * Mathf.Sin(maxSpeed/maxSpeed * (Mathf.PI/2) * 5/3);
@@ -48,7 +53,7 @@ public class forceController : MonoBehaviour {
 		} else if (fakeVerticalAxis < 0) {
 			// DECELERATE
 			this.rigidbody.drag = 0;
-			if (localVelocity.z > -maxSpeed/2) {
+			if (localVelocity.z > -maxSpeed) {
 				this.rigidbody.AddForce(new Vector3(this.transform.forward.x, 0f, this.transform.forward.z).normalized * -forceFactor/2);
 			}
 		} else {
@@ -81,7 +86,7 @@ public class forceController : MonoBehaviour {
 			this.rigidbody.velocity = -planeVelocity * newForward;
 		}
 
-		clothAcceleration = new Vector3(rigidbody.angularVelocity.y / maxTurn * 100f, 0f, 5f - localVelocity.z / maxSpeed * 5f);//curMaxTurn/maxTurn, 0);
+		clothAcceleration = new Vector3(rigidbody.angularVelocity.y / maxTurn * 50f, 0f, 4f - localVelocity.z / maxSpeed * 4f);//curMaxTurn/maxTurn, 0);
 		sailCloth.externalAcceleration = clothAcceleration;
 	}
 

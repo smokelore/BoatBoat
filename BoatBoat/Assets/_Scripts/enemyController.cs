@@ -33,6 +33,7 @@ public class enemyController : MonoBehaviour {
 
 	public float stuckDuration;
 	public float stuckTime = 0f;
+	private int count = 0;
 	//public TerrainFeeler terrainfeeler;
 
 	public enum State {
@@ -50,47 +51,48 @@ public class enemyController : MonoBehaviour {
 	}
 
 	void Update() {
-		switch(state) {
-			case State.PATROL:
-				if (SpotPlayer()) {
-					SetState(State.CHASE);
-				}
-				GetWaypoints();
-				SetFakeAxes();
-				break;
-			case State.CHASE:
-				if (!SpotPlayer()) {
-					SetState(State.PATROL);
-				}
+		if (count % 3 == 0) {
+			switch(state) {
+				case State.PATROL:
+					if (SpotPlayer()) {
+						SetState(State.CHASE);
+					}
+					GetWaypoints();
+					SetFakeAxes();
+					break;
+				case State.CHASE:
+					if (!SpotPlayer()) {
+						SetState(State.PATROL);
+					}
 
-				if (NearTarget(playerObject.transform.position, 15f)) {
-					SetState(State.ATTACK);
-				}
+					if (NearTarget(playerObject.transform.position, 15f)) {
+						SetState(State.ATTACK);
+					}
 
-				GetWaypoints();
-				SetFakeAxes();
-				break;
-			case State.ATTACK:
-				if (!NearTarget(playerObject.transform.position, 15f)) {
-					SetState(State.CHASE);
-				}
+					GetWaypoints();
+					SetFakeAxes();
+					break;
+				case State.ATTACK:
+					if (!NearTarget(playerObject.transform.position, 15f)) {
+						SetState(State.CHASE);
+					}
 
-				GetWaypoints();
-				SetFakeAxes();
-				break;
-			case State.RETREAT:
+					GetWaypoints();
+					SetFakeAxes();
+					break;
+				case State.RETREAT:
 
-				break;
-			default:
+					break;
+				default:
 
-				break;
-		}
+					break;
+			}
 
-		if (IsStuck()) {
-			fakeVerticalAxis = -fakeVerticalAxis;
-			fakeHorizontalAxis = -fakeHorizontalAxis;
-		}
-		
+			if (IsStuck()) {
+				fakeVerticalAxis = -fakeVerticalAxis;
+				fakeHorizontalAxis = -fakeHorizontalAxis;
+			}
+		}		
 	}
 
 	public void SetState(State newState) {
@@ -264,6 +266,11 @@ public class enemyController : MonoBehaviour {
 		
 		Vector3 localVelocity = this.transform.InverseTransformDirection(this.rigidbody.velocity);
 		curSpeed = new Vector3(rigidbody.velocity.x, 0, rigidbody.velocity.z).magnitude;
+
+		// if (localVelocity.z > maxSpeed) {
+		// 	Debug.Log("slow it down");
+		// 	this.rigidbody.velocity = this.rigidbody.velocity.normalized * maxSpeed;
+		// }
 
 		// turning speed limited when going to slow or going too fast (max is at 3/5 of top speed)
 		if (curSpeed > maxSpeed) {

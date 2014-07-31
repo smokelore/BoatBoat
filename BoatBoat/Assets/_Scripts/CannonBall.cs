@@ -21,7 +21,7 @@ public class CannonBall : MonoBehaviour {
 	}
 
 	void Update() {
-		if (this.transform.position.y < 0) {
+		if (this.transform.position.y < 0f) {
 			hit = 0; //makes splash
 			Destroy(gameObject);
 		}

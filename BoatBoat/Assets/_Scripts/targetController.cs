@@ -46,15 +46,17 @@ public class targetController : MonoBehaviour {
 	}
 
 	void fireFlare(){
-		flareObject = Instantiate (flare, transform.position + new Vector3(0, 2.5f, 0), transform.rotation) as GameObject;
+		flareObject = Instantiate (flare, transform.position + new Vector3(0, 0.1f, 0), transform.rotation) as GameObject;
 		flareObject.rigidbody.AddForce (new Vector3(0, 3000, 600));
 		AudioSource.PlayClipAtPoint (flareSound, transform.position, vol);
+		Destroy(flareObject, 6f);
 	}
 
 	void fireRando(){
-		flareObject = Instantiate (flare, transform.position + new Vector3(0, 1, 0), transform.rotation) as GameObject;
+		flareObject = Instantiate (flare, transform.position + new Vector3(0, 0.1f, 0), transform.rotation) as GameObject;
 		flareObject.rigidbody.AddForce (new Vector3(Random.Range (-600, 601), Random.Range (2000,4001), Random.Range(-600, 601)));
 		AudioSource.PlayClipAtPoint (flareSound, transform.position, vol);
+		Destroy(flareObject, 6f);
 	}
 
 	void openTreasure(){
