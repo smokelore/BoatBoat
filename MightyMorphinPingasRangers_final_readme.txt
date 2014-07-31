@@ -16,7 +16,7 @@ HOW TO PLAY:
 		Rowing (Purple Zone):
 			Standing in a purple zone and mounting allows the player to begin rowing. By moving the left and right sticks the player changes the position of the oars. Pushing the oars through the water moves BoatBoat relative to the direction the player is rowing!
 		Cannons (Red Zone):
-			Standing in a red zone and mounting allows the player to man the cannons! The player can load the cannon by pressing X(xbox)/[](psx), and fire the cannon by pressing RightTrigger(xbox)/R2(psx)! The faster the player presses reload, the quicker it reloads! The player can also slightly change the aim of the cannons. By holding down on the left stick the cannon aims higher, and by holding up on the left stick, the cannon aims lower. The cannon can also swivel left and right a short amount via left and right on the left stick.
+			Standing in a red zone and mounting allows the player to man the cannons! The player can load the cannon by pressing X(xbox)/Square(psx), and fire the cannon by pressing RightBumper(xbox)/R1(psx)! Tap the reload button quickly to reduce the time it takes to reload! The player can also slightly change the aim of the cannons. By holding down on the left stick the cannon aims higher, and by holding up on the left stick, the cannon aims lower. The cannon can also swivel left and right a short amount via left and right on the left stick.
 		Lookout (Green Zone):
 			Standing in a green zone and mounting allows the player to become the Lookout! This player can use the left stick to rotate the camera around, and help get a better understanding of the area around BoatBoat. This can be used to help the manned cannons, or look for enemies sneaking in from the rear!
 	
