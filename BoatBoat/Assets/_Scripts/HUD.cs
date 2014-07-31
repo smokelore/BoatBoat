@@ -16,12 +16,12 @@ public class HUD : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		if (Input.GetKeyUp(KeyCode.Alpha1)) {
-			Application.LoadLevel("playtestScene");
+			Application.LoadLevel("main");
 		}
 
 		if (winState){
 			personName = "You Win!";
-			levelTheme = "Press 1 to Restart";
+			levelTheme = "Press 1 to Exit";
 		}
 
 		hudGUI.guiText.text = personName + "\n" + levelTheme;
@@ -34,7 +34,9 @@ public class HUD : MonoBehaviour {
 		int length, width;
 		foreach (GameObject enemy in enemies) {
 			// Draw enemy health bars
-			GUI.DrawTexture(getHealthRect(enemy.GetComponent<Ship>()), healthBarTexture, ScaleMode.StretchToFill, true, 0);
+			if (enemy.transform.Find("Main/Mast").renderer.isVisible) {
+				GUI.DrawTexture(getHealthRect(enemy.GetComponent<Ship>()), healthBarTexture, ScaleMode.StretchToFill, true, 0);
+			}
 		}
 
 		// Draw player health bars

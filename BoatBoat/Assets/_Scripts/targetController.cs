@@ -54,7 +54,7 @@ public class targetController : MonoBehaviour {
 
 	void fireRando(){
 		flareObject = Instantiate (flare, transform.position + new Vector3(0, 0.1f, 0), transform.rotation) as GameObject;
-		flareObject.rigidbody.AddForce (new Vector3(Random.Range (-600, 601), Random.Range (2000,4001), Random.Range(-600, 601)));
+		flareObject.rigidbody.AddForce (new Vector3(Random.Range (-600, 601), Random.Range (1000,2001), Random.Range(-600, 601)));
 		AudioSource.PlayClipAtPoint (flareSound, transform.position, vol);
 		Destroy(flareObject, 6f);
 	}
