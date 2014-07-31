@@ -186,7 +186,7 @@ public class Ship : MonoBehaviour {
 
 	void OnDestroy() {
 		//Debug.Log("die");
-		if (this.gameObject.tag == "Player") {
+		if (this.gameObject.tag == "Player" && sinking) {
 			//Debug.Log("load");
 			Application.LoadLevel("main");
 		}

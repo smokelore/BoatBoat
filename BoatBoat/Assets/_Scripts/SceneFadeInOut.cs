@@ -9,6 +9,10 @@ public class SceneFadeInOut : MonoBehaviour {
     private Color color;
 
     void Update() {
+        if (Input.GetKeyUp(KeyCode.Alpha2)) {
+            Application.LoadLevel("playtestScene");
+        }
+
         if (sceneStarting) {
             alpha -= fadeSpeed * Time.deltaTime;
             alpha = Mathf.Clamp01(alpha);
