@@ -325,7 +325,7 @@ public class enemyController : MonoBehaviour {
 			this.rigidbody.velocity = -planeVelocity * newForward;
 		}
 
-		clothAcceleration = new Vector3(rigidbody.angularVelocity.y / maxTurn * 100f, 0f, 5f - localVelocity.z / maxSpeed * 5f);//curMaxTurn/maxTurn, 0);
+		clothAcceleration = new Vector3(rigidbody.angularVelocity.y / maxTurn * 50f, 0f, 4f - localVelocity.z / maxSpeed * 4f);//curMaxTurn/maxTurn, 0);
 		sailCloth.externalAcceleration = clothAcceleration;
 	}
 

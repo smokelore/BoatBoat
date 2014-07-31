@@ -10150,7 +10150,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100494}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0, y: .907609344, z: 0, w: .419815868}
   m_LocalPosition: {x: -62.4624825, y: 1, z: 63.7425156}
   m_LocalScale: {x: .0299999993, y: .0299999993, z: .0299999993}
   m_Children:
@@ -23594,7 +23594,7 @@ InteractiveCloth:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100258}
   m_Enabled: 1
-  m_BendingStiffness: 0
+  m_BendingStiffness: .100000001
   m_StretchingStiffness: .300000012
   m_Damping: 0
   m_Thickness: .00100000005

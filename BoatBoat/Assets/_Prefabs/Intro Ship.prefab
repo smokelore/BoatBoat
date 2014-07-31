@@ -286,7 +286,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &100034
 GameObject:
   m_ObjectHideFlags: 1
@@ -876,7 +876,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &100104
 GameObject:
   m_ObjectHideFlags: 1
@@ -4046,7 +4046,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &100480
 GameObject:
   m_ObjectHideFlags: 1
@@ -4397,7 +4397,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &100522
 GameObject:
   m_ObjectHideFlags: 1
@@ -5560,7 +5560,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &100660
 GameObject:
   m_ObjectHideFlags: 1
@@ -6310,7 +6310,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &100750
 GameObject:
   m_ObjectHideFlags: 1
@@ -22802,10 +22802,10 @@ InteractiveCloth:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100664}
   m_Enabled: 1
-  m_BendingStiffness: 0
-  m_StretchingStiffness: .150000006
+  m_BendingStiffness: .200000003
+  m_StretchingStiffness: .300000012
   m_Damping: 0
-  m_Thickness: .100000001
+  m_Thickness: .00100000005
   m_UseGravity: 0
   m_SelfCollision: 0
   m_ExternalAcceleration: {x: 0, y: 0, z: 0}
