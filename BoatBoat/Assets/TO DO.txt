@@ -1,26 +1,9 @@
-Improve controller connects/disconnects
+Improve controller connects/disconnects if possible
 
 Pause Menu
 
-Fix "Walkable Area" on player boat
-
-Finish treasure chest model and interactions and sound
-
 Improve enemy cannon shooting?
-
-Terrain props (trees, docks?)
-
-Timer?
 
 Environmental effects?
 
 Better ocean rocking
-
-Make a complete level
-
-Fonts:
-http://www.fontsquirrel.com/fonts/oswald
-http://www.fontsquirrel.com/fonts/ostrich-sans
-
-3D Text Shader:
-http://wiki.unity3d.com/index.php?title=3DText

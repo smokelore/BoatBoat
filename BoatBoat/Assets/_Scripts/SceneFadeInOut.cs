@@ -2,10 +2,12 @@
 using System.Collections;
 
 public class SceneFadeInOut : MonoBehaviour {
-    public GameObject fadeInWall;
-    public float fadeSpeed = 0.5f;          // Speed that the screen fades to and from black.
+    public GameObject fadeWall;
+    public float fadeSpeed;          // Speed that the screen fades to and from black.
+    public float alphaTarget;
     private float alpha = 1f;
-    private bool sceneStarting = true;      // Whether or not the scene is still fading in.
+    public bool destroyWallOnTarget;
+    public bool fading;      // Whether or not the scene is still fading in.
     private Color color;
 
     void Update() {
@@ -13,17 +15,17 @@ public class SceneFadeInOut : MonoBehaviour {
             Application.LoadLevel("playtestScene");
         }
 
-        if (sceneStarting) {
-            alpha -= fadeSpeed * Time.deltaTime;
+        if (fading) {
+            alpha += fadeSpeed * Time.deltaTime;
             alpha = Mathf.Clamp01(alpha);
 
             color = Color.white;
             color.a = alpha;
             
-            fadeInWall.renderer.material.color = color;
+            fadeWall.renderer.material.color = color;
             
-            if (alpha == 1f) {
-                sceneStarting = false;
+            if ((fadeSpeed > 0 && alpha >= alphaTarget) || (fadeSpeed < 0 && alpha <= alphaTarget)) {
+                fading = false;
             }
        }
     }

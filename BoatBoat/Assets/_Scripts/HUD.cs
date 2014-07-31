@@ -11,7 +11,7 @@ public class HUD : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		hudGUI.guiText.text = personName + "\n" + levelTheme;
+		
 	}
 	
 	// Update is called once per frame
@@ -24,6 +24,8 @@ public class HUD : MonoBehaviour {
 			personName = "You Win!";
 			levelTheme = "Press 1 to Exit";
 		}
+
+		hudGUI.guiText.text = personName + "\n" + levelTheme;
 
 		// hudGUI.guiText.text = personName + "\n" + levelTheme;
 		// string temp = "";
