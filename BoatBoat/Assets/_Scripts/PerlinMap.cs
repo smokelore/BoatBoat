@@ -117,7 +117,6 @@ public class PerlinMap : MonoBehaviour {
 				if (i % 4 == 0 && j % 4 == 0) {	
 					colors[j/4 * texSize + i/4] = GetColor(xCoord, zCoord);
 					// if there is a vertex at this location, move it and stuff
-					
 				}
 
 				if (render[j * meshSize + i]) {

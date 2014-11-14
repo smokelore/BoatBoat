@@ -1,4 +1,4 @@
-﻿// TEAM:
+﻿/*// TEAM:
 // Mighty Morphin Pingas Rangers
 // Sebastian Monroy - sebash@gatech.edu - smonroy3
 // Thomas Cole Carver - tcarver3@gatech.edu - tcarver3
@@ -62,3 +62,4 @@ public class RealtimeCubemap : MonoBehaviour {
 		this.renderer.sharedMaterial.SetTexture("_Cube", rendertexture);
 	}
 }
+*/
